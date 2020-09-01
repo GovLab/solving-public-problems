@@ -1,141 +1,56 @@
 
 @media screen and (min-width: 320px) and (max-width: 780px){
-    .hero{
-        padding: 2rem 1rem;
-        background-repeat: no-repeat;
-        background-size: cover;
+    html,body
+    {
+        width: 100%;
+        height: 100%;
+        margin: 0px;
+        padding: 0px;
+        overflow-x: hidden; 
     }
-    .alert-content{
-        margin: 2rem;
-        height: 15vh;
-        background-color: var(--theme-blue);
-        border-radius: 25px;
+    .hero{
+        padding: 2rem 2rem;
+    }
+    header{
+        display:flex;
+        position: relative;
+        width:100%;
+    }
+    header img{
+        padding:0.8em 0 0 1rem;
+    }
+    header .logo{
         display: flex;
         flex-direction: row;
-        justify-content: center;
-        align-items: center;
       }
-      .text-alert{
-        margin-left: 20px;
+    .about-text{
+        display:flex;
+        flex-direction: column;
+        padding: 1rem 1rem;
       }
-    .about-section{
-        flex-direction: column;
-    }
-    .about-element{
-        width:100%;
-        padding:0;
-    }
-    #phases{
-        flex-direction: row;
-        height:10vh;
-        padding: 0;
-    }
-    .row{
-        flex-direction: column;
-        padding: 2rem 1rem;
-    }
-    .phase-img{
-        width:100%;
-        text-align:center;
-        margin:0;
-    }
-    .phase-text{
+      .col{
         width: 100%;
-        text-align:center;
-        padding: 0 0rem;
-    }
-    .team{
-        flex-direction: column;
-    }
-    .partners{
-        flex-direction: column;
-        padding: 2rem 1rem;
-    }
-    #text, #logos{
-        width:100%;
-        text-align:center;
-    }
-    #text h4{
-        margin-top: 40px;
-    }
-    .p-image img{
-        width: 30%;
+        padding: 1.5rem;
       }
-    .box{
-        padding:0;
-    }
-    footer{
-        text-align:center;
-    }
-    .form-row{
+      .row{
         display:flex;
         flex-direction: column;
       }
-      .signup{
-          height:50vh;
+      .format-section{
+        padding: 1rem 1rem;
+        text-align: center;
       }
-      input[type=text]{
-          text-align:center;
-          margin: 10px 0;
-          padding: 10px 100px;
+      .format-pieces{
+        padding: 2rem 0rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
       }
-      .large-text input[type=text]{
-        
-        margin:10px 0;
-      }
-      textarea{
-margin-top:10px;
-      }
-      #slideshow {
-width: 90%;
-height: 400px;
-      }
-
-      .about-org{
-          padding: 2rem 1rem;
+      .objectives{
+        display:flex;
+        flex-direction: column;
+        padding: 3rem 1rem;
       }
 }
 @media screen and (min-width: 781px) and (max-width: 1200px){
-    .hero{
-        padding: 2rem 4rem;
-        background-repeat: no-repeat;
-        background-size: cover;
-    }
-
-    .about-element{
-        width:100%;
-        padding:0 4rem;
-    }
-    #phases{
-
-        height:10vh;
-        padding: 0;
-    }
-    .row{
-
-        padding: 2rem 4rem;
-    }
-    .phase-img{
-        width:100%;
-        text-align:center;
-        margin:0;
-    }
-    .phase-text{
-        width: 100%;
-        text-align:center;
-        padding: 0 0rem;
-    }
-    .team{
-         margin: 2rem 1rem;
-    }
-    .partners{
-        padding: 2rem 4rem;
-    }
-
-    .box{
-        padding:0;
-    }
-    .about-org{
-        padding: 2rem 4rem;
-    }
 }

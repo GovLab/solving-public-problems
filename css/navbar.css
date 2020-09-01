@@ -41,6 +41,7 @@
   display: none;
   font-size: 1.25em;
 }
+
 nav{
     position:fixed;
     top:0;
@@ -112,13 +113,15 @@ nav.sticky ul li{
 }
 
 @media screen and (min-width: 0px) and (max-width: 2000px){
-
-  #navbar
+  nav{
+    display:none;
+  }
+  /* #navbar
   {
     z-index:1000;
     height: 6vh;
     display: block;
-  }
+  } */
 
   .topnav-m a.icon {
     float: right;
