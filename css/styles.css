@@ -3,6 +3,10 @@
   --theme-yellow: #DEC15E;
   --theme-grey: #595959;
   --white: #ffffff;
+  --black: #000000;
+  --book-white: #FEF7F3;
+  --book-blue: #67A7D3;
+
   font-size: 16px;
 }
 body {
@@ -12,7 +16,7 @@ body {
 }
 
 header{
-  background-color: var(--white);
+  background-color: var(--black);
   height: 7vh;
   display: block;
   position: fixed;
@@ -41,17 +45,22 @@ header .logo{
 }
 .hero{
   padding: 2rem 25rem;
-  height: 60vh;
-  background-image: url("../img/hero.png"); 
-  background-position: center;
-  background-size: cover;
-  background-color: #00000041;
-  background-blend-mode: multiply;
-  color: var(--white);
+  height: 70vh;
+
+  background-color: var(--book-white);
+
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+#blue{
+ color: var(--book-blue);
+ font-weight: 900;
+}
+#black{
+  font-weight: 700;
+  font-stretch: extra-condensed;
 }
 .hero h3{
 text-align:center;
@@ -64,6 +73,9 @@ text-align:center;
   text-transform: uppercase;
   font-weight: 100;
   font-size: 3rem;
+}
+.hero img{
+  height: 200px;
 }
 .hero a{
   color: var(--theme-yellow);
