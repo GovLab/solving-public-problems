@@ -29,28 +29,94 @@
         padding: 1rem 1rem;
       }
       .col{
-        width: 100%;
+        width: 80%;
         padding: 1.5rem;
       }
       .row{
         display:flex;
         flex-direction: column;
       }
+      .video{
+        width: 100%;
+      }
+      .vid-desc{
+        padding: 0;
+        height: auto;
+      }
+      .signup{
+        text-align: center;
+      }
       .format-section{
         padding: 1rem 1rem;
         text-align: center;
       }
       .format-pieces{
-        padding: 2rem 0rem;
+        padding: 0rem 0rem;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
+      }
+      .format-item{
+        width:100%;
+        padding:0;
       }
       .objectives{
         display:flex;
         flex-direction: column;
         padding: 3rem 1rem;
       }
+      .changemakers{
+        padding: 2rem 1rem;
+      }
+      .team{
+        flex-direction: column;
+        padding: 0rem 0;
+      }
+      .team-image{
+        width: 100%;
+        height: 300px;
+      }
+      .topic-pieces{
+        flex-direction: column;
+      }
+      .topic-item{
+        width: 100%;
+        border: none;
+        padding: 2rem 0;
+      }
 }
 @media screen and (min-width: 781px) and (max-width: 1200px){
+  .hero{
+    padding: 2rem 2rem;
+}
+.about-text{
+
+  padding: 1rem 1rem;
+}
+.video{
+  width: 100%;
+}
+.vid-desc{
+  padding: 0;
+  height: auto;
+}
+.format-section{
+  padding: 1rem 1rem;
+  text-align: center;
+}
+.objectives{
+  display:flex;
+  flex-direction: column;
+  padding: 3rem 1rem;
+}
+.changemakers{
+  padding: 2rem 1rem;
+}
+.team{
+  padding: 0rem 1rem;
+}
+.team-image{
+
+  height: 400px;
+}
 }
