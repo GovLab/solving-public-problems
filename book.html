@@ -73,101 +73,41 @@
     </div>
   </div>
   <div id="home-page" onclick="dismiss_menu()">
-    <div id="intro" class="hero">
+    <div id="intro" class="book-hero" :style="{ backgroundImage: 'url(' + booksData[0].hero_image.data.full_url+ ')' }">
 
-      <h1><span id="blue">SOLVING</span><br><span id="black">PUBLIC PROBLEMS</span></h1>
-      <img src="img/book-hero.png">
-      <h4>{{aboutData[0].subtitle}}</h4>
+  
+
+
 
     </div>
 
-    <div class="hero-button">
-      <a href="" class="button">TAKE THE COURSE</a>
-      <a href="book.html" class="button">READ THE BOOK</a>
+    <div class="hero-button book">
+      <a href="index.html" class="button">TAKE THE COURSE</a>
+      <a :href="booksData[0].book_link" class="button">BUY THE BOOK</a>
       <a href="#register" class="button">SIGN UP FOR UPDATES!</a>
     </div>
-
-    <div class="about-section">
-
-      <div class="vid-desc">
-
-        <div class="video">
-          <div class="video-container">
-            <iframe class="video-frame" :src="'https://www.youtube.com/embed/'+ aboutData[0].trailer_video_id"
-              frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-              allowfullscreen></iframe>
-          </div>
-        </div>
-
-      </div>
-      <div class="about-text" v-html="aboutData[0].about_text">
-
-      </div>
-    </div>
-    <div class="topics">
-      <h3>Curriculum</h3>
-      <div class="topic-pieces">
-        <div class="topic-item" v-for="item in topicData">
-          <div class="topic-bg">
-            <div class="icon">
-              <img :src="item.topic_icon.data.full_url">
-            </div>
-            <div class="text">
-              <p>{{item.topic_title}}</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="format-section" id="syllabus">
-      <div class="card">
-        <h3>COURSE FORMAT</h3>
-        <div class="format-pieces">
-          <div class="format-item" v-for="item in formatData">
-            <div class="icon">
-              <img :src="item.format_icon.data.full_url">
-            </div>
-            <div class="text">
-              <p>{{item.format_description}}</p>
-            </div>
-          </div>
-        </div>
-        <a href="https://docs.google.com/document/d/1dmHmvEl-fu5BdqtnEeFyxaaTEYEfR6VQXzg_ARpk96k/edit?usp=sharing"
-          target="_blank">Explore the course syllabus to learn more!</a>
-      </div>
-    </div>
-    <div class="objectives">
-      <h3>Learning Objectives</h3>
-      <div class="row" v-html="aboutData[0].learning_objectives">
-
-      </div>
-    </div>
-
-
-    <div class="changemakers">
-      <h3>Learn from leading changemakers</h3>
-      <p>Each session features interviews with problem solvers from government agencies, non-profits, schools, and
-        community organizations, all working to change the world. </p>
-    </div>
-    <div class="team">
-
-      <div class="team-image" v-for="item in peopleData" v-if="item.category == 'Guest'">
-        <div class="square">
-          <img :src="item.headshot.data.full_url">
-        </div>
-        <h4>{{item.first_name}}&nbsp{{item.last_name}}</h4>
-        <h5>{{item.title}}</h5>
-        <a v-if="item.link_to_bio" :href="item.link_to_bio" target="_blank"><span id="bio">BIO</span></a>
-      </div>
+    <div class="about-book" v-html="booksData[0].about_the_book">
 
     </div>
+<div class="divider">
+  <h1>Other Books by Beth Simone Noveck</h1>
+</div>
+    <div class="old-books">
 
-    <div style="margin-top:-40px" id="register" class="hidden">
+      <a class="book-item" v-for="book in booksData[0].old_books" :href="book.old_book_id.url">
+        <img :src="book.old_book_id.thumbnail.data.full_url">
+        <p>{{book.old_book_id.title}}</p>
+      </div>
+    </a>
+
+    <div id="register" class="hidden">
       <br><br>
     </div>
+    <div class="divider">
+      <h1>SIGN UP FOR UPDATES!</h1>
+    </div>
     <div class="signup">
-      <h2>SIGN UP FOR UPDATES!</h2>
+   
       <p>Sign up now to reserve your spot when registrations open and to receive updates when we add new content.</p>
       <script type="text/javascript">var submitted = false;</script>
       <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(submitted) {confirm()}">
@@ -190,13 +130,7 @@
       <p>* indicates required fields</p>
       <p id="thankyou">Thank you for your submission!</p>
     </div>
-    <div class="objectives govlab">
-      <h3>About the GovLab</h3>
-      <div class="row" v-html="aboutData[0].about_govlab">
 
-
-      </div>
-    </div>
   </div>
 </body>
 <footer>
