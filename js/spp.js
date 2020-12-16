@@ -34,6 +34,7 @@ new Vue({
       formatData: [],
       topicData: [],
       booksData: [],
+      resourceData: [],
       apiURL: 'https://directus.thegovlab.com/solving-public-problems',
     }
   },
@@ -46,6 +47,7 @@ new Vue({
     this.fetchFormat();
     this.fetchTopic();
     this.fetchBook()
+    this.fetchResources()
   },
 
 
@@ -152,6 +154,26 @@ new Vue({
 ).then(data => {
 
   self.booksData = data.data;
+})
+
+.catch(error => console.error(error));
+    },
+    fetchResources() {
+      self = this;
+      const client = new DirectusSDK({
+        url: "https://directus.thegovlab.com/",
+        project: "solving-public-problems",
+        storage: window.localStorage
+      });
+
+      client.getItems(
+  'resources',
+  {
+    fields: ['*.*','readings.reading_id.*','videos.videos_id.*','worksheet.worksheet_id.*']
+  }
+).then(data => {
+
+  self.resourceData = data.data;
 })
 
 .catch(error => console.error(error));
