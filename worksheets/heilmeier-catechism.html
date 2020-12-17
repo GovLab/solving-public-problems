@@ -73,18 +73,68 @@
   </div>
   <div id="home-page" onclick="dismiss_menu()">
     <div id="intro" class="resource-hero">
-      <h1>Resources</h1>
+      <h1>Heilmeier Catechism</h1>
     </div>
 
-    <div class="hero-button book">
+    <!-- <div class="hero-button book">
       <a href="../index.html" class="button">TAKE THE COURSE</a>
       <a :href="booksData[0].book_link" class="button">BUY THE BOOK</a>
+    </div> -->
+    <div class="about-sheet">
+      <p>The Defense Advanced Research Project Agency (DARPA) uses a worksheet similar to the Public Problem-Solving Canvas to assess what projects to take on and what grants to give. George H. Heilmeier, a DARPA director in the 1970s, crafted a set of questions as a checklist to help DARPA program officers decide which research programs to fund.</p>
     </div>
-    <div class="about-book" v-html="booksData[0].about_the_book">
 
+    <div class="grid form">
+      <div id="thankyou">
+        <h1>Thank you!</h1>
+        <h4 style="margin:0">Your question has been recorded. We will be in touch with you soon.
+        </h4>
+      </div>
+      <script type="text/javascript">var submitted = false;</script>
+      <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(submitted) {submit()}">
+      </iframe>
+      <form name="form" class="custom-form"
+        action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSerbqnoh8ycBFPMZwUcugPGQm-9BMAOcLCN_D0yqRCV1KY39Q/formResponse"
+        method="post" target="hidden_iframe" onsubmit="submitted=true;" aria-label="form to subscribe">
+        <div class="question-block">
+        <div class="question-item">
+          <h4>What are you trying to do? Articulate your objectives using absolutely no jargon.</h4>
+          <textarea id="long-answer" placeholder="" name="entry.953517131" rows="3" aria-hidden=”true”></textarea>
+        </div>
+        <div class="question-item">
+          <h4>How is it done today, and what are the limits of current practice?</h4>
+          <textarea id="long-answer" placeholder="" name="entry.1622671519" rows="3" aria-hidden=”true”></textarea>  
+        </div>
+        <div class="question-item">
+          <h4>What is new in your approach and why do you think it will be successful?</h4>
+          <textarea id="long-answer" placeholder="" name="entry.721985299" rows="3" aria-hidden=”true”></textarea>
+        </div>
+        <div class="question-item">
+          <h4>Who cares? If you are successful, what difference will it make?</h4>
+          <textarea id="long-answer" placeholder="" name="entry.1461233185" rows="3" aria-hidden=”true”></textarea>
+        </div>
+        <div class="question-item">
+          <h4>What are the risks?</h4>
+          <textarea id="long-answer" placeholder="" name="entry.1430275529" rows="3" aria-hidden=”true”></textarea>
+        </div>
+        <div class="question-item">
+          <h4>How much will it cost?</h4>
+          <textarea id="long-answer" placeholder="" name="entry.825755332" rows="3" aria-hidden=”true”></textarea>
+        </div>
+        <div class="question-item">
+          <h4>How long will it take?</h4>
+          <textarea id="long-answer" placeholder="" name="entry.896578868" rows="3" aria-hidden=”true”></textarea>
+        </div>
+        <div class="question-item">
+          <h4>What are the mid-term and final “exams” to check for success?</h4>
+          <textarea id="long-answer" placeholder="" name="entry.726872928" rows="3" aria-hidden=”true”></textarea>
+        </div>
+        </div>
+        <button name="subscribe form button" class="worksheet-button" type="submit" aria-hidden=”true”>EMAIL ME MY RESPONSES</button>
+       
+      </form>
+      <a href="files/HeilmeierCatechism.pdf" class="worksheet-button download-button" aria-hidden=”true”>DOWNLOAD THE WORKSHEET</a>
     </div>
-
-
 
   </div>
 </body>

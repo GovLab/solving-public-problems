@@ -412,6 +412,15 @@ a.button:hover{
   line-height: 1.5;
   color: var(--theme-grey);
 }
+.about-sheet{
+  padding: 2rem 12rem;
+}
+.about-sheet p{
+
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--theme-grey);
+}
 
 
 .old-books{
@@ -578,6 +587,14 @@ input[type=text]{
   box-sizing: border-box;
   width: 100%;
 }
+
+.question-item textarea{
+  width:100%;
+  height: 100px;
+}
+.grid.form .question-item h4{
+  font-weight: 600;
+}
 textarea{
   padding: 10px 10px;
   font-size: 0.8rem;
@@ -588,7 +605,7 @@ textarea{
   border-radius: 0px;
   box-sizing: border-box;
   margin-bottom:10px;
-  text-align: center;
+  text-align: left;
   
 }
 ::placeholder {
@@ -596,9 +613,26 @@ textarea{
   font-weight: 600;
   text-transform: uppercase;
 }
+#thankyou{
+  display:none;
+}
+.grid.form{
+  padding: 0rem 16rem 2rem 16rem;
+}
+.grid.form h4{
+  font-weight: 400;
+  color: var(--grey8);
+}
+.grid{
+  display:flex;
+  flex-direction:column;
+  align-items: flex-start;
+  justify-content: left;
+}
 .custom-form{
   display:flex;
   flex-direction: column;
+  width: 100%;
 }
 .form-row{
   display:flex;
@@ -628,6 +662,26 @@ background-color: var(--book-white);
   cursor: pointer;
   font-weight: 600;
 }
+button.worksheet-button {
+  border: 0px solid #000000;
+  background-color: var(--book-blue);
+  color: #ffffff;
+  width: 50%;
+}
+a.download-button{
+  border: 0px solid #000000;
+  background-color: var(--book-white);
+  color: var(--black);
+  width: 50%;
+  padding: 10px 0px;
+  text-align: center;
+  font-size:0.8rem;
+  cursor: pointer;
+  font-weight: 600;
+  text-decoration: none;
+  margin-top:1rem;
+}
+
 .signup h2{
   margin-top:10px;
   margin-bottom:0;
@@ -647,6 +701,27 @@ background-color: var(--book-white);
 .changemakers p{
   margin:0;
 }
+/* .question-block{
+  display: flex;
+  flex-direction: row ;
+  max-width: none;
+margin-left: auto;
+margin-right: auto;
+display: -webkit-flex;
+display: -ms-flexbox;
+display: flex;
+-webkit-flex-flow: row wrap;
+-ms-flex-flow: row wrap;
+flex-flow: row wrap;
+}
+.question-item{
+  -webkit-flex: 0 0 46%;
+  -ms-flex: 0 0 46%;
+  flex: 0 0 46%;
+  max-width: 46%;
+  text-align: center;
+  margin: 2%;
+} */
 .team{
   display: flex;
   flex-direction: row ;
@@ -812,6 +887,12 @@ border-radius: 10%;
   }
 }
 @media screen and (min-width: 320px) and (max-width: 768px){
+  .grid.form{
+    padding: 0rem 1rem 2rem 1rem;
+  }
+  .about-sheet{
+    padding: 2rem 1rem;
+  }
   .topic-pieces{
     display: flex;
     flex-direction: column ;
