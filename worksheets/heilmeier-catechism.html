@@ -85,17 +85,14 @@
     </div>
 
     <div class="grid form">
-      <div id="thankyou">
-        <h1>Thank you!</h1>
-        <h4 style="margin:0">Your question has been recorded. We will be in touch with you soon.
-        </h4>
-      </div>
+
+      
       <script type="text/javascript">var submitted = false;</script>
-      <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(submitted) {submit()}">
+      <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(submitted) {confirm()}">
       </iframe>
       <form name="form" class="custom-form"
         action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSerbqnoh8ycBFPMZwUcugPGQm-9BMAOcLCN_D0yqRCV1KY39Q/formResponse"
-        method="post" target="hidden_iframe" onsubmit="submitted=true;" aria-label="form to subscribe">
+        method="post" target="hidden_iframe"  onsubmit="submitted=true;"  aria-label="form to subscribe">
         <div class="question-block">
         <div class="question-item">
           <h4>What are you trying to do? Articulate your objectives using absolutely no jargon.</h4>
@@ -130,18 +127,39 @@
           <textarea id="long-answer" placeholder="" name="entry.726872928" rows="3" aria-hidden=”true”></textarea>
         </div>
         </div>
-        <button name="subscribe form button" class="worksheet-button" type="submit" aria-hidden=”true”>EMAIL ME MY RESPONSES</button>
-       
+        <a href="files/HeilmeierCatechism.pdf" class="worksheet-button download-button" aria-hidden=”true”>DOWNLOAD THE WORKSHEET [PDF] </a>
+        <div class="question-item submit-item">
+        <h4>[Optional] If you'd like to receive a copy of your responses by email, please share your email address below</h4>
+        <input type="text" id="email" placeholder="Email address" name="entry.915883931" aria-hidden=”true”>
+        
+        <button name="subscribe form button" class="worksheet-button form-button" type="submit" aria-hidden=”true”>EMAIL ME MY RESPONSES</button>
       </form>
-      <a href="files/HeilmeierCatechism.pdf" class="worksheet-button download-button" aria-hidden=”true”>DOWNLOAD THE WORKSHEET</a>
+      <p id="thankyou">Thank you! We will email you your responses.</p>
+    </div>
     </div>
 
   </div>
+  
 </body>
 <footer>
 
 </footer>
 <script>
+  function confirm() {
+    var x = document.getElementById("thankyou");
+
+    x.style.display = "block";
+
+  }
+</script>
+<script>
+  function submit() {
+    var x = document.getElementById("thankyou");
+    x.style.display = "block";
+  }
+</script>
+<script>
+
   /* Toggle between showing and hiding the navigation menu links when the user clicks on the hamburger menu / bar icon */
   function myFunction() {
     var x = document.getElementById("myLinks");
@@ -159,16 +177,8 @@
     x.style.display = "none";
   }
 </script>
-<script>
-  function confirm() {
-    var x = document.getElementById("thankyou");
 
-    x.style.display = "block";
 
-  }
-</script>
-<script src='https://unpkg.com/vue@2.0.3/dist/vue.js'></script>
-<script src="https://unpkg.com/vue-meta/dist/vue-meta.min.js"></script>
-<script src="../js/spp.js"></script>
+
 
 </html>
