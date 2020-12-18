@@ -27,11 +27,12 @@
   <link rel="stylesheet" href="css/styles.css">
   <link rel="stylesheet" href="https://use.typekit.net/kad3hcl.css">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
+  <script src="https://d3js.org/d3.v4.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://unpkg.com/@directus/sdk-js@5.3.4/dist/directus-sdk.umd.min.js"></script>
   <script src="https://kit.fontawesome.com/f713a12e61.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 
 </head>
 
@@ -79,44 +80,10 @@
         <a :href="booksData[0].book_link" class="button">BUY THE BOOK</a>
       </div>
     </div>
-
-
-    <div class="resource-section">
-      <div class="resource-container" v-for="resource in resourceData">
-        <div class="resource-title">
-          <h3>{{resource.module_name}}</h3>
-          <p>{{resource.short_description}}</p>
-        </div>
-        <div class="resource-body">
-          <div class="resource-type">
-            <p>READ</p>
-          </div>
-          <div class="resource-readings" v-for="reading in resource.readings">
-            <a :href="reading.reading_id.url"><i class="fas fa-circle"></i>&nbsp&nbsp<span id="underline">{{reading.reading_id.title}}</span><span v-if="reading.reading_id.content">,&nbsp{{reading.reading_id.content}}</span></a>
-          </div>
-          <div class="resource-type">
-            <p>watch</p>
-          </div>
-          <div class="resource-videos" v-for="video in resource.videos">
-           <a :href="video.videos_id.url"> <i class="fas fa-circle"></i>&nbsp&nbsp<span id="underline">{{video.videos_id.title}}</span><span v-if="video.videos_id.content">,&nbsp{{video.videos_id.content}}</span></a>
-          </div>
-          <div class="resource-type">
-            <p>do</p>
-          </div>
-          <div class="resource-worksheets" v-for="worksheet in resource.worksheet">
-          <a :href="worksheet.worksheet_id.url"><i class="fas fa-circle"></i>&nbsp&nbsp<span id="underline">{{worksheet.worksheet_id.title}}</span><span v-if="worksheet.worksheet_id.content">,&nbsp{{worksheet.worksheet_id.content}}</span></a>
-          </div>
-        </div>
-      </div>
-    </div>
-
-
-
+    
   </div>
-</body>
-<footer>
-
-</footer>
+<!-- Create a div where the graph will take place -->
+<!-- <div id="my_dataviz"></div> -->
 <script>
   /* Toggle between showing and hiding the navigation menu links when the user clicks on the hamburger menu / bar icon */
   function myFunction() {
@@ -146,5 +113,5 @@
 <script src='https://unpkg.com/vue@2.0.3/dist/vue.js'></script>
 <script src="https://unpkg.com/vue-meta/dist/vue-meta.min.js"></script>
 <script src="js/spp.js"></script>
-
+<script src="js/charts.js"></script>
 </html>
