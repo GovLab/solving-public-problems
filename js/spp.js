@@ -35,19 +35,21 @@ new Vue({
       topicData: [],
       booksData: [],
       resourceData: [],
+      formData: [],
       apiURL: 'https://directus.thegovlab.com/solving-public-problems',
     }
   },
 
   created: function created() {
-    // this.phaseslug=window.location.href.split('/');
-    // this.phaseslug = this.phaseslug[this.phaseslug.length - 1];
+    this.formslug=window.location.href.split('/');
+    this.formslug = this.formslug[this.formslug.length - 1];
     this.fetchAbout();
     this.fetchPeople();
     this.fetchFormat();
     this.fetchTopic();
-    this.fetchBook()
-    this.fetchResources()
+    this.fetchBook();
+    this.fetchResources();
+    this.fetchForm();
   },
 
 
@@ -177,7 +179,30 @@ new Vue({
 })
 
 .catch(error => console.error(error));
+    },    
+    fetchForm() {
+      self = this;
+      const client = new DirectusSDK({
+        url: "https://directus.thegovlab.com/",
+        project: "solving-public-problems",
+        storage: window.localStorage
+      });
+
+      client.getItems(
+  'worksheet_form',
+  {
+    filter: {
+      slug: self.formslug
     },
+    fields: ['*.*','questions.question_id.*']
+  }
+).then(data => {
+
+  self.formData = data.data;
+})
+
+.catch(error => console.error(error));
+    }
 }
 });
 
