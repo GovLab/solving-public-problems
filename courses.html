@@ -74,7 +74,7 @@
   </div>
   <div id="site-page" onclick="dismiss_menu()">
     <div id="intro" class="resource-hero">
-      <h1>Other Courses</h1>
+      <h1>Additional Innovation Skills Programs</h1>
         <p v-if="aboutData[0].other_course_description">{{aboutData[0].other_course_description}}</p>
     </div>
 
@@ -86,6 +86,14 @@
                     :style="{ backgroundImage: 'url(' + site.thumbnail.data.thumbnails[3].url+ ')' }"></div>
     
                 <p class="name" target="_blank">{{site.name}}</p>
+                <div class="site-tag">
+                <p v-if="site.mode=='online'"><i class="fas fa-globe"></i>&nbsp ONLINE</p>
+                <p v-if="site.mode=='in-person'"><i class="fas fa-users"></i>&nbsp IN-PERSON</p>
+                </div>
+                <div class="site-tag">
+                    <p v-if="site.synchronous=='synchronous'"><i class="fas fa-sync-alt"></i>&nbsp SYNCHRONOUS</p>
+                    <p v-if="site.synchronous=='asynchronous'"><i class="fas fa-spinner"></i>&nbsp ASYNCHRONOUS</p>
+                </div>
                 <div class="site-description" v-html="site.description"></div>
                 
             </a>

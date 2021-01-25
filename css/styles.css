@@ -598,6 +598,11 @@ a.book-item{
   transition: all .6s ease-in-out; 
   transform: scale(1.1);
 }
+.site-tag p{
+  margin-bottom:10px;
+  margin-top:0;
+  font-size:0.9rem;
+}
   .site-column .thumb {
   height: 20vh;
   width: 100%;
