@@ -28,14 +28,34 @@ new Vue({
   data () {
     return {
       sitesData: [],
-      apiURL: 'https://directus.thegovlab.com/thegovlab/items/sites'
+      aboutData: [],
+      apiURL: 'https://directus.thegovlab.com'
     }
   },
   created: function created() {
     this.fetchSites();
+    this.fetchAbout();
   },
   methods: {
+    fetchAbout() {
+      self = this;
+      const client = new DirectusSDK({
+        url: "https://directus.thegovlab.com/",
+        project: "solving-public-problems",
+        storage: window.localStorage
+      });
 
+      client.getItems(
+  'about',
+  {
+    fields: ['*.*']
+  }
+).then(data => {
+
+  self.aboutData = data.data;
+})
+.catch(error => console.error(error));
+    },
     fetchSites() {
       self = this;
       const client = new DirectusSDK({

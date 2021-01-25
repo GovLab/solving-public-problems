@@ -75,9 +75,7 @@
   <div id="site-page" onclick="dismiss_menu()">
     <div id="intro" class="resource-hero">
       <h1>Other Courses</h1>
-      <div class="hero-button book">
-
-      </div>
+        <p v-if="aboutData[0].other_course_description">{{aboutData[0].other_course_description}}</p>
     </div>
 
     <div  class="site-row">
