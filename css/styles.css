@@ -553,6 +553,8 @@ a.book-item{
   max-width: none;
   margin-left: auto;
   margin-right: auto;
+  justify-content: flex-start;
+  align-items: flex-start;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
@@ -629,9 +631,11 @@ a.book-item{
     color: var(--light-grey);
     font-weight: 400;
     width: 100%;
+
   }
   .site-description p{
-    margin-top: 0;
+    margin: 0;
+    padding: 0 1rem 2rem 1rem;
   }
 @media screen and (min-width: 769px) and (max-width: 1100px){
 
