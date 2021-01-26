@@ -195,6 +195,92 @@ justify-content: center;
   color: var(--accent-color);
   font-weight:600;
 }
+.material-icons {
+  direction: ltr;
+  display: inline-block;
+  font-family: 'Material Icons';
+  font-size: 24px;
+  font-style: normal;
+  font-weight: normal;
+  letter-spacing: normal;
+  line-height: 1;
+  text-transform: none;
+  white-space: nowrap;
+  word-wrap: normal;
+  -webkit-font-feature-settings: 'liga';
+  -webkit-font-smoothing: antialiased;
+}
+.panel {
+  display: flex;
+  flex-direction: column;
+  order: 2;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+  padding: 0rem 4rem;
+  font-weight: 300;
+}
+.panel li strong{
+color: var(--book-blue);
+text-transform: uppercase;
+}
+.accordion{
+  background-color: var(--grey05);
+  cursor: pointer;
+  width:100%;
+  text-align: left;
+  font-weight: 400;
+  font-size: 1rem;
+  border: none;
+  outline: none;
+  transition: 0.4s;
+  display: flex;
+  order: 3;
+  flex-direction: row;
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2rem;
+  margin: 1rem 0;
+}
+.accordion:hover{
+  background-color: var(--grey5);
+}
+.accordion:hover h2{
+  color: var(--white);
+}
+.accordion:hover h2 #module-number{
+  color: var(--book-white);
+}
+.accordion h2{
+  font-size: 1.1rem;
+  font-weight: 400;
+  color: var(--dark-grey);
+}
+.accordion h2 #module-number{
+  font-size: 1rem;
+  font-weight: 600;
+color: var(--book-blue);
+text-transform: uppercase;
+}
+.syllabus-section{
+  padding: 2rem 6rem;
+}
+.active{
+  font-size: 1rem;
+}
+
+.accordion .material-icons:before {
+  font-weight: 200;
+  content: 'keyboard_arrow_down';
+  position: relative;
+
+}
+.active .material-icons:before { 
+  font-weight: 200;
+  content: 'keyboard_arrow_up';
+}
 @media screen and (min-width: 769px) and (max-width: 1100px){
 .top_logo img#undp-logo-style{
   margin: 5px 25px;
