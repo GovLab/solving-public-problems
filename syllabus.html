@@ -88,7 +88,10 @@
 
         <div class="syllabus-item" v-for="(module_item,index) in syllabusData">
           
-          <button @click="toggleMessage(index)" class="accordion"><h2><span id="module-number">Module {{index+1}}:</span>&nbsp{{module_item.module}}</h2><i class="material-icons down"></i></button>
+          <button @click="toggleMessage(index)" class="accordion">
+            <div class="acc-img"><img class="module-icon" :src="module_item.icon.data.full_url">
+           <h2><span id="module-number">Module {{index+1}}:</span>&nbsp{{module_item.module}}</h2> <i class="material-icons down"></i></div>
+          </button>
           <div v-if="showMessage && index_active==index" class="panel" v-html="module_item.description">
             
           </div>
