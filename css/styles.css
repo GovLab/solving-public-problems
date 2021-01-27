@@ -304,11 +304,17 @@ text-transform: uppercase;
   height:70px; 
   width:auto; 
 }
+.syllabus-section{
+  padding: 2rem 2rem;
+}
 }
 @media screen and (min-width: 320px) and (max-width: 768px){
   .top_logo {
     padding: 0 !important;
     width:40%;
+    }
+    .syllabus-section{
+      padding: 2rem 0rem;
     }
     .top_logo img{
       width:20%;
