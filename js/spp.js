@@ -37,6 +37,7 @@ new Vue({
       booksData: [],
       resourceData: [],
       formData: [],
+      researchData: [],
       showMessage: true,
       index_active:0,
       apiURL: 'https://directus.thegovlab.com/solving-public-problems',
@@ -54,6 +55,7 @@ new Vue({
     this.fetchResources();
     this.fetchForm();
     this.fetchSyllabus();
+    this.fetchResearch();
     this.toggleMessage();
   },
 
@@ -224,6 +226,26 @@ new Vue({
 ).then(data => {
 
   self.syllabusData = data.data;
+})
+
+.catch(error => console.error(error));
+    },
+    fetchResearch() {
+      self = this;
+      const client = new DirectusSDK({
+        url: "https://directus.thegovlab.com/",
+        project: "solving-public-problems",
+        storage: window.localStorage
+      });
+
+      client.getItems(
+  'research',
+  {
+    fields: ['*.*']
+  }
+).then(data => {
+
+  self.researchData = data.data;
 })
 
 .catch(error => console.error(error));
