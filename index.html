@@ -104,7 +104,7 @@
 
       </div>
     </div>
-    <div class="topics">
+    <!-- <div class="topics">
       <h3>Curriculum</h3>
       <div class="topic-pieces">
         <div class="topic-item" v-for="item in topicData">
@@ -118,8 +118,24 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
+<div class="topics">
+      
+    <div class="syllabus-section">
+      <h3>What we will cover</h3>
+      <div class="syllabus-item" v-for="(module_item,index) in syllabusData">
+        
+        <button @click="toggleMessage(index)" class="accordion">
+          <div class="acc-img"><img class="module-icon" :src="module_item.icon.data.full_url">
+         <h2><span id="module-number">Module {{index+1}}:</span>&nbsp{{module_item.topic}}</h2> <i class="material-icons down"></i></div>
+        </button>
+        <div v-if="showMessage && index_active==index" class="panel" v-html="module_item.description">
+          
+        </div>
 
+      </div>
+    </div>
+  </div>
     <div class="format-section" id="syllabus">
       <div class="card">
         <h3>COURSE FORMAT</h3>
