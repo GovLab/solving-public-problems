@@ -64,9 +64,8 @@
       <div class="menu-sub" onclick="dismiss_menu()"><a href="index.html">Home</a></div>
       <div class="menu-sub" onclick="dismiss_menu()"><a href="">Take the Course</a></div>
       <div class="menu-sub" onclick="dismiss_menu()"><a href="book.html">Read the Book</a></div>
-            <div class="menu-sub" onclick="dismiss_menu()"><a href="resources.html">Resources</a></div>
       <div class="menu-sub" onclick="dismiss_menu()"><a href="communications-kit.html">See the Research</a></div>
-      <div class="menu-sub" onclick="dismiss_menu()"><a href="courses.html">Other Courses</a></div>
+      <div class="menu-sub" onclick="dismiss_menu()"><a href="http://govlabacademy.org">Other Courses</a></div>
       <div class="menu-sub" onclick="dismiss_menu()"><a href="https://www.thegovlab.org/about.html">About the GovLab</a></div>
       <div class="menu-sub" onclick="dismiss_menu()"><a href="http://thegovlab.org/beth-simone-noveck.html">About Beth Simone Noveck</a>
       </div>
@@ -104,8 +103,10 @@
           <div class="resource-type">
             <p>do</p>
           </div>
-          <div class="resource-worksheets" v-for="worksheet in resource.worksheet">
-          <a :href="worksheet.worksheet_id.url"><i class="fas fa-circle"></i>&nbsp&nbsp<span id="underline">{{worksheet.worksheet_id.title}}</span><span v-if="worksheet.worksheet_id.content">,&nbsp{{worksheet.worksheet_id.content}}</span></a>
+          
+          <div class="resource-worksheets" v-for="worksheet_item in resource.worksheet">
+            
+          <a :href="worksheet_item.worksheet_id.url"><i class="fas fa-circle"></i>&nbsp&nbsp<span id="underline">{{worksheet_item.worksheet_id.title}}</span><span v-if="worksheet_item.worksheet_id.content">,&nbsp{{worksheet_item.worksheet_id.content}}</span></a>
           </div>
         </div>
       </div>
