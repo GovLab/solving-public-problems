@@ -427,6 +427,8 @@ color: #ffffff;
   margin:0;
 }
 .resource-hero.research{
+  background-color: var(--book-blue-dark);
+  color: #ffffff;
 height:40vh;
 }
 
