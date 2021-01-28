@@ -909,6 +909,12 @@ a.book-item{
     line-height: 1.5;
     font-weight: 300;
   }
+  .excerpt{
+    padding: 1rem 20rem;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+  }
 @media screen and (min-width: 769px) and (max-width: 1100px){
 
   .book-item{
@@ -930,6 +936,12 @@ a.book-item{
     flex: 0 0 100%;
     max-width: 100%;
     width:100%;
+  }
+  .excerpt{
+    padding: 1rem 2rem;
+    display:flex;
+    justify-content: center;
+    align-items: center;
   }
   .resource-text{
     padding: 1rem;
