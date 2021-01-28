@@ -432,6 +432,9 @@ color: #ffffff;
   color: #ffffff;
 height:40vh;
 }
+.resource-hero.resource-page{
+height:40vh;
+}
 
 .resource-hero h1{
   text-transform: uppercase;
@@ -892,7 +895,19 @@ a.book-item{
     font-size: 0.8rem;
     margin:0;
     font-style: italic;
-    
+  }
+  .resource-text{
+    padding: 0 12rem;
+  }
+  .resource-page h1{
+    margin:0;
+  }
+  .resource-page p{
+    padding: 1rem 0;
+    margin:0;
+    font-size: 1rem;
+    line-height: 1.5;
+    font-weight: 300;
   }
 @media screen and (min-width: 769px) and (max-width: 1100px){
 
@@ -916,7 +931,12 @@ a.book-item{
     max-width: 100%;
     width:100%;
   }
-
+  .resource-text{
+    padding: 1rem;
+  }
+  .resource-hero.resource-page{
+    height: 50vh;
+  }
     .result-item.skills table tbody  td, th {
       display: block;
   }
