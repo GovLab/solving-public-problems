@@ -241,7 +241,7 @@ new Vue({
       client.getItems(
   'research',
   {
-    fields: ['*.*']
+    fields: ['*.*','publications.publications_id.*','publications.publications_id.thumbnail.*','research_results.research_results_id.*','research_results.research_results_id.image.*']
   }
 ).then(data => {
 

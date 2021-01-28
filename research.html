@@ -75,12 +75,46 @@
   <div id="home-page" onclick="dismiss_menu()">
     <div id="intro" class="resource-hero research">
       <h1>Research</h1>
-      <div v-html="researchData[0].take_survey"></div>
+      <div class="take_survey" v-html="researchData[0].take_survey"></div>
       <div class="hero-button book">
         <a :href="researchData[0].survey_link" target="_blank" class="button">TAKE THE SURVEY</a>
+        <a href="#results" class="button">SEE THE RESULTS</a>
       </div>
     </div>
-    
+    <div class="results-section">
+      <div class="result-item about" v-html="researchData[0].about_survey"></div>
+      <div class="divider skills">
+        <h1>THE SKILLS</h1>
+      </div>
+      <div class="result-item skills" v-html="researchData[0].the_skills"></div>
+      <div id="results" class="divider skills">
+        <h1>FINDINGS</h1>
+      </div>
+      <div class="result-item findings" v-html="researchData[0].findings"></div>
+
+      <div class="result-item finding-charts">
+        <div class="publications">
+          <div class="finding-item" v-for="findingitem in researchData[0].research_results">
+            <div class="pub-thumb"
+            :style="{ backgroundImage: 'url(' + findingitem.research_results_id.image.data.full_url+ ')' }"></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="divider skills">
+      <h1>PUBLICATIONS</h1>
+    </div>
+    <div class="publications">
+      <a class="publication-item" v-for="ritem in researchData[0].publications" :href="ritem.publications_id.url" target="_blank">
+        <div class="pub-thumb"
+        :style="{ backgroundImage: 'url(' + ritem.publications_id.thumbnail.data.full_url+ ')' }"></div>
+
+        <div class="pub-title">
+          {{ritem.publications_id.title}}
+        </div>
+      </a>
+    </div>
   </div>
 <!-- Create a div where the graph will take place -->
 <!-- <div id="my_dataviz"></div> -->
