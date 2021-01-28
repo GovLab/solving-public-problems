@@ -7,6 +7,7 @@
   --book-white: #FEF7F3;
   --book-blue: #67A7D3;
   --book-blue-light: #67a8d331;
+  --book-blue-medium: #67a8d385;
   --book-blue-dark: #222F3F;
   --white10: #f0f0f0;
   --grey9: rgba(0, 0, 0, 0.9);
@@ -862,6 +863,37 @@ a.book-item{
   background-color: var(--book-blue-light);
   color: var(--book-blue-dark);
   }
+  .addl-resource{
+    background-color: var(--book-white); 
+    width:100%;
+    padding: 2rem 2rem 3rem 2rem;
+    margin-top:1rem
+  }
+  .addl-resource.practice{
+    background-color: var(--book-blue-dark);
+    color: #ffffff;
+  }
+  .addl-resource.practice h4{ 
+    color: var(--book-blue) !important;
+    font-weight: 800 !important;
+  }
+  .addl-resource a{
+    color: var(--book-blue-dark);
+  }
+  p.topic-name{
+    font-weight: 800;
+    font-size: 0.8rem;
+    margin:0;
+    text-transform: uppercase;
+    color:var(--book-blue);
+  }
+  p.source-cite{
+    font-weight: 400;
+    font-size: 0.8rem;
+    margin:0;
+    font-style: italic;
+    
+  }
 @media screen and (min-width: 769px) and (max-width: 1100px){
 
   .book-item{
@@ -1000,6 +1032,16 @@ input[type=text]{
   box-sizing: border-box;
   width: 100%;
 }
+ input[type=text]#email{
+  padding: 10px 10px;
+  font-size: 0.8rem;
+  display: inline-block;
+  border: none;
+  color:#000000;
+  background-color: #efefef86;
+  border-radius: 0px;
+  box-sizing: border-box;
+}
 
 .question-item textarea{
   width:100%;
@@ -1026,7 +1068,7 @@ textarea{
   
 }
 ::placeholder {
-  color: var(--book-blue);
+  color: var(--book-blue-medium);
   font-weight: 600;
   text-transform: uppercase;
 }

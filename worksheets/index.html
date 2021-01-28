@@ -74,7 +74,9 @@
   </div>
   <div id="home-page" onclick="dismiss_menu()" v-cloak>
     <div id="intro" class="resource-hero">
+      <p class="topic-name">{{formData[0].topic}}</p>
       <h1>{{formData[0].exercise_name}}</h1>
+      <p class="source-cite">{{formData[0].source}}</p>
     </div>
 
     <!-- <div class="hero-button book">
@@ -102,13 +104,33 @@
         </div>
         <a :href="formData[0].worksheet_url" class="worksheet-button download-button" aria-hidden=”true”>DOWNLOAD THE WORKSHEET [PDF] </a>
         <div class="question-item submit-item">
+
         <h4>[Optional] If you'd like to receive a copy of your responses by email, please share your email address below</h4>
-        <input type="text" id="email" placeholder="Email address"  v-bind:name="formData[0].email_entry_name" aria-hidden=”true”>
+        <div class="button-group">
+          <input type="text" id="email" placeholder="Email address"  v-bind:name="formData[0].email_entry_name" aria-hidden=”true”>
         
-        <button name="subscribe form button" class="worksheet-button form-button" type="submit" aria-hidden=”true”>EMAIL ME MY RESPONSES</button>
+          <button name="subscribe form button" class="worksheet-button form-button" type="submit" aria-hidden=”true”>SUBMIT</button>
+        </div>
+       
       </form>
       <p id="thankyou">Thank you! We will email you your responses.</p>
     </div>
+    <div class="addl-resource practice">
+      <h4>PRACTICE TIP</h4>
+      <div v-html="formData[0].practice_tip">
+   
+        </div>
+        </div>
+    <div class="addl-resource">
+      <div style="margin-bottom:0.5rem;" class="resource-type">
+        <p>additional resources</p>
+      </div>
+      
+      <div class="resource-worksheets" v-for="worksheet_item in formData[0].additional_resources">
+        
+      <a :href="worksheet_item.worksheet_resource_id.url"><i class="fas fa-circle"></i>&nbsp<span>{{worksheet_item.worksheet_resource_id.title}}</span><span v-if="worksheet_item.worksheet_resource_id.content">,&nbsp{{worksheet_item.worksheet_resource_id.content}}</span></a>
+      </div>
+      </div>
     </div>
 
   </div>

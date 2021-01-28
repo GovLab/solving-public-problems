@@ -45,8 +45,8 @@ new Vue({
   },
 
   created: function created() {
-    this.formslug=window.location.href.split('/');
-    this.formslug = this.formslug[this.formslug.length - 1];
+    this.formslug=window.location.href.split('?')[1];
+    // this.formslug = this.formslug[this.formslug.length - 1];
     this.fetchAbout();
     this.fetchPeople();
     this.fetchFormat();
@@ -201,7 +201,7 @@ new Vue({
     filter: {
       slug: self.formslug
     },
-    fields: ['*.*','questions.question_id.*']
+    fields: ['*.*','questions.question_id.*','additional_resources.worksheet_resource_id.*']
   }
 ).then(data => {
 
