@@ -98,9 +98,9 @@
       <div class="about-book" v-html="booksData[0].toc">
 
       </div>
-
+     
       <div>
-        <iframe id="pdf-js-viewer" :src="'/web/viewer.html?file=%2'F+booksData[0].excerpt.data.full_url" title="webviewer" frameborder="0" width="500" height="600"></iframe>
+        <iframe id="pdf-js-viewer" :src="'/web/viewer.html?file=%2F' + booksData[0].excerpt.data.full_url" title="webviewer" frameborder="0" width="500" height="600"></iframe>
     </div>
       <!-- <iframe :src="booksData[0].excerpt.data.full_url+'#toolbar=1&navpanes=0&scrollbar=0'" scrolling="auto" type="application/pdf" width="300px" height="400px"></iframe> -->
     </div>
