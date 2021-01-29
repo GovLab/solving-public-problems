@@ -80,6 +80,7 @@
     </div>
 
 <div class="blog-page">
+  <p v-if="blogData.length == 0">Coming soon!</p>
   <div class="posts" v-for="post in blogData">
     <div class="title">
       {{post.title}}
