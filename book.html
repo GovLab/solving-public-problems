@@ -74,7 +74,7 @@
       </div>
     </div>
   </div>
-  <div id="home-page" onclick="dismiss_menu()">
+  <div id="home-page" style="position:absolute" onclick="dismiss_menu()">
     <div id="intro" class="book-hero" :style="{ backgroundImage: 'url(' + booksData[0].hero_image.data.full_url+ ')' }">
 
   
@@ -95,13 +95,16 @@
       <h1>Excerpt from the book</h1>
     </div>
     <div class="excerpt">
-      <div class="about-book" v-html="booksData[0].toc">
 
+      <div class="excerpt-pdf">
+        <div class="about-book" v-html="booksData[0].toc">
+
+        </div>
+        <iframe src="files/book_excerpt.pdf#toolbar=1&navpanes=1&scrollbar=1'" scrolling="auto" type="application/pdf" width="300px" height="400px"></iframe>
       </div>
-
-      <iframe :src="booksData[0].excerpt.data.full_url+'#toolbar=1&navpanes=0&scrollbar=0'" scrolling="auto" type="application/pdf" width="300px" height="400px"></iframe>
+     
     </div>
-    
+
 <div class="divider">
   <h1>Other Books by Beth Simone Noveck</h1>
 </div>
@@ -145,6 +148,8 @@
     </div>
 
   </div>
+ 
+  
 </body>
 <footer>
 

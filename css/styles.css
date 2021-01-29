@@ -923,6 +923,11 @@ a.book-item{
     text-align: center;
     justify-content: center;
     align-items: center;
+    height: 500px;
+  }
+  .excerpt-pdf{
+    position: absolute;
+    z-index: 100;
   }
   .blog-page{
     padding: 2rem 6rem;

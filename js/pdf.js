@@ -1,51 +1,43 @@
-/*
-Copyright 2019 Adobe
-All Rights Reserved.
+// If absolute URL from the remote server is provided, configure the CORS
+// header on that server.
+var url = 'https://raw.githubusercontent.com/mozilla/pdf.js/ba2edeae/examples/learning/helloworld.pdf';
 
-NOTICE: Adobe permits you to use, modify, and distribute this file in
-accordance with the terms of the Adobe license agreement accompanying
-it. If you have received this file from a source other than Adobe,
-then your use, modification, or distribution of it requires the prior
-written permission of Adobe.
-*/
+// Loaded via <script> tag, create shortcut to access PDF.js exports.
+var pdfjsLib = window['pdfjs-dist/build/pdf'];
 
-/* Pass the embed mode option here */
-const viewerConfig = {
-    embedMode: "IN_LINE"
-};
+// The workerSrc property shall be specified.
+pdfjsLib.GlobalWorkerOptions.workerSrc = '//mozilla.github.io/pdf.js/build/pdf.worker.js';
 
-/* Wait for Adobe Document Services PDF Embed API to be ready */
-document.addEventListener("adobe_dc_view_sdk.ready", function () {
-    /* Initialize the AdobeDC View object */
-    var adobeDCView = new AdobeDC.View({
-        /* Pass your registered client id */
-        clientId: "5ead064504e54375988f5a2c037282ef",
-        /* Pass the div id in which PDF should be rendered */
-        divId: "adobe-dc-view",
+// Asynchronous download of PDF
+var loadingTask = pdfjsLib.getDocument(url);
+loadingTask.promise.then(function(pdf) {
+  console.log('PDF loaded');
+  
+  // Fetch the first page
+  var pageNumber = 1;
+  pdf.getPage(pageNumber).then(function(page) {
+    console.log('Page loaded');
+    
+    var scale = 1.5;
+    var viewport = page.getViewport({scale: scale});
+
+    // Prepare canvas using PDF page dimensions
+    var canvas = document.getElementById('the-canvas');
+    var context = canvas.getContext('2d');
+    canvas.height = viewport.height;
+    canvas.width = viewport.width;
+
+    // Render PDF page into canvas context
+    var renderContext = {
+      canvasContext: context,
+      viewport: viewport
+    };
+    var renderTask = page.render(renderContext);
+    renderTask.promise.then(function () {
+      console.log('Page rendered');
     });
-
-    /* Invoke the file preview API on Adobe DC View object */
-    adobeDCView.previewFile({
-        /* Pass information on how to access the file */
-        content: {
-            /* Location of file where it is hosted */
-            location: {
-                url: "https://solvingpublicproblems.org/files/book_excerpt.pdf",
-                /*
-                If the file URL requires some additional headers, then it can be passed as follows:-
-                header: [
-                    {
-                        key: "<HEADER_KEY>",
-                        value: "<HEADER_VALUE>",
-                    }
-                ]
-                */
-            },
-        },
-        /* Pass meta data of file */
-        metaData: {
-            /* file name */
-            fileName: "Solving Public Problems"
-        }
-    }, viewerConfig);
+  });
+}, function (reason) {
+  // PDF loading error
+  console.error(reason);
 });
