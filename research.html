@@ -74,7 +74,7 @@
       </div>
     </div>
   </div>
-  <div id="home-page" onclick="dismiss_menu()">
+  <div id="home-page" style="position:absolute" onclick="dismiss_menu()">
     <div id="intro" class="resource-hero research">
       <h1>Research</h1>
       <div class="take_survey" v-html="researchData[0].take_survey"></div>
@@ -93,10 +93,21 @@
         <h1>THE SKILLS</h1>
       </div>
       <div class="result-item skills" v-html="researchData[0].the_skills"></div>
+      
       <div id="results" class="divider skills">
         <h1>FINDINGS</h1>
       </div>
       <div class="result-item findings" v-html="researchData[0].findings"></div>
+
+      <div class="excerpt research">
+      <div class="excerpt-pdf">
+      <iframe :src="researchData[0].survey_pdf.data.full_url + '#toolbar=1&navpanes=1&scrollbar=1'" scrolling="auto" type="application/pdf" width="300px" height="400px"></iframe>
+      <div class="take_survey" v-html="researchData[0].take_survey"></div>
+      </div>
+    </div>      
+    <div style="padding:0;" class="hero-button book">
+      <a :href="researchData[0].survey_link" target="_blank" class="button">TAKE THE SURVEY</a>
+    </div>
 
       <div class="result-item finding-charts">
         <div class="publications">

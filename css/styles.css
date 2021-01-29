@@ -925,6 +925,13 @@ a.book-item{
     align-items: center;
     height: 500px;
   }
+  .excerpt.research{
+    height:400px;
+
+  }
+  .excerpt.research .take_survey{
+    padding: 1rem 12rem;
+  }
   .excerpt-pdf{
     position: absolute;
     z-index: 100;
