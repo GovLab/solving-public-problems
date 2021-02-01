@@ -686,8 +686,13 @@ a.book-item{
   background-color: var(--book-white);
   padding: 0 12rem;
   display:flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+  text-align: center;
+}
+.divider.change{
+  height: 20vh;
 }
 .divider h1{
   text-transform: uppercase;
@@ -1198,6 +1203,8 @@ textarea{
 .custom-form{
   display:flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
   width: 100%;
 }
 .form-row{
@@ -1205,6 +1212,7 @@ textarea{
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  width:50%;
 }
 .large-text{
   width: 100%;
@@ -1319,17 +1327,10 @@ flex-flow: row wrap;
   text-align: center;
   margin-top: 2rem;
 }  
-.team-image .square{
-  display: inline-block;
-  position: relative;
-  width: 200px;
-  height: 200px;
-  overflow: hidden;
-  border-radius: 50%;
-  z-index:-1;
-}
+
 .team-image .square img{
   height: 100%;
+
 }
 .team-image h4{
     font-size: 1.2rem;
@@ -1345,11 +1346,13 @@ flex-flow: row wrap;
  
 }
 .team-image .square{
-  display: inline-block;
-  position: relative;
-  z-index:-100;
-  width: 120px;
-  height: 120px;
+  z-index: 0;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin: 30px auto 0;
+  height: 140px;
+  width: 140px;
   overflow: hidden;
   border-radius: 50%;
   border: 0px solid var(--book-blue);
@@ -1559,8 +1562,8 @@ text-align: center;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 3rem 12rem;
-  background-color: var(--book-white);
+  padding: 2rem 12rem;
+  /* background-color: var(--book-white); */
 }
 .objectives.govlab .row p{
 line-height: 2;
@@ -1737,5 +1740,10 @@ ol>li.bg-color:before{
 .team-image{
   width: 100%;
   height: 300px;
+  -webkit-flex: 0 0  100%;
+  -ms-flex: 0 0  100%;
+  flex: 0 0  100%;
+  max-width:  100%;
 }
+
 }

@@ -71,6 +71,7 @@
       <div class="menu-sub" onclick="dismiss_menu()"><a href="courses.html">Other Courses</a></div>
       <div class="menu-sub" onclick="dismiss_menu()"><a href="https://www.thegovlab.org/about.html">About the GovLab</a></div>
       <div class="menu-sub" onclick="dismiss_menu()"><a href="http://thegovlab.org/beth-simone-noveck.html">About Beth Simone Noveck</a>
+      <div class="menu-sub" onclick="dismiss_menu()"><a href="team.html">Team</a>
       </div>
     </div>
   </div>
@@ -124,11 +125,12 @@
         </div>
       </div>
     </div> -->
-    
+  <div class="divider">
+    <h1>What we will cover</h1>
+  </div>
 <div class="topics">
       
     <div class="syllabus-section">
-      <h3>What we will cover</h3>
       <div class="syllabus-item" v-for="(module_item,index) in syllabusData">
         
         <button @click="toggleMessage(index)" class="accordion">
@@ -142,9 +144,12 @@
       </div>
     </div>
   </div>
+  <div class="divider">
+    <h1>COURSE FORMAT</h1>
+  </div>
     <div class="format-section" id="syllabus">
       <div class="card">
-        <h3>COURSE FORMAT</h3>
+     
         <div class="format-pieces">
           <div class="format-item" v-for="item in formatData">
             <div class="icon">
@@ -159,24 +164,27 @@
           target="_blank">Explore the course syllabus to learn more!</a>
       </div>
     </div>
+    <div class="divider">
+      <h1>Learning Objectives</h1>
+    </div>
     <div class="objectives">
-      <h3>Learning Objectives</h3>
+ 
       <div class="row" v-html="aboutData[0].learning_objectives">
 
       </div>
     </div>
 
-
-    <div class="changemakers">
-      <h3>Learn from leading changemakers</h3>
+    <div class="divider change">
+      <h1>Learn from leading changemakers</h1>
       <p>Each session features interviews with problem solvers from government agencies, non-profits, schools, and
         community organizations, all working to change the world. </p>
     </div>
+
     <div class="team">
 
       <div class="team-image" v-for="item in peopleData" v-if="item.category == 'Guest'">
-        <div class="square">
-          <img :src="item.headshot.data.full_url">
+        <div class="square" :style="{ backgroundImage: 'url(' + item.headshot.data.thumbnails[3].url+ ')' }">
+          <!-- <img :src="item.headshot.data.full_url"> -->
         </div>
         <h4>{{item.first_name}}&nbsp{{item.last_name}}</h4>
         <h5>{{item.title}}</h5>
@@ -184,43 +192,61 @@
       </div>
 
     </div>
-
-    <div style="margin-top:-40px" id="register" class="hidden">
-      <br><br>
-    </div>
-    <div class="signup">
-      <h2>SIGN UP FOR UPDATES!</h2>
-      <p>Sign up now to reserve your spot when registrations open and to receive updates when we add new content.</p>
-      <script type="text/javascript">var submitted = false;</script>
-      <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(submitted) {confirm()}">
-      </iframe>
-      <form name="subscribe form" class="custom-form"
-        action="https://docs.google.com/forms/d/e/1FAIpQLSfumXG0cHNrQwXzaDaaDb9Dvt0AjNo9G7UTd1OECzdUlJ1f4A/formResponse"
-        method="post" target="hidden_iframe" onsubmit="submitted=true;" aria-label="form to subscribe">
-        <div class="form-row">
-          <input style="margin-right:10px" type="text" placeholder="NAME*" name="entry.1978434868" aria-hidden=”true”>
-          <input type="text" placeholder="AFFILIATION" name="entry.1318681530" aria-hidden=”true”>
-
-        </div>
-        <div class="form-row large-text">
-          <input type="text" placeholder="EMAIL ADDRESS*" name="entry.858743687" aria-hidden=”true”>
-        </div>
-        <div class="form-row">
-          <button name="subscribe form button" class="form-button" type="submit" aria-hidden=”true”>SIGN UP</button>
-        </div>
-      </form>
-      <p>* indicates required fields</p>
-      <p id="thankyou">Thank you for your submission!</p>
+    <div class="divider">
+      <h1>About the GovLab</h1>
     </div>
     <div class="objectives govlab">
-      <h3>About the GovLab</h3>
+
       <div class="row" v-html="aboutData[0].about_govlab">
 
 
       </div>
     </div>
+    <div class="divider">
+      <h1>Team</h1>
+    </div>
+    <div class="team">
+
+      <div class="team-image" v-for="item in TeamData[0].project_team">
+        <div class="square" :style="{ backgroundImage: 'url(' + item.team_id.picture.data.thumbnails[3].url+ ')' }">
+          <!-- <img :src="item.team_id.picture.data.full_url"> -->
+        </div>
+        <h4>{{item.team_id.name}}</h4>
+        <h5>{{item.team_id.title}}</h5>
+        <a :href="'https://www.thegovlab.org/team.html#'+item.team_id.slug" target="_blank"><span id="bio">BIO</span></a>
+      </div>
+
+
+</div>
+<div style="margin-top:-40px" id="register" class="hidden">
+  <br><br>
+</div>
+<div class="signup">
+  <h2>SIGN UP FOR UPDATES!</h2>
+  <p>Sign up now to reserve your spot when registrations open and to receive updates when we add new content.</p>
+  <script type="text/javascript">var submitted = false;</script>
+  <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(submitted) {confirm()}">
+  </iframe>
+  <form name="subscribe form" class="custom-form"
+    action="https://docs.google.com/forms/d/e/1FAIpQLSfumXG0cHNrQwXzaDaaDb9Dvt0AjNo9G7UTd1OECzdUlJ1f4A/formResponse"
+    method="post" target="hidden_iframe" onsubmit="submitted=true;" aria-label="form to subscribe">
+    <div class="form-row">
+      <input style="margin-right:10px" type="text" placeholder="NAME*" name="entry.1978434868" aria-hidden=”true”>
+      <input type="text" placeholder="AFFILIATION" name="entry.1318681530" aria-hidden=”true”>
+
+    </div>
+    <div class="form-row">
+      <input type="text" placeholder="EMAIL ADDRESS*" name="entry.858743687" aria-hidden=”true”>
+    </div>
+    <div class="form-row">
+      <button name="subscribe form button" class="form-button" type="submit" aria-hidden=”true”>SIGN UP</button>
+    </div>
+  </form>
+  <p>* indicates required fields</p>
+  <p id="thankyou">Thank you for your submission!</p>
+</div>
   </div>
-  
+
 </body>
 <footer>
 
@@ -267,5 +293,4 @@
 <script src='https://unpkg.com/vue@2.0.3/dist/vue.js'></script>
 <script src="https://unpkg.com/vue-meta/dist/vue-meta.min.js"></script>
 <script src="js/spp.js"></script>
-
 </html>

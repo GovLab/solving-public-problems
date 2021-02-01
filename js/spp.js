@@ -37,12 +37,13 @@ new Vue({
       formatData: [],
       topicData: [],
       booksData: [],
+      TeamData: [],
       resourceData: [],
       formData: [],
       researchData: [],
       showMessage: true,
       index_active:0,
-      apiURL: 'https://directus.thegovlab.com/solving-public-problems',
+      apiURL: 'https://directus.thegovlab.com/',
     }
   },
 
@@ -51,6 +52,7 @@ new Vue({
     this.formslug = this.formslug[this.formslug.length - 1];
     this.fetchAbout();
     this.fetchPeople();
+    this.fetchTeam();
     this.fetchFormat();
     this.fetchTopic();
     this.fetchBook();
@@ -250,6 +252,28 @@ new Vue({
   self.researchData = data.data;
 })
 
+.catch(error => console.error(error));
+    },
+    fetchTeam() {
+      self = this;
+      const client = new DirectusSDK({
+        url: "https://directus.thegovlab.com/",
+        project: "thegovlab",
+        storage: window.localStorage
+      });
+
+      client.getItems(
+  'projects',
+  {
+    filter: {
+      slug: 'solving-public-problems'
+    },
+    fields: ['*.*','project_team.team_id.*','project_team.team_id.picture.*']
+  }
+).then(data => {
+  self.TeamData = data.data;
+  console.log(self.TeamData);
+})
 .catch(error => console.error(error));
     },
     toggleMessage (index) {
