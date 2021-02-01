@@ -975,6 +975,7 @@ a.book-item{
   .posts{
     background-color: var(--book-blue-light);
     padding: 2rem 4rem;
+    margin-bottom: 2rem;
   }
   .read-more a{
     text-decoration: none;
