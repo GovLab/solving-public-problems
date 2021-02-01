@@ -74,6 +74,11 @@
       </div>
     </div>
   </div>
+  <div id="twitter-feed">
+    <a class="tweet-close" onclick="dismiss_twitter()"><i class="fas fa-times-circle"></i>CLOSE</a>
+  <a  class="twitter-timeline" data-height= 400 href="https://twitter.com/TheGovLab/timelines/1355920542042382340?ref_src=twsrc%5Etfw">Solving Public Problems - Curated tweets by TheGovLab</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+</div>
   <div id="home-page" onclick="dismiss_menu()">
     <div id="intro" class="hero">
 
@@ -235,6 +240,13 @@
   /* Toggle between showing and hiding the navigation menu links when the user clicks on the hamburger menu / bar icon */
   function dismiss_menu() {
     var x = document.getElementById("myLinks");
+    x.style.display = "none";
+  }
+</script>
+<script>
+
+  function dismiss_twitter() {
+    var x = document.getElementById("twitter-feed");
     x.style.display = "none";
   }
 </script>

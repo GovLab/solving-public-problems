@@ -300,7 +300,32 @@ text-transform: uppercase;
   font-weight: 200;
   content: 'keyboard_arrow_up';
 }
-
+.tweet-close{
+  position:absolute;
+  z-index:100;
+  margin:0;
+  cursor:pointer;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: -30px;
+  background-color: #ffffff;
+  width:100%;
+  padding:10px 0;
+  font-size: 0.9rem;
+  border-radius: 0px 20px;
+}
+#twitter-feed{
+  position:absolute; 
+  bottom:0;
+  z-index:100;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+}
+a.tweet-close:hover{
+color: red;
+transition: all .6s ease;
+}
 @media screen and (min-width: 769px) and (max-width: 1100px){
 .top_logo img#undp-logo-style{
   margin: 5px 25px;
@@ -392,7 +417,7 @@ border-bottom: 1px solid rgba(255,255,255,0.1);
 color: #ffffff;
 }
 .hero{
-  padding: 0rem 12rem;
+  padding: 0rem 20rem;
   height: 70vh;
   background-color: var(--book-white);
   display: flex;
