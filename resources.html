@@ -2,28 +2,28 @@
 <html lang="en">
 
 <head>
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-LS299J2EWH"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-LS299J2EWH"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
 
-  gtag('config', 'G-LS299J2EWH');
-</script>
+    gtag('config', 'G-LS299J2EWH');
+  </script>
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description"
-  content="How to take advantage of technology, data and the collective wisdom in our communities to design powerful solutions to contemporary problems." />
-<meta property="og:type" content="website" />
-<meta property="og:title" content="Solving Public Problems" />
-<meta property="og:url" content="https://solvingpublicproblems.org" />
-<meta property="twitter:image" content="https://solvingpublicproblems.org/img/spp-meta.png" />
-<link href="https://solvingpublicproblems.org/img/spp_logo.png" rel="shortcut icon">
-<meta property="og:description"
-  content="How to take advantage of technology, data and the collective wisdom in our communities to design powerful solutions to contemporary problems." />
-<meta property="og:image" content="https://solvingpublicproblems.org/img/spp-meta.png" />
+    content="How to take advantage of technology, data and the collective wisdom in our communities to design powerful solutions to contemporary problems." />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Solving Public Problems" />
+  <meta property="og:url" content="https://solvingpublicproblems.org" />
+  <meta property="twitter:image" content="https://solvingpublicproblems.org/img/spp-meta.png" />
+  <link href="https://solvingpublicproblems.org/img/spp_logo.png" rel="shortcut icon">
+  <meta property="og:description"
+    content="How to take advantage of technology, data and the collective wisdom in our communities to design powerful solutions to contemporary problems." />
+  <meta property="og:image" content="https://solvingpublicproblems.org/img/spp-meta.png" />
   <title>Solving Public Problems</title>
 
   <link href="images/favicon.ico" rel="shortcut icon">
@@ -65,12 +65,15 @@
   <div id="myLinks">
     <div class="menu-items">
       <div class="menu-sub" onclick="dismiss_menu()"><a href="index.html">Home</a></div>
-      <div class="menu-sub" onclick="dismiss_menu()"><a href="https://course.solvingpublicproblems.org">Take the Course</a></div>
+      <div class="menu-sub" onclick="dismiss_menu()"><a href="https://course.solvingpublicproblems.org">Take the
+          Course</a></div>
       <div class="menu-sub" onclick="dismiss_menu()"><a href="book.html">Read the Book</a></div>
       <div class="menu-sub" onclick="dismiss_menu()"><a href="research.html">See the Research</a></div>
       <div class="menu-sub" onclick="dismiss_menu()"><a href="http://govlabacademy.org">Other Courses</a></div>
-      <div class="menu-sub" onclick="dismiss_menu()"><a href="https://www.thegovlab.org/about.html">About the GovLab</a></div>
-      <div class="menu-sub" onclick="dismiss_menu()"><a href="http://thegovlab.org/beth-simone-noveck.html">About Beth Simone Noveck</a></div>
+      <div class="menu-sub" onclick="dismiss_menu()"><a href="https://www.thegovlab.org/about.html">About the GovLab</a>
+      </div>
+      <div class="menu-sub" onclick="dismiss_menu()"><a href="http://thegovlab.org/beth-simone-noveck.html">About Beth
+          Simone Noveck</a></div>
       <div class="menu-sub" onclick="dismiss_menu()"><a href="team.html">Team</a>
       </div>
     </div>
@@ -79,9 +82,16 @@
     <div id="intro" class="resource-hero resource-page">
       <h1>Resources</h1>
       <div class="resource-text">
-        <p>This Resources page contains additional materials, including optional readings and videos, as well as exercises and worksheets organized by course topic. Frequently updated with new items, these are above and beyond what you'll find in the course. To suggest a reading, video or exercise, please email us at info@thegovlab.org</p>
+        <p>Frequently updated with new items, these resources are organized by topic. To suggest a reading, video or exercise, please email us at hello@solvingpublicproblems.org.
+
+          <br><br>
+          <b>READ</b>- HELPFUL READINGS <br>
+         <b> WATCH </b>- INTERESTING VIDEOS <br>
+         <b> DO </b>- WORKSHEETS
+        
+        </p>
       </div>
-         <div class="hero-button book">
+      <div class="hero-button book">
         <a href="index.html" class="button">TAKE THE COURSE</a>
         <a :href="booksData[0].book_link" class="button">BUY THE BOOK</a>
       </div>
@@ -99,21 +109,27 @@
             <p>READ</p>
           </div>
           <div class="resource-readings" v-for="reading in resource.readings">
-            <a :href="reading.reading_id.url"><i class="fas fa-circle"></i>&nbsp&nbsp<span id="underline">{{reading.reading_id.title}}</span><span v-if="reading.reading_id.content">,&nbsp{{reading.reading_id.content}}</span></a>
+            <a :href="reading.reading_id.url" target="_blank"><i class="fas fa-circle"></i>&nbsp&nbsp<span
+                id="underline">{{reading.reading_id.title}}</span><span
+                v-if="reading.reading_id.content">,&nbsp{{reading.reading_id.content}}</span></a>
           </div>
           <div class="resource-type">
             <p>watch</p>
           </div>
           <div class="resource-videos" v-for="video in resource.videos">
-           <a :href="video.videos_id.url"> <i class="fas fa-circle"></i>&nbsp&nbsp<span id="underline">{{video.videos_id.title}}</span><span v-if="video.videos_id.content">,&nbsp{{video.videos_id.content}}</span></a>
+            <a :href="video.videos_id.url" target="_blank"> <i class="fas fa-circle"></i>&nbsp&nbsp<span
+                id="underline">{{video.videos_id.title}}</span><span
+                v-if="video.videos_id.content">,&nbsp{{video.videos_id.content}}</span></a>
           </div>
           <div class="resource-type">
             <p>do</p>
           </div>
-          
+
           <div class="resource-worksheets" v-for="worksheet_item in resource.worksheet">
-            
-          <a :href="worksheet_item.worksheet_id.url"><i class="fas fa-circle"></i>&nbsp&nbsp<span id="underline">{{worksheet_item.worksheet_id.title}}</span><span v-if="worksheet_item.worksheet_id.content">,&nbsp{{worksheet_item.worksheet_id.content}}</span></a>
+
+            <a :href="worksheet_item.worksheet_id.url" target="_blank"><i class="fas fa-circle"></i>&nbsp&nbsp<span
+                id="underline">{{worksheet_item.worksheet_id.title}}</span><span
+                v-if="worksheet_item.worksheet_id.content">,&nbsp{{worksheet_item.worksheet_id.content}}</span></a>
           </div>
         </div>
       </div>
