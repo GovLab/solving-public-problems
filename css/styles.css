@@ -1285,7 +1285,7 @@ input#email{
 .changemakers p{
   margin:0;
 }
-/* .question-block{
+.question-block{
   display: flex;
   flex-direction: row ;
   max-width: none;
@@ -1299,13 +1299,13 @@ display: flex;
 flex-flow: row wrap;
 }
 .question-item{
-  -webkit-flex: 0 0 46%;
-  -ms-flex: 0 0 46%;
-  flex: 0 0 46%;
-  max-width: 46%;
+  -webkit-flex: 0 0 100%;
+  -ms-flex: 0 0 100%;
+  flex: 0 0 100%;
+  max-width: 100%;
   text-align: center;
-  margin: 2%;
-} */
+  /* margin: 2%; */
+}
 .team{
   display: flex;
   flex-direction: row ;
