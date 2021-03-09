@@ -107,11 +107,11 @@
           <textarea id="long-answer" placeholder="" v-bind:name="question.question_id.entry_name" rows="3" aria-hidden=”true”></textarea>
         </div>
         </div>
-        <a :href="formData[0].worksheet_url" class="worksheet-button download-button" aria-hidden=”true”>DOWNLOAD THE WORKSHEET [PDF] </a>
+        <a v-if="formData[0].worksheet_url" :href="formData[0].worksheet_url" class="worksheet-button download-button" aria-hidden=”true”>DOWNLOAD THE WORKSHEET [PDF] </a>
         <div class="question-item submit-item">
 
-        <h4>[Optional] If you'd like to receive a copy of your responses by email, please share your email address below</h4>
-        <div class="button-group">
+        <h4 v-if="formData[0].email_entry_name">[Optional] If you'd like to receive a copy of your responses by email, please share your email address below</h4>
+        <div v-if="formData[0].email_entry_name" class="button-group">
           <input type="text" id="email" placeholder="Email address"  v-bind:name="formData[0].email_entry_name" aria-hidden=”true”>
         
           <button name="subscribe form button" class="worksheet-button form-button" type="submit" aria-hidden=”true”>SUBMIT</button>
@@ -120,13 +120,13 @@
       </form>
       <p id="thankyou">Thank you! We will email you your responses.</p>
     </div>
-    <div class="addl-resource practice">
+    <div v-if="formData[0].practice_tip" class="addl-resource practice">
       <h4>PRACTICE TIP</h4>
       <div v-html="formData[0].practice_tip">
    
         </div>
         </div>
-    <div class="addl-resource">
+    <div v-if="formData[0].additional_resources" class="addl-resource">
       <div style="margin-bottom:0.5rem;" class="resource-type">
         <p>additional resources</p>
       </div>
