@@ -1289,10 +1289,11 @@ input#email{
   display: flex;
   flex-direction: row ;
   max-width: none;
-margin-left: auto;
-margin-right: auto;
+margin-left: 0;
+margin-right: 0;
 display: -webkit-flex;
 display: -ms-flexbox;
+width:100%;
 display: flex;
 -webkit-flex-flow: row wrap;
 -ms-flex-flow: row wrap;

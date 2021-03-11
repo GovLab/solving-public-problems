@@ -133,7 +133,7 @@
       
       <div class="resource-worksheets" v-for="worksheet_item in formData[0].additional_resources">
         
-      <a :href="worksheet_item.worksheet_resource_id.url"><i class="fas fa-circle"></i>&nbsp<span>{{worksheet_item.worksheet_resource_id.title}}</span><span v-if="worksheet_item.worksheet_resource_id.content">,&nbsp{{worksheet_item.worksheet_resource_id.content}}</span></a>
+      <a :href="worksheet_item.worksheet_resource_id.url"><i class="fas fa-circle"></i>&nbsp<span>{{worksheet_item.worksheet_resource_id.title}}</span><span v-if="worksheet_item.worksheet_resource_id.content" style="color: #ffffff;">,&nbsp{{worksheet_item.worksheet_resource_id.content}}</span></a>
       </div>
       </div>
     </div>
