@@ -649,7 +649,10 @@ a.button:hover{
   color: var(--theme-grey);
 }
 
-
+.about-sheet ol{
+  display:flex;
+  flex-direction: column;
+}
 .old-books{
   display: flex;
   flex-direction: row ;
@@ -1605,6 +1608,7 @@ ol>li {
   list-style: outside none;
   padding-bottom: 1rem;
   float: left;
+  margin-right:5px;
 }
 ol li:before {
   counter-increment: myOrderedListItemsCounter;
