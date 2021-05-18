@@ -83,16 +83,18 @@
       <h1>Research</h1>
       <div class="take_survey" v-html="researchData[0].take_survey"></div>
       <div class="hero-button book">
-        <a :href="researchData[0].survey_link" target="_blank" class="button">TAKE THE SURVEY</a>
+        <!-- <a :href="researchData[0].survey_link" target="_blank" class="button">TAKE THE SURVEY</a> -->
         <a href="#results" class="button">SEE THE RESULTS</a>
       </div>
     </div>
     <div class="results-section">
-      <div class="result-item " v-html="researchData[0].about_survey"></div>
       <div class="divider skills">
         <h1>WHY A SURVEY?</h1>
       </div>
       <div class="result-item about" v-html="researchData[0].why_survey"></div>
+      <div class="result-item " v-html="researchData[0].about_survey"></div>
+
+      
       <div class="divider skills">
         <h1>THE SKILLS</h1>
       </div>
@@ -109,9 +111,9 @@
       <div class="take_survey" v-html="researchData[0].take_survey"></div>
       </div>
     </div>      
-    <div style="padding:0;" class="hero-button book">
+    <!-- <div style="padding:0;" class="hero-button book">
       <a :href="researchData[0].survey_link" target="_blank" class="button">TAKE THE SURVEY</a>
-    </div>
+    </div> -->
 
       <div class="result-item finding-charts">
         <div class="publications">
