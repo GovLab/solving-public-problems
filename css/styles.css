@@ -1899,7 +1899,9 @@ p.skills-item-title{
 .skills-item-description{
   font-weight: 300;
 }
-
+.about-survey-section p{
+  color: #ffffff;
+}
 @media screen and (min-width: 320px) and (max-width: 768px){
   .research-hero{
     height: 30vh;
