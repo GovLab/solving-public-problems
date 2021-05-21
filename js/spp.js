@@ -41,6 +41,8 @@ new Vue({
       resourceData: [],
       formData: [],
       researchData: [],
+      skillsData:[],
+      surveyData:[],
       showMessage: true,
       index_active:0,
       apiURL: 'https://directus.thegovlab.com/',
@@ -56,8 +58,10 @@ new Vue({
     this.fetchFormat();
     this.fetchTopic();
     this.fetchBook();
+    this.fetchSurvey();
     this.fetchResources();
     this.fetchForm();
+    this.fetchSkills();
     this.fetchSyllabus();
     this.fetchResearch();
     this.toggleMessage();
@@ -65,6 +69,46 @@ new Vue({
 
 
   methods: {
+  
+    fetchSkills() {
+      self = this;
+      const client = new DirectusSDK({
+        url: "https://directus.thegovlab.com/",
+        project: "solving-public-problems",
+        storage: window.localStorage
+      });
+
+      client.getItems(
+  'skills',
+  {
+    fields: ['*.*']
+  }
+).then(data => {
+
+  self.skillsData = data.data;
+})
+.catch(error => console.error(error));
+    },
+
+    fetchSurvey() {
+      self = this;
+      const client = new DirectusSDK({
+        url: "https://directus.thegovlab.com/",
+        project: "solving-public-problems",
+        storage: window.localStorage
+      });
+
+      client.getItems(
+  'surveys',
+  {
+    fields: ['*.*']
+  }
+).then(data => {
+
+  self.surveyData = data.data;
+})
+.catch(error => console.error(error));
+    },
     fetchAbout() {
       self = this;
       const client = new DirectusSDK({

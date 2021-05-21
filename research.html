@@ -79,64 +79,53 @@
     </div>
   </div>
   <div id="home-page" style="position:absolute" onclick="dismiss_menu()">
-    <div id="intro" class="resource-hero research">
+
+    <div class="research-hero">
       <h1>Research</h1>
-      <div class="take_survey" v-html="researchData[0].take_survey"></div>
-      <div class="hero-button book">
-        <!-- <a :href="researchData[0].survey_link" target="_blank" class="button">TAKE THE SURVEY</a> -->
-        <a href="#results" class="button">SEE THE RESULTS</a>
-      </div>
+      <div v-html="researchData[0].take_survey"></div>
     </div>
-    <div class="results-section">
-      <div class="divider skills">
-        <h1>WHY A SURVEY?</h1>
-      </div>
-      <div class="result-item about" v-html="researchData[0].why_survey"></div>
-      <div class="result-item " v-html="researchData[0].about_survey"></div>
-
-      
-      <div class="divider skills">
-        <h1>THE SKILLS</h1>
-      </div>
-      <div class="result-item skills" v-html="researchData[0].the_skills"></div>
-      
-      <div id="results" class="divider skills">
-        <h1>FINDINGS</h1>
-      </div>
-      <div class="result-item findings" v-html="researchData[0].findings"></div>
-
-      <div class="excerpt research">
-      <div class="excerpt-pdf">
-      <iframe :src="researchData[0].survey_pdf.data.full_url + '#toolbar=1&navpanes=1&scrollbar=1'" scrolling="auto" type="application/pdf" width="300px" height="400px"></iframe>
-      <div class="take_survey" v-html="researchData[0].take_survey"></div>
-      </div>
-    </div>      
-    <!-- <div style="padding:0;" class="hero-button book">
-      <a :href="researchData[0].survey_link" target="_blank" class="button">TAKE THE SURVEY</a>
+    <!-- <div class="hero-button">
+      <a href="" class="button inverted-color">See the results</a>
     </div> -->
-
-      <div class="result-item finding-charts">
-        <div class="publications">
-          <div class="finding-item" v-for="findingitem in researchData[0].research_results">
-            <div class="pub-thumb"
-            :style="{ backgroundImage: 'url(' + findingitem.research_results_id.image.data.full_url+ ')' }"></div>
+    <div class="research-text-section">
+      <h2>Why Survey</h2>
+      <div v-html="researchData[0].why_survey"></div>
+    </div>
+    <div class="research-survey-section">
+      <div class="survey-card-row">
+        <div class="survey-card-col" v-for="survey in surveyData">
+          <div class="survey-card">
+            <p class="survey-title">{{survey.title}}</p>
+            <p class="survey-year">{{survey.year}}</p>
+            <p class="survey-year">{{survey.audience}}</p>
+            <p class="survey-year" v-if="survey.survey_participants">N = {{survey.survey_participants}}</p>
+            <div class="survey-tags" v-if="survey.survey_parts != ''">
+              <p class="survey-tag-1" v-if="survey.survey_parts[0] != null">Skills Use</p>
+              <p class="survey-tag-2" v-if="survey.survey_parts[1] != null">Innovation Environment</p>
+              <p class="survey-tag-3" v-if="survey.survey_parts[2] != null">Skills Training</p>
+            </div>
+            <p v-if="survey.sponsor" class="survey-sponser-title">Sponsered By:</p>
+            <div class="survey-sponser" v-html="survey.sponsor"></div>
+            <a v-if="survey.survey_link" class="survey-button">See Survey</a>
+            <a v-if="survey.survey_results" class="survey-button">See Results</a>
           </div>
         </div>
       </div>
-
     </div>
-    <div class="divider skills">
-      <h1>PUBLICATIONS</h1>
+    <div style="padding-bottom:0" class="research-text-section">
+      <h2>Findings</h2>
+      <div v-html="researchData[0].findings"></div>
+      <!-- <a class="survey-button">See Full Findings</a> -->
     </div>
-    <div class="publications">
-      <a class="publication-item" v-for="ritem in researchData[0].publications" :href="ritem.publications_id.url" target="_blank">
-        <div class="pub-thumb"
-        :style="{ backgroundImage: 'url(' + ritem.publications_id.thumbnail.data.full_url+ ')' }"></div>
-
-        <div class="pub-title">
-          {{ritem.publications_id.title}}
-        </div>
-      </a>
+    <div style="padding-bottom:0"  class="research-text-section">
+      <h2>The Skills</h2>
+      <div v-html="researchData[0].the_skills"></div>
+    </div>
+    <div class="research-text-section">
+      <div class="skills-item" v-for="skills in skillsData">
+        <p class="skills-item-title">{{skills.title}}</p>
+        <div class="skills-item-description" v-html="skills.description"></div>
+      </div>
     </div>
   </div>
 <!-- Create a div where the graph will take place -->
