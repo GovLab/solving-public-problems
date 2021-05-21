@@ -815,8 +815,8 @@ a.book-item{
     max-width: none;
     margin-left: auto;
     margin-right: auto;
-    justify-content: center;
-    align-items: center;
+    justify-content: flex-start;
+    align-items: flex-start;
   
     display: -webkit-flex;
     display: -ms-flexbox;
@@ -1902,6 +1902,7 @@ p.skills-item-title{
 .about-survey-section p{
   color: #ffffff;
 }
+
 @media screen and (min-width: 320px) and (max-width: 768px){
   .research-hero{
     height: 30vh;

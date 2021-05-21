@@ -122,10 +122,23 @@
       <h2>The Skills</h2>
       <div v-html="researchData[0].the_skills"></div>
     </div>
-    <div class="research-text-section">
+    <div style="padding-bottom:0" class="research-text-section">
       <div class="skills-item" v-for="skills in skillsData">
         <p class="skills-item-title">{{skills.title}}</p>
         <div class="skills-item-description" v-html="skills.description"></div>
+      </div>
+    </div>
+    <div class="research-text-section">
+      <h2>Publications</h2>
+      <div class="publications">
+        <a class="publication-item" v-for="ritem in researchData[0].publications" :href="ritem.publications_id.url" target="_blank">
+          <div class="pub-thumb"
+          :style="{ backgroundImage: 'url(' + ritem.publications_id.thumbnail.data.full_url+ ')' }"></div>
+  
+          <div class="pub-title">
+            {{ritem.publications_id.title}}
+          </div>
+        </a>
       </div>
     </div>
   </div>
