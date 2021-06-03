@@ -107,7 +107,7 @@
             </div>
             <p v-if="survey.sponsor" class="survey-sponser-title">Sponsered By:</p>
             <div class="survey-sponser" v-html="survey.sponsor"></div>
-            <a v-if="survey.survey_link" class="survey-button">See Survey</a>
+            <a v-if="survey.survey_link" :href="survey.survey_link"  target="_blank" class="survey-button">See Survey</a>
             <a v-if="survey.survey_results" class="survey-button">See Results</a>
           </div>
         </div>

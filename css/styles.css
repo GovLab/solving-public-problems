@@ -1885,6 +1885,7 @@ margin: 0.2rem 0;
   text-transform: uppercase;
   background-color: var(--dark-blue);
   color:#ffffff;
+  text-decoration: none;
 }
 .skills-item{
   background-color: var(--light-blue);
