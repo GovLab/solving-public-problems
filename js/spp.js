@@ -32,6 +32,7 @@ new Vue({
   
     return {
       aboutData: [],
+      blurbData: [],
       syllabusData: [],
       peopleData: [],
       formatData: [],
@@ -53,6 +54,7 @@ new Vue({
     this.formslug=window.location.href.split('/');
     this.formslug = this.formslug[this.formslug.length - 1];
     this.fetchAbout();
+    this.fetchBlurb();
     this.fetchPeople();
     this.fetchTeam();
     this.fetchFormat();
@@ -69,7 +71,25 @@ new Vue({
 
 
   methods: {
-  
+    fetchBlurb() {
+      self = this;
+      const client = new DirectusSDK({
+        url: "https://directus.thegovlab.com/",
+        project: "solving-public-problems",
+        storage: window.localStorage
+      });
+
+      client.getItems(
+  'blurbs',
+  {
+    fields: ['*.*']
+  }
+).then(data => {
+
+  self.blurbData = data.data;
+})
+.catch(error => console.error(error));
+    },
     fetchSkills() {
       self = this;
       const client = new DirectusSDK({

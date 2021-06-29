@@ -635,6 +635,20 @@ a.button:hover{
 .about-book{
   padding: 0 12rem 2rem 12rem;
 }
+.blurbs{
+  padding: 0 12rem 2rem 12rem;
+}
+.blurb-item{
+  background-color: var(--book-white);
+  padding: 1.5rem;
+  margin: 1rem 0;
+}
+.blurb-item p.content{
+  font-size: 1.1rem;
+}
+.blurb-item p.attribution{
+  font-weight: 600;
+}
 .about-book p{
 
   font-weight: 400;
@@ -1090,6 +1104,9 @@ a.book-item{
   
   }
   .about-book{
+    padding: 0 1rem 2rem 1rem;
+  }
+  .blurbs{
     padding: 0 1rem 2rem 1rem;
   }
   .hero-button.book .button{
