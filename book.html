@@ -117,6 +117,16 @@
       <p class="attribution">{{blurb.attribution}}</p>
       </div>
     </div>
+    <div class="divider">
+      <h1>In the News</h1>
+    </div>
+    <div class="blurbs">
+      <div class="blurb-item" v-for="review in reviewData">
+      <p class="content">{{review.excerpt}}</p>
+      <p class="attribution">{{review.attribution}}</p>
+      <a :href="review.url" target="_blank" class="review-link">Read the full article</a>
+      </div>
+    </div>
 <div class="divider">
   <h1>Other Books by Beth Simone Noveck</h1>
 </div>

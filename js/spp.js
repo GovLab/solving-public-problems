@@ -40,6 +40,7 @@ new Vue({
       booksData: [],
       TeamData: [],
       resourceData: [],
+      reviewData: [],
       formData: [],
       researchData: [],
       skillsData:[],
@@ -67,10 +68,30 @@ new Vue({
     this.fetchSyllabus();
     this.fetchResearch();
     this.toggleMessage();
+    this.fetchPress();
   },
 
 
   methods: {
+    fetchPress() {
+      self = this;
+      const client = new DirectusSDK({
+        url: "https://directus.thegovlab.com/",
+        project: "solving-public-problems",
+        storage: window.localStorage
+      });
+
+      client.getItems(
+  'reviews',
+  {
+    fields: ['*.*']
+  }
+).then(data => {
+
+  self.reviewData = data.data;
+})
+.catch(error => console.error(error));
+    },
     fetchBlurb() {
       self = this;
       const client = new DirectusSDK({
