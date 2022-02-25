@@ -103,7 +103,6 @@
 
         <h1><span id="blue">SOLVING</span><br><span id="black">PUBLIC PROBLEMS</span></h1>
         <img src="img/spp-logo.svg">
-
         <h4>{{aboutData[0].subtitle}}</h4>
 
       </div>
@@ -194,7 +193,7 @@
 
         <div class="team-image" v-for="item in peopleData" v-if="item.category == 'Guest'">
           <div class="square" :style="{ backgroundImage: 'url(' + item.headshot.data.thumbnails[3].url+ ')' }">
-
+            <!-- <img :src="item.headshot.data.full_url"> -->
           </div>
           <h4>{{item.first_name}}&nbsp{{item.last_name}}</h4>
           <h5>{{item.title}}</h5>
@@ -212,23 +211,26 @@
 
         </div>
       </div>
-      <!-- <div class="divider">
+      <div class="divider">
         <h1>Team</h1>
-      </div> -->
-      <!-- <div class="team">
+      </div>
+      <div class="team">
 
         <div class="team-image" v-for="item in TeamData[0].project_team">
-              <h4>{{item.team_id.name}}</h4>
+          <div class="square" :style="{ backgroundImage: 'url(' + item.team_id.picture.data.thumbnails[3].url+ ')' }">
+            <!-- <img :src="item.team_id.picture.data.full_url"> -->
+          </div>
+          <h4>{{item.team_id.name}}</h4>
           <h5>{{item.team_id.title}}</h5>
           <a :href="'https://www.thegovlab.org/team.html#'+item.team_id.slug" target="_blank"><span
               id="bio">BIO</span></a>
         </div>
 
 
-      </div> -->
-      <!-- <div style="margin-top:-40px" id="register" class="hidden">
+      </div>
+      <div style="margin-top:-40px" id="register" class="hidden">
         <br><br>
-      </div> -->
+      </div>
       <div class="signup">
         <h2>SIGN UP FOR UPDATES!</h2>
         <p>Sign up now to reserve your spot when registrations open and to receive updates when we add new content.</p>
