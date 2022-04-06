@@ -67,12 +67,28 @@ new Vue({
     this.fetchSkills();
     this.fetchSyllabus();
     this.fetchResearch();
-    this.toggleMessage();
     this.fetchPress();
   },
-
-
   methods: {
+
+    toggleMessage: function (index) {
+      
+      this.index_active = index;
+    	this.showMessage = !this.showMessage;
+      if(this.syllabusData[index].iopen==false)
+      {
+        this.syllabusData[index]['iopen'] = true;
+      }
+      else 
+      {
+        this.syllabusData[index]['iopen'] = false;
+      }
+
+      // var i = this.syllabusData[index].iopen
+      // i?i=false:i=true;
+      // this.syllabusData[index].iopen = i;
+      console.log(this.syllabusData[index]); 
+    },
     fetchPress() {
       self = this;
       const client = new DirectusSDK({
@@ -313,7 +329,9 @@ new Vue({
     fields: ['*.*']
   }
 ).then(data => {
-
+  data.data.map(function(a,b){ 
+    a['iopen'] = false;
+  })
   self.syllabusData = data.data;
 })
 
@@ -361,11 +379,6 @@ new Vue({
 })
 .catch(error => console.error(error));
     },
-    toggleMessage (index) {
-      this.index_active = index;
-    	this.showMessage = !this.showMessage
-    }
-
 }
 });
 
