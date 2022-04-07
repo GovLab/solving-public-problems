@@ -73,6 +73,11 @@ new Vue({
 
 
   methods: {
+    toggleMessage (index) {
+      console.log(self.TeamData);
+      this.index_active = index;
+    	this.showMessage = !this.showMessage
+    },
     fetchPress() {
       self = this;
       const client = new DirectusSDK({
@@ -361,10 +366,7 @@ new Vue({
 })
 .catch(error => console.error(error));
     },
-    toggleMessage (index) {
-      this.index_active = index;
-    	this.showMessage = !this.showMessage
-    }
+
 
 }
 });
