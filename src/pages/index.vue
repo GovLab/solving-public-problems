@@ -434,12 +434,9 @@ console.log(window.twttr)
       <a class="tweet-close" @click="dismiss_twitter()"
         ><i class="fas fa-times-circle"></i>CLOSE</a
       >
-         <a
-        class="twitter-timeline"
-        data-height="400"
-        href="https://twitter.com/TheGovLab/timelines/1355920542042382340?ref_src=twsrc%5Etfw"
-        >Solving Public Problems - Curated tweets by TheGovLab</a
-      >
+    <a class="twitter-timeline" 
+    height="400"
+    href="https://twitter.com/TheGovLab/timelines/1355920542042382340?ref_src=twsrc%5Etfw">Solving Public Problems - Curated tweets by TheGovLab</a> 
       </div>
 
 
