@@ -1,7 +1,5 @@
 <script>
-import { ref } from "vue";
 import { Directus } from "@directus/sdk";
-import TwitterWidgetsLoader from "twitter-widgets";
 
 export default {
   data() {
@@ -21,7 +19,7 @@ export default {
       researchData: [],
       skillsData: [],
       surveyData: [],
-      submitted:false,
+      submitted: false,
       showMessage: true,
       index_active: 0,
       apiURL: "https://directus.thegovlab.com/",
@@ -46,16 +44,21 @@ export default {
     this.fetchResearch();
     this.toggleMessage();
     this.fetchPress();
-    
   },
-  mounted(){
-  TwitterWidgetsLoader.load();
+  mounted() {
+
+    // twitter embed script initation
+    let twitterScript = document.createElement("script");
+    twitterScript.setAttribute(
+      "src",
+      "https://platform.twitter.com/widgets.js"
+    );
+    document.head.appendChild(twitterScript);
 
   },
 
   methods: {
     toggleMessage(index) {
-      console.log(self.TeamData);
       this.index_active = index;
       this.showMessage = !this.showMessage;
     },
@@ -304,48 +307,44 @@ export default {
         })
         .then((data) => {
           self.TeamData = data.data;
-          console.log(self.TeamData);
         })
 
         .catch((error) => console.error(error));
     },
-  /* Toggle between showing and hiding the navigation menu links when the user clicks on the hamburger menu / bar icon */
-  myFunction() {
-    var x = document.getElementById("myLinks");
-    if (x.style.display === "block") {
+    /* Toggle between showing and hiding the navigation menu links when the user clicks on the hamburger menu / bar icon */
+    myFunction() {
+      var x = document.getElementById("myLinks");
+      if (x.style.display === "block") {
+        x.style.display = "none";
+      } else {
+        x.style.display = "block";
+      }
+    },
+    /* Toggle between showing and hiding the navigation menu links when the user clicks on the hamburger menu / bar icon */
+    dismiss_menu() {
+      var x = document.getElementById("myLinks");
       x.style.display = "none";
-    } else {
+    },
+    dismiss_twitter() {
+      var x = document.getElementById("twitter-feed");
+      x.style.display = "none";
+    },
+    confirm() {
+      var x = document.getElementById("thankyou");
+
       x.style.display = "block";
-    }
-  },
-  /* Toggle between showing and hiding the navigation menu links when the user clicks on the hamburger menu / bar icon */
-  dismiss_menu() {
-    var x = document.getElementById("myLinks");
-    x.style.display = "none";
-  },
-  dismiss_twitter() {
-    var x = document.getElementById("twitter-feed");
-    x.style.display = "none";
-  },
-   confirm() {
-    var x = document.getElementById("thankyou");
-
-    x.style.display = "block";
-
-  },
- submit() {
-    var x = document.getElementById("thankyou");
-    x.style.display = "block";
-  }
-
-
+    },
+    submit() {
+      var x = document.getElementById("thankyou");
+      x.style.display = "block";
+    },
   },
 };
 </script>
 
 
 <template>
-  <section>
+  <section id="home-page">
     <!-- Load an icon library to show a hamburger menu (bars) on small screens -->
 
     <!-- Top Navigation Menu -->
@@ -360,8 +359,11 @@ export default {
       <a class="top_logo" href="index.html"
         ><img src="../assets/the-govlab-logo-white.svg" alt="The GovLab"
       /></a>
-          <a class="top_logo" href="index.html"><img src="../assets/the_burnes_center_logo_white.png" alt="The Burnes Center for Social Change"></a>
-
+      <a class="top_logo" href="index.html"
+        ><img
+          src="../assets/the_burnes_center_logo_white.png"
+          alt="The Burnes Center for Social Change"
+      /></a>
 
       <!-- Navigation links (hidden by default) -->
 
@@ -410,20 +412,24 @@ export default {
         </div>
       </div>
     </div>
+   
 
-    <blockquote class="twitter-tweet" id="twitter-feed">
+    
+      <div id="twitter-feed">
+
       <a class="tweet-close" @click="dismiss_twitter()"
         ><i class="fas fa-times-circle"></i>CLOSE</a
       >
-      <a
+    <a
         class="twitter-timeline"
         data-height="400"
         href="https://twitter.com/TheGovLab/timelines/1355920542042382340?ref_src=twsrc%5Etfw"
         >Solving Public Problems - Curated tweets by TheGovLab</a
       >
-      
-    </blockquote>
-    <div id="home-page" @click="dismiss_menu()">
+      </div>
+
+
+    <div @click="dismiss_menu()">
       <div id="intro" class="hero">
         <h1>
           <span id="blue">SOLVING</span><br /><span id="black"
@@ -433,6 +439,9 @@ export default {
         <img src="../assets/spp-logo.svg" />
         <h4>{{ aboutData[0].subtitle }}</h4>
       </div>
+      <TwitterFeed
+        src="https://twitter.com/vuejs?ref_src=twsrc%5Etfw"
+      ></TwitterFeed>
 
       <div class="hero-button">
         <a href="http://course.solvingpublicproblems.org" class="button"
