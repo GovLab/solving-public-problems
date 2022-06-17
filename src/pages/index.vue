@@ -50,19 +50,22 @@ export default {
   },
   beforeMount ()
   {
- let twitterScript = document.createElement("script");
-    twitterScript.setAttribute(
-      "src",
-      "https://platform.twitter.com/widgets.js"
-    );
-    document.head.appendChild(twitterScript);
+
   },
   mounted() {
 
 
     // twitter embed script initation
-    
-  this.fetchTwitter()
+     let twitterScript = document.createElement("script");
+    twitterScript.setAttribute(
+      "src",
+      "https://platform.twitter.com/widgets.js"
+    );
+    document.head.appendChild(twitterScript);
+    this.$nextTick(() => {
+         this.fetchTwitter()
+      });
+
   },
 
   methods: {
