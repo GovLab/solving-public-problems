@@ -364,7 +364,7 @@ fetchTwitter()
 
 
 <template>
-  <section id="home-page">
+  
     <!-- Load an icon library to show a hamburger menu (bars) on small screens -->
 
     <!-- Top Navigation Menu -->
@@ -444,6 +444,7 @@ fetchTwitter()
     href="https://twitter.com/TheGovLab/timelines/1355920542042382340?ref_src=twsrc%5Etfw">Solving Public Problems - Curated tweets by TheGovLab</a> 
       </div>
 
+<section id="home-page" v-if="aboutData.length>0">
     <div @click="dismiss_menu()" >
       <div id="intro" class="hero" >
         <h1>
