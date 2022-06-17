@@ -30,7 +30,15 @@ export default {
   created: function created() {
     this.formslug = window.location.href.split("/");
     this.formslug = this.formslug[this.formslug.length - 1];
-    this.fetchAbout();
+
+     this.twitterHTML = `
+    <a
+        class="twitter-timeline"
+        data-height="400"
+        href="https://twitter.com/TheGovLab/timelines/1355920542042382340?ref_src=twsrc%5Etfw"
+        >Solving Public Problems - Curated tweets by TheGovLab</a
+      >`;
+      this.fetchAbout();
     this.fetchBlurb();
     this.fetchPeople();
     this.fetchTeam();
@@ -45,6 +53,7 @@ export default {
     this.fetchResearch();
     this.toggleMessage();
     this.fetchPress();
+    
   },
   beforeMount()
   {
@@ -58,15 +67,9 @@ export default {
   mounted() {
 
     // twitter embed script initation
-            this.$nextTick(() => {
-       this.twitterHTML = `
-    <a
-        class="twitter-timeline"
-        data-height="400"
-        href="https://twitter.com/TheGovLab/timelines/1355920542042382340?ref_src=twsrc%5Etfw"
-        >Solving Public Problems - Curated tweets by TheGovLab</a
-      >`
-      });
+            
+      
+      
   
 
   },
@@ -450,9 +453,6 @@ export default {
         <img src="../assets/spp-logo.svg" />
         <h4>{{ aboutData[0].subtitle }}</h4>
       </div>
-      <TwitterFeed
-        src="https://twitter.com/vuejs?ref_src=twsrc%5Etfw"
-      ></TwitterFeed>
 
       <div class="hero-button">
         <a href="http://course.solvingpublicproblems.org" class="button"
