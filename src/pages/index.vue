@@ -47,7 +47,7 @@ export default {
     this.fetchBook();
     this.fetchSurvey();
     this.fetchResources();
-    // this.fetchForm();
+    this.fetchForm();
     this.fetchSkills();
     this.fetchSyllabus();
     this.fetchResearch();
@@ -67,8 +67,10 @@ export default {
   mounted() {
 
     // twitter embed script initation
-            
-      
+     
+      window.twttr.widgets.load(
+  document.getElementById("twitter-feed")
+);
       
   
 
@@ -255,7 +257,8 @@ export default {
       self = this;
 
       this.directus
-        .items("worksheet_form", {
+        .items("worksheet_form")
+        .readByQuery({
           filter: {
             slug: self.formslug,
           },
