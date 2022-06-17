@@ -40,7 +40,7 @@ export default {
     this.fetchBook();
     this.fetchSurvey();
     this.fetchResources();
-    this.fetchForm();
+    // this.fetchForm();
     this.fetchSkills();
     this.fetchSyllabus();
     this.fetchResearch();
@@ -602,7 +602,7 @@ fetchTwitter()
       <div class="divider">
         <h1>Team</h1>
       </div>
-      <div class="team">
+      <div class="team" v-if="TeamData.length>0">
         <!-- {{TeamData[21]}} -->
         <div class="team-image" v-for="item in TeamData[56].project_team">
           <div
