@@ -1,7 +1,6 @@
 <script>
 import { ref } from "vue";
 import { Directus } from "@directus/sdk";
-import TwitterWidgetsLoader from "twitter-widgets";
 
 export default {
   data() {
@@ -48,7 +47,7 @@ export default {
     
   },
   mounted(){
-  TwitterWidgetsLoader.load();
+
 
   },
 
