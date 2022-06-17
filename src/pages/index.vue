@@ -58,14 +58,16 @@ export default {
   mounted() {
 
     // twitter embed script initation
-    
-  this.twitterHTML = `
+            this.$nextTick(() => {
+       this.twitterHTML = `
     <a
         class="twitter-timeline"
         data-height="400"
         href="https://twitter.com/TheGovLab/timelines/1355920542042382340?ref_src=twsrc%5Etfw"
         >Solving Public Problems - Curated tweets by TheGovLab</a
       >`
+      });
+  
 
   },
 
