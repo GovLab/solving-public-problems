@@ -23,6 +23,7 @@ export default {
       showMessage: true,
       index_active: 0,
       apiURL: "https://directus.thegovlab.com/",
+      twitterHTML:""
     };
   },
 
@@ -47,7 +48,7 @@ export default {
   },
   beforeMount()
   {
-              let twitterScript = document.createElement("script");
+    let twitterScript = document.createElement("script");
     twitterScript.setAttribute(
       "src",
       "https://platform.twitter.com/widgets.js"
@@ -58,7 +59,13 @@ export default {
 
     // twitter embed script initation
     
-
+  this.twitterHTML = `
+    <a
+        class="twitter-timeline"
+        data-height="400"
+        href="https://twitter.com/TheGovLab/timelines/1355920542042382340?ref_src=twsrc%5Etfw"
+        >Solving Public Problems - Curated tweets by TheGovLab</a
+      >`
 
   },
 
@@ -422,17 +429,12 @@ export default {
    
 
     
-      <div id="twitter-feed">
-
+      <div id="twitter-feed" >
       <a class="tweet-close" @click="dismiss_twitter()"
         ><i class="fas fa-times-circle"></i>CLOSE</a
       >
-    <a
-        class="twitter-timeline"
-        data-height="400"
-        href="https://twitter.com/TheGovLab/timelines/1355920542042382340?ref_src=twsrc%5Etfw"
-        >Solving Public Problems - Curated tweets by TheGovLab</a
-      >
+      <div v-html="twitterHTML"> 
+      </div>
       </div>
 
 
