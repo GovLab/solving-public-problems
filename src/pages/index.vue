@@ -23,7 +23,6 @@ export default {
       showMessage: true,
       index_active: 0,
       apiURL: "https://directus.thegovlab.com/",
-      twitterHTML:""
     };
   },
 
@@ -31,13 +30,7 @@ export default {
     this.formslug = window.location.href.split("/");
     this.formslug = this.formslug[this.formslug.length - 1];
 
-     this.twitterHTML = `
-    <a
-        class="twitter-timeline"
-        data-height="400"
-        href="https://twitter.com/TheGovLab/timelines/1355920542042382340?ref_src=twsrc%5Etfw"
-        >Solving Public Problems - Curated tweets by TheGovLab</a
-      >`;
+ 
       this.fetchAbout();
     this.fetchBlurb();
     this.fetchPeople();
@@ -57,7 +50,7 @@ export default {
   },
   beforeMount()
   {
-    let twitterScript = document.createElement("script");
+let twitterScript = document.createElement("script");
     twitterScript.setAttribute(
       "src",
       "https://platform.twitter.com/widgets.js"
@@ -66,13 +59,13 @@ export default {
   },
   mounted() {
 
-    // twitter embed script initation
-     
-      window.twttr.widgets.load(
+ window.twttr.widgets.load(
   document.getElementById("twitter-feed")
 );
-      
-  
+console.log(window.twttr)
+    // twitter embed script initation
+     
+
 
   },
 
@@ -441,8 +434,12 @@ export default {
       <a class="tweet-close" @click="dismiss_twitter()"
         ><i class="fas fa-times-circle"></i>CLOSE</a
       >
-      <div v-html="twitterHTML"> 
-      </div>
+         <a
+        class="twitter-timeline"
+        data-height="400"
+        href="https://twitter.com/TheGovLab/timelines/1355920542042382340?ref_src=twsrc%5Etfw"
+        >Solving Public Problems - Curated tweets by TheGovLab</a
+      >
       </div>
 
 
