@@ -58,14 +58,16 @@ export default {
       "https://platform.twitter.com/widgets.js"
     );
     document.head.appendChild(twitterScript);
-
-     window.twttr.widgets.load(
-  document.getElementById("twitter-feed")
-);
-console.log(window.twttr)
+  this.fetchTwitter()
   },
 
   methods: {
+fetchTwitter()
+    {
+       window.twttr.widgets.load(
+  document.getElementById("twitter-feed")
+)
+    },
     toggleMessage(index) {
       this.index_active = index;
       this.showMessage = !this.showMessage;
@@ -435,16 +437,15 @@ console.log(window.twttr)
     href="https://twitter.com/TheGovLab/timelines/1355920542042382340?ref_src=twsrc%5Etfw">Solving Public Problems - Curated tweets by TheGovLab</a> 
       </div>
 
-
-    <div @click="dismiss_menu()">
-      <div id="intro" class="hero">
+    <div @click="dismiss_menu()" >
+      <div id="intro" class="hero" >
         <h1>
           <span id="blue">SOLVING</span><br /><span id="black"
             >PUBLIC PROBLEMS</span
           >
         </h1>
         <img src="../assets/spp-logo.svg" />
-        <h4>{{ aboutData[0].subtitle }}</h4>
+        <h4 >{{ aboutData[0].subtitle }}</h4>
       </div>
 
       <div class="hero-button">
@@ -460,7 +461,7 @@ console.log(window.twttr)
           <div class="video">
             <div class="video-container">
               <div style="padding: 56.25% 0 0 0; position: relative">
-                <iframe
+                <iframe 
                   :src="
                     'https://player.vimeo.com/video/' +
                     aboutData[0].trailer_video_id +
