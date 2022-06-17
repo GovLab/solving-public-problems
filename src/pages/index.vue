@@ -48,16 +48,20 @@ export default {
     this.fetchPress();
     
   },
-  mounted() {
-
-
-    // twitter embed script initation
-     let twitterScript = document.createElement("script");
+  beforeMount ()
+  {
+ let twitterScript = document.createElement("script");
     twitterScript.setAttribute(
       "src",
       "https://platform.twitter.com/widgets.js"
     );
     document.head.appendChild(twitterScript);
+  },
+  mounted() {
+
+
+    // twitter embed script initation
+    
   this.fetchTwitter()
   },
 
