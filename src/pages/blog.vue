@@ -84,9 +84,9 @@ self.blogData = tempData;
         </div>
       </div>
       <a class="top_logo" href="index.html"
-        ><img src="img/the-govlab-logo-white.svg" alt="The GovLab"
+        ><img src="../assets/the-govlab-logo-white.svg" alt="The GovLab"
       /></a>
-          <a class="top_logo" href="index.html"><img src="img/the_burnes_center_logo_white.png" alt="The Burnes Center for Social Change"></a>
+          <a class="top_logo" href="index.html"><img src="../assets/the_burnes_center_logo_white.png" alt="The Burnes Center for Social Change"></a>
 
 
       <!-- Navigation links (hidden by default) -->
