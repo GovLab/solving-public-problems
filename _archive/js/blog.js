@@ -28,7 +28,6 @@ new Vue({
   data () {
     return {
       blogData: [],
-      
       apiURL: 'https://directus.thegovlab.com'
     }
   },

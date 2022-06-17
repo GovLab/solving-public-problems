@@ -1,0 +1,28 @@
+{
+  "name": "spp",
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build --base=./",
+    "serve": "vite preview"
+  },
+  "dependencies": {
+    "@directus/sdk": "^9.12.2",
+    "@tailwindcss/forms": "^0.3.4",
+    "twitter-widgets": "^2.0.0",
+    "vite-plugin-pages": "^0.21.4",
+    "vue": "^3.2.16",
+    "vue-gtag": "^2.0.1",
+    "vue-material": "^1.0.0-beta-15",
+    "vue-material-design-icons": "^5.0.0",
+    "vue-router": "^4.0.12"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^1.9.3",
+    "autoprefixer": "^10.4.0",
+    "postcss": "^8.3.11",
+    "tailwindcss": "^2.2.19",
+    "vite": "^2.6.4",
+    "vite-plugin-fonts": "^0.2.2"
+  }
+}

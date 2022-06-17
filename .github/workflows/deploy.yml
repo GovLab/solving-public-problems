@@ -1,0 +1,68 @@
+name: Deploy
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+# This job deploy the application from the main branch.
+#
+# There are two folders involved:
+#   - main branch -> site
+#   - page branch -> page
+#
+# Once the artifacts are built, all new artifacts are copied over to the page
+# folder. After the latest code is commited to the page branch, the latest
+# build goes live in the GH page.
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          path: main
+
+      - name: Checkout pages branch
+        uses: actions/checkout@v2
+        with:
+          ref: gh-pages
+          path: gh-pages
+
+      - name: Install Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: 14
+
+      - name: Install dependencies
+        run: |
+          cd main
+          npm install
+          npm update
+      - name: Run build
+        run: |
+          cd main
+          npm run build
+      - name: Delete gh-pages content
+        run: |
+          rm -r gh-pages/assets/*
+      - name: Copy dist to gh-pages
+        run: |
+          rsync -av main/dist/ gh-pages/
+      - name: Overwrite 404.html with new index.html
+        run: |
+          \cp -r gh-pages/index.html gh-pages/404.html
+      - name: debug
+        run: |
+          ls -hal gh-pages/
+      - name: Commit Updates
+        run: |
+          cd gh-pages
+          HAS_CHANGES=$(git status --porcelain)
+          if [ -n "$HAS_CHANGES" ]; then
+            git config user.name 'deploy.bot'
+            git config user.email 'deploy.bot@example.com'
+            git add -A
+            git status
+            git commit -m 'deploy bot'
+            git push
+          fi

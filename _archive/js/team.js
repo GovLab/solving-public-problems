@@ -27,17 +27,16 @@ new Vue({
 
   data () {
     return {
-      blogData: [],
-      
+      TeamData: [],
       apiURL: 'https://directus.thegovlab.com'
     }
   },
   created: function created() {
-    this.fetchPosts();
+    this.fetchTeam();
   },
   methods: {
 
-    fetchPosts() {
+    fetchTeam() {
       self = this;
       const client = new DirectusSDK({
         url: "https://directus.thegovlab.com/",
@@ -46,18 +45,18 @@ new Vue({
       });
 
       client.getItems(
-  'blog',
+  'projects',
   {
-    sort:"-created_on",
-    fields: ['*.*']
+    filter: {
+      slug: 'solving-public-problems'
+    },
+    fields: ['*.*','project_team.team_id.*','project_team.team_id.picture.*']
   }
 ).then(data => {
-  self.fullData = data.data;
-  let tempData = self.fullData.filter(items => (items.categories.includes('cat_38')));
-self.blogData = tempData;
+  self.TeamData = data.data;
+  console.log(self.TeamData);
 })
 .catch(error => console.error(error));
     }
   }
 });
-
