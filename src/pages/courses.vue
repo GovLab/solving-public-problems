@@ -79,25 +79,25 @@ export default {
     <div id="myLinks">
       <div class="menu-items">
         <div class="menu-sub" @click="dismiss_menu()">
-          <a href="index.html">Home</a>
+          <a href="/">Home</a>
         </div>
         <div class="menu-sub" @click="dismiss_menu()">
           <a href="https://course.solvingpublicproblems.org">Take the Course</a>
         </div>
         <div class="menu-sub" @click="dismiss_menu()">
-          <a href="book.html">Read the Book</a>
+          <a href="book">Read the Book</a>
         </div>
         <div class="menu-sub" @click="dismiss_menu()">
-          <a href="resources.html">Resources</a>
+          <a href="resources">Resources</a>
         </div>
         <div class="menu-sub" @click="dismiss_menu()">
-          <a href="blog.html">Blog</a>
+          <a href="blog">Blog</a>
         </div>
         <div class="menu-sub" @click="dismiss_menu()">
-          <a href="research.html">See the Research</a>
+          <a href="research">See the Research</a>
         </div>
         <div class="menu-sub" @click="dismiss_menu()">
-          <a href="courses.html">Other Courses</a>
+          <a href="courses">Other Courses</a>
         </div>
         <div class="menu-sub" @click="dismiss_menu()">
           <a href="https://www.thegovlab.org/about.html">About the GovLab</a>
@@ -108,7 +108,7 @@ export default {
           >
         </div>
         <div class="menu-sub" @click="dismiss_menu()">
-          <a href="team.html">Team</a>
+          <a href="team">Team</a>
         </div>
       </div>
     </div>
