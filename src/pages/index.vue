@@ -21,6 +21,7 @@ export default {
       researchData: [],
       skillsData: [],
       surveyData: [],
+      submitted:false,
       showMessage: true,
       index_active: 0,
       apiURL: "https://directus.thegovlab.com/",
