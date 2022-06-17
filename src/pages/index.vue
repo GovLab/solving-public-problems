@@ -45,15 +45,20 @@ export default {
     this.toggleMessage();
     this.fetchPress();
   },
-  mounted() {
-
-    // twitter embed script initation
-    let twitterScript = document.createElement("script");
+  beforeMount()
+  {
+              let twitterScript = document.createElement("script");
     twitterScript.setAttribute(
       "src",
       "https://platform.twitter.com/widgets.js"
     );
     document.head.appendChild(twitterScript);
+  },
+  mounted() {
+
+    // twitter embed script initation
+    
+
 
   },
 
@@ -135,6 +140,8 @@ export default {
         })
         .then((data) => {
           self.aboutData = data.data;
+
+
         })
         .catch((error) => console.error(error));
     },
