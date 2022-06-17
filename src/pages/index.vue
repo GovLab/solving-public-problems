@@ -48,25 +48,21 @@ export default {
     this.fetchPress();
     
   },
-  beforeMount()
-  {
-let twitterScript = document.createElement("script");
+  mounted() {
+
+
+    // twitter embed script initation
+     let twitterScript = document.createElement("script");
     twitterScript.setAttribute(
       "src",
       "https://platform.twitter.com/widgets.js"
     );
     document.head.appendChild(twitterScript);
-  },
-  mounted() {
 
- window.twttr.widgets.load(
+     window.twttr.widgets.load(
   document.getElementById("twitter-feed")
 );
 console.log(window.twttr)
-    // twitter embed script initation
-     
-
-
   },
 
   methods: {
