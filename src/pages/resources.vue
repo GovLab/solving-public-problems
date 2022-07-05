@@ -224,6 +224,8 @@ export default {
         })
         .then((data) => {
           self.resourceData = data.data;
+          console.log(self.resourceData);
+
         })
 
         .catch((error) => console.error(error));
@@ -459,8 +461,7 @@ export default {
           </div>
 
           <div class="resource-worksheets" v-for="worksheet_item in resource.worksheet">
-
-            <a :href="worksheet_item.worksheet_id.url" target="_blank"><i class="fas fa-circle"></i>&nbsp&nbsp<span
+            <a :href="'https://spp-ws.netlify.app/?exercise='+worksheet_item.worksheet_id.url.split('/')[worksheet_item.worksheet_id.url.split('/').length -1]" target="_blank"><i class="fas fa-circle"></i>&nbsp&nbsp<span
                 id="underline">{{worksheet_item.worksheet_id.title}}</span><span
                 v-if="worksheet_item.worksheet_id.content && worksheet_item.worksheet_id.content != 'NULL'">,&nbsp{{worksheet_item.worksheet_id.content}}</span></a>
           </div>
