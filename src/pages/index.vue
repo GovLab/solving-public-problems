@@ -11,7 +11,7 @@ export default {
       formatData: [],
       topicData: [],
       booksData: [],
-      directus: new Directus("https://directus9-dev.thegovlab.com/"),
+      directus: new Directus("https://d9.spp.thegovlab.com/"),
       TeamData: [],
       resourceData: [],
       reviewData: [],
@@ -44,7 +44,6 @@ export default {
     this.fetchSkills();
     this.fetchSyllabus();
     this.fetchResearch();
-    this.toggleMessage();
     this.fetchPress();
     
   },
@@ -75,9 +74,18 @@ fetchTwitter()
   document.getElementById("twitter-feed")
 )
     },
-    toggleMessage(index) {
+    toggleMessage (index) {
+
       this.index_active = index;
-      this.showMessage = !this.showMessage;
+    	this.showMessage = !this.showMessage;
+      if(this.syllabusData[index].iopen==false)
+      {
+        this.syllabusData[index]['iopen'] = true;
+      }
+      else 
+      {
+        this.syllabusData[index]['iopen'] = false;
+      }
     },
     fetchPress() {
       self = this;
@@ -283,6 +291,10 @@ fetchTwitter()
           fields: ["*.*", "icons.*"],
         })
         .then((data) => {
+            data.data.map(function(a){ 
+                 a['iopen'] = false;
+           });
+           console.log(self.syllabusData);
           self.syllabusData = data.data;
         })
 
@@ -522,11 +534,8 @@ fetchTwitter()
                 <i class="material-icons down"></i>
               </div>
             </button>
-            <div
-              v-if="showMessage && index_active == index"
-              class="panel"
-              v-html="module_item.description"
-            ></div>
+            <div v-if="module_item.iopen" class="panel" v-html="module_item.description">
+            </div>
           </div>
         </div>
       </div>

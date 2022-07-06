@@ -12,7 +12,7 @@ export default {
       formatData: [],
       topicData: [],
       booksData: [],
-      directus: new Directus("https://directus9-dev.thegovlab.com/"),
+      directus: new Directus("https://d9.spp.thegovlab.com/"),
       TeamData: [],
       resourceData: [],
       reviewData: [],
@@ -44,12 +44,8 @@ export default {
     this.fetchResearch();
     this.toggleMessage();
     this.fetchPress();
-    
   },
-  mounted(){
-  
-
-  },
+  mounted() {},
 
   methods: {
     toggleMessage(index) {
@@ -202,7 +198,7 @@ export default {
         })
         .then((data) => {
           self.booksData = data.data;
-          console.log(self.booksData )
+          console.log(self.booksData);
         })
 
         .catch((error) => console.error(error));
@@ -225,7 +221,6 @@ export default {
         .then((data) => {
           self.resourceData = data.data;
           console.log(self.resourceData);
-
         })
 
         .catch((error) => console.error(error));
@@ -310,36 +305,33 @@ export default {
 
         .catch((error) => console.error(error));
     },
-  /* Toggle between showing and hiding the navigation menu links when the user clicks on the hamburger menu / bar icon */
-  myFunction() {
-    var x = document.getElementById("myLinks");
-    if (x.style.display === "block") {
+    /* Toggle between showing and hiding the navigation menu links when the user clicks on the hamburger menu / bar icon */
+    myFunction() {
+      var x = document.getElementById("myLinks");
+      if (x.style.display === "block") {
+        x.style.display = "none";
+      } else {
+        x.style.display = "block";
+      }
+    },
+    /* Toggle between showing and hiding the navigation menu links when the user clicks on the hamburger menu / bar icon */
+    dismiss_menu() {
+      var x = document.getElementById("myLinks");
       x.style.display = "none";
-    } else {
+    },
+    dismiss_twitter() {
+      var x = document.getElementById("twitter-feed");
+      x.style.display = "none";
+    },
+    confirm() {
+      var x = document.getElementById("thankyou");
+
       x.style.display = "block";
-    }
-  },
-  /* Toggle between showing and hiding the navigation menu links when the user clicks on the hamburger menu / bar icon */
-  dismiss_menu() {
-    var x = document.getElementById("myLinks");
-    x.style.display = "none";
-  },
-  dismiss_twitter() {
-    var x = document.getElementById("twitter-feed");
-    x.style.display = "none";
-  },
-   confirm() {
-    var x = document.getElementById("thankyou");
-
-    x.style.display = "block";
-
-  },
- submit() {
-    var x = document.getElementById("thankyou");
-    x.style.display = "block";
-  }
-
-
+    },
+    submit() {
+      var x = document.getElementById("thankyou");
+      x.style.display = "block";
+    },
   },
 };
 </script>
@@ -349,7 +341,7 @@ export default {
   <section>
     <!-- Load an icon library to show a hamburger menu (bars) on small screens -->
 
-   <div class="topnav">
+    <div class="topnav">
       <div class="menu-bars">
         <div class="bar-wrap">
           <a href="javascript:void(0);" class="icon" @click="myFunction()">
@@ -360,8 +352,11 @@ export default {
       <a class="top_logo" href="index.html"
         ><img src="../assets/the-govlab-logo-white.svg" alt="The GovLab"
       /></a>
-          <a class="top_logo" href="index.html"><img src="../assets/the_burnes_center_logo_white.png" alt="The Burnes Center for Social Change"></a>
-
+      <a class="top_logo" href="index.html"
+        ><img
+          src="../assets/the_burnes_center_logo_white.png"
+          alt="The Burnes Center for Social Change"
+      /></a>
 
       <!-- Navigation links (hidden by default) -->
 
@@ -411,70 +406,100 @@ export default {
       </div>
     </div>
 
-  <div id="home-page" onclick="dismiss_menu()">
-    <div id="intro" class="resource-hero resource-page">
-      <h1>Resources</h1>
-      <div class="resource-text">
-        <p>Frequently updated with new items, these resources are organized by topic. To suggest a reading, video or exercise, please email us at hello@solvingpublicproblems.org.
+    <div id="home-page" onclick="dismiss_menu()">
+      <div id="intro" class="resource-hero resource-page">
+        <h1>Resources</h1>
+        <div class="resource-text">
+          <p>
+            Frequently updated with new items, these resources are organized by
+            topic. To suggest a reading, video or exercise, please email us at
+            hello@solvingpublicproblems.org.
 
-          <br><br>
-          <b>READ</b>- HELPFUL READINGS <br>
-         <b> WATCH </b>- INTERESTING VIDEOS <br>
-         <b> DO </b>- WORKSHEETS
-        
-        </p>
-      </div>
-      <div class="hero-button book">
-        <a href="index.html" class="button">TAKE THE COURSE</a>
-        <a :href="booksData[0].book_link" class="button">BUY THE BOOK</a>
-      </div>
-    </div>
-
-
-    <div class="resource-section">
-      <div class="resource-container" v-for="resource in resourceData">
-        <div class="resource-title">
-          <h3>{{resource.module_name}}</h3>
-          <p>{{resource.short_description}}</p>
+            <br /><br />
+            <b>READ</b>- HELPFUL READINGS <br />
+            <b> WATCH </b>- INTERESTING VIDEOS <br />
+            <b> DO </b>- WORKSHEETS
+          </p>
         </div>
-        <div class="resource-body">
-          <div class="resource-type">
-            <p>READ</p>
-          </div>
-          
-          <div class="resource-readings" v-for="reading in resource.readings">
-          
-            <a :href="reading.readings_id.url" target="_blank"><i class="fas fa-circle"></i>&nbsp&nbsp<span
-                id="underline">{{reading.readings_id.title}}</span><span
-                v-if="reading.readings_id.content">,&nbsp{{reading.readings_id.content}}</span></a>
-          </div>
-          <div class="resource-type">
-            <p>watch</p>
-          </div>
-          <div class="resource-videos" v-for="video in resource.videos">
-            <a :href="video.videos_id.url" target="_blank"> <i class="fas fa-circle"></i>&nbsp&nbsp<span
-                id="underline">{{video.videos_id.title}}</span><span
-                v-if="video.videos_id.content && video.videos_id.content != 'NULL'">,&nbsp{{video.videos_id.content}}</span></a>
-          </div>
-          <div class="resource-type">
-            <p>do</p>
-          </div>
-
-          <div class="resource-worksheets" v-for="worksheet_item in resource.worksheet">
-            <a :href="'https://spp-ws.netlify.app/?exercise='+worksheet_item.worksheet_id.url.split('/')[worksheet_item.worksheet_id.url.split('/').length -1]" target="_blank"><i class="fas fa-circle"></i>&nbsp&nbsp<span
-                id="underline">{{worksheet_item.worksheet_id.title}}</span><span
-                v-if="worksheet_item.worksheet_id.content && worksheet_item.worksheet_id.content != 'NULL'">,&nbsp{{worksheet_item.worksheet_id.content}}</span></a>
-          </div>
+        <div class="hero-button book">
+          <a href="index.html" class="button">TAKE THE COURSE</a>
+          <a :href="booksData[0].book_link" class="button">BUY THE BOOK</a>
         </div>
       </div>
+
+      <div class="resource-section">
+        <div class="resource-container" v-for="resource in resourceData">
+          <div class="resource-title">
+            <h3>{{ resource.module_name }}</h3>
+            <p>{{ resource.short_description }}</p>
+          </div>
+          <div class="resource-body">
+            <div class="resource-type">
+              <p>READ</p>
+            </div>
+
+            <div class="resource-readings" v-for="reading in resource.readings">
+              <a :href="reading.readings_id.url" target="_blank"
+                ><i class="fas fa-circle"></i>&nbsp&nbsp<span id="underline">{{
+                  reading.readings_id.title
+                }}</span
+                ><span v-if="reading.readings_id.content"
+                  >,&nbsp{{ reading.readings_id.content }}</span
+                ></a
+              >
+            </div>
+            <div class="resource-type">
+              <p>watch</p>
+            </div>
+            <div class="resource-videos" v-for="video in resource.videos">
+              <a :href="video.videos_id.url" target="_blank">
+                <i class="fas fa-circle"></i>&nbsp&nbsp<span id="underline">{{
+                  video.videos_id.title
+                }}</span
+                ><span
+                  v-if="
+                    video.videos_id.content && video.videos_id.content != 'NULL'
+                  "
+                  >,&nbsp{{ video.videos_id.content }}</span
+                ></a
+              >
+            </div>
+            <div class="resource-type">
+              <p>do</p>
+            </div>
+
+            <div
+              class="resource-worksheets"
+              v-for="worksheet_item in resource.worksheet"
+            >
+              
+              <a
+                :href="
+                   worksheet_item.worksheet_id.url.indexOf('/worksheets/') != -1 
+                   ?
+                  'https://spp-ws.netlify.app/?exercise=' +
+                  worksheet_item.worksheet_id.url.split('/')[
+                    worksheet_item.worksheet_id.url.split('/').length - 1
+                  ]
+                  :
+                  worksheet_item.worksheet_id.url
+                "
+                target="_blank"
+                ><i class="fas fa-circle"></i>&nbsp&nbsp<span id="underline">{{
+                  worksheet_item.worksheet_id.title
+                }}</span
+                ><span
+                  v-if="
+                    worksheet_item.worksheet_id.content &&
+                    worksheet_item.worksheet_id.content != 'NULL'
+                  "
+                  >,&nbsp{{ worksheet_item.worksheet_id.content }}</span
+                ></a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-
-
-
-  </div>
-    
-    
-    
-
   </section>
 </template>
