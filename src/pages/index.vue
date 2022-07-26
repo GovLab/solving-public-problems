@@ -388,10 +388,10 @@ fetchTwitter()
           </a>
         </div>
       </div>
-      <a class="top_logo" href="index.html"
+      <a class="top_logo" href="/"
         ><img src="../assets/the-govlab-logo-white.svg" alt="The GovLab"
       /></a>
-      <a class="top_logo" href="index.html"
+      <a class="top_logo" href="/"
         ><img
           src="../assets/the_burnes_center_logo_white.png"
           alt="The Burnes Center for Social Change"
