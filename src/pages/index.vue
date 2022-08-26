@@ -152,7 +152,7 @@ fetchTwitter()
       self = this;
 
       this.directus
-        .items("about")
+        .items("about_spp")
         .readByQuery({
           meta: "total_count",
           limit: -1,
