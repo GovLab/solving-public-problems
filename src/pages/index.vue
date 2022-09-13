@@ -11,7 +11,7 @@ export default {
       formatData: [],
       topicData: [],
       booksData: [],
-      directus: new Directus("https://d9.spp.thegovlab.com/"),
+      directus: new Directus("https://content.thegovlab.com/"),
       TeamData: [],
       resourceData: [],
       reviewData: [],

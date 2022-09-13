@@ -12,7 +12,7 @@ export default {
       formatData: [],
       topicData: [],
       booksData: [],
-      directus: new Directus("https://d9.spp.thegovlab.com/"),
+      directus: new Directus("https://content.thegovlab.com/"),
       TeamData: [],
       resourceData: [],
       reviewData: [],
@@ -464,7 +464,7 @@ export default {
       <h2>Publications</h2>
       <div class="publications">
         <a class="publication-item" v-for="ritem in researchData[0].publications" :href="ritem.publications_id.url" target="_blank">
-          
+
           <div class="pub-thumb"
           :style="{ backgroundImage: 'url(' + directus._url+'assets/'+ritem.publications_id.thumbnail.filename_disk+ ')' }"></div>
   
