@@ -27,17 +27,36 @@ new Vue({
 
   data () {
     return {
-      blogData: [],
-      
+      sitesData: [],
+      aboutData: [],
       apiURL: 'https://directus.thegovlab.com'
     }
   },
   created: function created() {
-    this.fetchPosts();
+    this.fetchSites();
+    this.fetchAbout();
   },
   methods: {
+    fetchAbout() {
+      self = this;
+      const client = new DirectusSDK({
+        url: "https://directus.thegovlab.com/",
+        project: "solving-public-problems",
+        storage: window.localStorage
+      });
 
-    fetchPosts() {
+      client.getItems(
+  'about',
+  {
+    fields: ['*.*']
+  }
+).then(data => {
+
+  self.aboutData = data.data;
+})
+.catch(error => console.error(error));
+    },
+    fetchSites() {
       self = this;
       const client = new DirectusSDK({
         url: "https://directus.thegovlab.com/",
@@ -46,18 +65,16 @@ new Vue({
       });
 
       client.getItems(
-  'blog',
+  'sites',
   {
-    sort:"-created_on",
-    fields: ['*.*']
+    fields: ['*.*','thumbnail.*']
   }
 ).then(data => {
-  self.fullData = data.data;
-  let tempData = self.fullData.filter(items => (items.categories.includes('cat_38')));
-self.blogData = tempData;
+  self.indexData = data.data;
+  let tempData = self.indexData.filter(items => (items.type.includes("course")));
+  self.sitesData = tempData;
 })
 .catch(error => console.error(error));
     }
   }
 });
-
