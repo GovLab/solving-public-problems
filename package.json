@@ -14,7 +14,8 @@
     "vue-gtag": "^2.0.1",
     "vue-material": "^1.0.0-beta-15",
     "vue-material-design-icons": "^5.0.0",
-    "vue-router": "^4.0.12"
+    "vue-router": "^4.0.12",
+    "vue-twitter-timeline": "^1.0.1"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^1.9.3",
