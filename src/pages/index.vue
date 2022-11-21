@@ -53,33 +53,9 @@ export default {
     this.fetchPress();
     
   },
-  beforeMount ()
-  {
-
-  },
-  mounted() {
-
-
-    // twitter embed script initation
-    //  let twitterScript = document.createElement("script");
-    // twitterScript.setAttribute(
-    //   "src",
-    //   "https://platform.twitter.com/widgets.js"
-    // );
-    // document.head.appendChild(twitterScript);
-    // this.$nextTick(() => {
-    //      this.fetchTwitter()
-    //   });
-
-  },
-
+ 
   methods: {
-fetchTwitter()
-    {
-       window.twttr.widgets.load(
-  document.getElementById("twitter-feed")
-)
-    },
+
     toggleMessage (index) {
 
       this.index_active = index;
@@ -457,10 +433,7 @@ fetchTwitter()
       <a class="tweet-close" @click="dismiss_twitter()"
         ><i class="fas fa-times-circle"></i>CLOSE</a
       >
-    <!-- <a class="twitter-timeline" 
-    height="400"
-    href="https://twitter.com/TheGovLab/timelines/1355920542042382340?ref_src=twsrc%5Etfw">Solving Public Problems - Curated tweets by TheGovLab</a>  -->
-      <twitter-comp class="blog-twitter-section"></twitter-comp>
+        <twitter-comp class="blog-twitter-section"></twitter-comp>
       </div>
 
 <section id="home-page" v-if="aboutData.length>0">
