@@ -28,7 +28,7 @@ export default {
       submitted: false,
       showMessage: true,
       index_active: 0,
-      apiURL: "https://directus.thegovlab.com/",
+      apiURL: "https://content.thegovlab.com/",
     };
   },
 
@@ -429,12 +429,12 @@ export default {
    
 
     
-      <div id="twitter-feed" >
+      <!-- <div id="twitter-feed" >
       <a class="tweet-close" @click="dismiss_twitter()"
         ><i class="fas fa-times-circle"></i>CLOSE</a
       >
         <twitter-comp class="blog-twitter-section"></twitter-comp>
-      </div>
+      </div> -->
 
 <section id="home-page" v-if="aboutData.length>0">
     <div @click="dismiss_menu()" >
@@ -452,7 +452,7 @@ export default {
         <a href="http://course.solvingpublicproblems.org" class="button"
           >TAKE THE COURSE</a
         >
-        <a href="book.html" class="button">READ THE BOOK</a>
+        <a href="/book" class="button">READ THE BOOK</a>
         <a href="#register" class="button">SIGN UP FOR UPDATES!</a>
       </div>
 

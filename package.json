@@ -7,7 +7,7 @@
     "serve": "vite preview"
   },
   "dependencies": {
-    "@directus/sdk": "^9.12.2",
+    "@directus/sdk": "^9.14.2",
     "@tailwindcss/forms": "^0.3.4",
     "vite-plugin-pages": "^0.21.4",
     "vue": "^3.2.16",
@@ -15,7 +15,7 @@
     "vue-material": "^1.0.0-beta-15",
     "vue-material-design-icons": "^5.0.0",
     "vue-router": "^4.0.12",
-    "vue-twitter-timeline": "^1.0.1"
+    "vue-twitter-timeline": "^1.0.2"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^1.9.3",
