@@ -594,7 +594,7 @@ export default {
       <div class="team" v-if="TeamData.length>0">
         <!-- {{TeamData[21]}} -->
         <div class="team-image" v-for="item in TeamData[56].project_team">
-          <div
+          <div v-if="item.team_id"
             class="square"
             :style="{
               backgroundImage:
