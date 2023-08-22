@@ -593,8 +593,8 @@ export default {
       </div>
       <div class="team" v-if="TeamData.length>0">
         <!-- {{TeamData[21]}} -->
-        <div class="team-image" v-for="item in TeamData[56].project_team">
-          <div v-if="item.team_id"
+        <div  v-show="item.team_id" class="team-image" v-for="item in TeamData[56].project_team">
+          <div
             class="square"
             :style="{
               backgroundImage:
