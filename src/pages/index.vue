@@ -306,11 +306,17 @@ export default {
     },
     fetchTeam() {
       self = this;
-      const client = new Directus("https://directus.thegovlab.com/thegovlab");
+      const client = new Directus("https://content.thegovlab.com/");
 
       client
         .items("projects")
         .readByQuery({
+          filter: {
+          slug: 
+          { 
+                  _eq: "solving-public-problems"
+           }
+          },
           meta: "total_count",
           limit: -1,
           fields: [
@@ -320,7 +326,8 @@ export default {
           ],
         })
         .then((data) => {
-          self.TeamData = data.data;
+          console.log(data.data)
+          self.TeamData = data.data[0].project_team;
         })
 
         .catch((error) => console.error(error));
@@ -591,27 +598,41 @@ export default {
       <div class="divider">
         <h1>Team</h1>
       </div>
-      <!-- <div class="team" v-if="TeamData.length>0">
- {{TeamData[21]}} 
-        <div  v-if="item.team_id" class="team-image" v-for="item in TeamData[56].project_team">
-          <div
+      
+      <div class="team" v-if="TeamData.length>0">
+        
+         <div class="team-image" v-for="item in TeamData">
+          
+          <div v-if="!item.team_id.picture"
+            class="square"
+            :style="{
+              backgroundImage:
+                'url(' + item.team_id.picture_blog2020+ ')',
+            }"
+          >
+
+            <img  :src="item.team_id.picture_blog2020" />
+          </div>
+
+          <div v-if="item.team_id.picture"
             class="square"
             :style="{
               backgroundImage:
                 'url(' + item.team_id.picture.id + ')',
             }"
           >
-            <img :src="item.team_id.picture.data.full_url" />
+
+            <img :src="directus.url +'assets/'+item.team_id.picture.id" />
           </div>
+
           <h4>{{ item.team_id.name }}</h4>
           <h5>{{ item.team_id.title }}</h5>
           <a
             :href="'https://www.thegovlab.org/team.html#' + item.team_id.slug"
             target="_blank"
-            ><span id="bio">BIO</span></a
-          >
+            ><span id="bio">BIO</span></a>
         </div>
-      </div> -->
+      </div>
       <div style="margin-top: -40px" id="register" class="hidden">
         <br /><br />
       </div>
