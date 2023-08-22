@@ -591,14 +591,14 @@ export default {
       <div class="divider">
         <h1>Team</h1>
       </div>
-      <div class="team" v-if="TeamData.length>0">
-        <!-- {{TeamData[21]}} -->
-        <div  v-show="item.team_id" class="team-image" v-for="item in TeamData[56].project_team">
+      <!-- <div class="team" v-if="TeamData.length>0">
+ {{TeamData[21]}} 
+        <div  v-if="item.team_id" class="team-image" v-for="item in TeamData[56].project_team">
           <div
             class="square"
             :style="{
               backgroundImage:
-                'url(' + item.team_id.picture.data.thumbnails[3].url + ')',
+                'url(' + item.team_id.picture.id + ')',
             }"
           >
             <img :src="item.team_id.picture.data.full_url" />
@@ -611,7 +611,7 @@ export default {
             ><span id="bio">BIO</span></a
           >
         </div>
-      </div>
+      </div> -->
       <div style="margin-top: -40px" id="register" class="hidden">
         <br /><br />
       </div>
