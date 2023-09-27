@@ -431,7 +431,7 @@ export default {
         <div class="about-book" v-html="booksData[0].toc">
 
         </div>
-        <iframe src="files/SPP_Book_excerpt.pdf#toolbar=1&navpanes=1&scrollbar=1" scrolling="auto"
+        <iframe :src="directus._url+'assets/0e6c55a3-03f9-4b58-9d4f-3be70457085c'" scrolling="auto"
           type="application/pdf" width="300px" height="400px"></iframe>
       </div>
 
