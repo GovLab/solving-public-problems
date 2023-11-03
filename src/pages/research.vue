@@ -355,23 +355,12 @@ export default {
           </a>
         </div>
       </div>
-      <a class="top_logo" href="/"
-        ><img src="../assets/the-govlab-logo-white.svg" alt="The GovLab"
-      /></a>
-          <a class="top_logo" href="/"><img src="../assets/the_burnes_center_logo_white.png" alt="The Burnes Center for Social Change"></a>
 
+      <a class="top_logo" href="/"><img src="../assets/the-govlab-logo-white.svg" alt="The GovLab"/></a>
+      <a class="top_logo" href="/"><img src="../assets/the_burnes_center_logo_white.png" alt="The Burnes Center for Social Change"></a>
 
-      <!-- Navigation links (hidden by default) -->
-
-      <div class="lang-select">
-        <a
-          target="_blank"
-          href="https://twitter.com/search?q=YourEducationYourVoice&src=typed_query"
-          ><i class="e-social-media-item fa fa-twitter" aria-hidden="true"></i
-          ><b>#YourEducationYourVoice</b></a
-        >
-      </div>
     </div>
+
     <div id="myLinks">
       <div class="menu-items">
         <div class="menu-sub" @click="dismiss_menu()">
@@ -409,16 +398,10 @@ export default {
       </div>
     </div>
 
-    <div id="home-page" style="position:absolute" @click="dismiss_menu()">
-    
-
     <div class="research-hero">
       <h1>Research</h1>
-      <!-- <div v-html="researchData[0].take_survey"></div> -->
     </div>
-    <!-- <div class="hero-button">
-      <a href="" class="button inverted-color">See the results</a>
-    </div> -->
+
     <div class="research-text-section">
       <h2>Why Survey</h2>
       <div v-html="researchData[0].why_survey"></div>
@@ -448,7 +431,6 @@ export default {
     <div style="padding-bottom:0" class="research-text-section">
       <h2>Findings</h2>
       <div v-html="researchData[0].findings"></div>
-      <!-- <a class="survey-button">See Full Findings</a> -->
     </div>
     <div style="padding-bottom:0"  class="research-text-section">
       <h2>The Skills</h2>
@@ -460,10 +442,12 @@ export default {
         <div class="skills-item-description" v-html="skills.description"></div>
       </div>
     </div>
-    <div class="research-text-section">
+
+    <!-- <div class="research-text-section">
       <h2>Publications</h2>
       <div class="publications">
         <a class="publication-item" v-for="ritem in researchData[0].publications" :href="ritem.publications_id.url" target="_blank">
+          {{ritem}}
 
           <div class="pub-thumb"
           :style="{ backgroundImage: 'url(' + directus._url+'assets/'+ritem.publications_id.thumbnail.filename_disk+ ')' }"></div>
@@ -473,13 +457,7 @@ export default {
           </div>
         </a>
       </div>
-    </div>
-  
-    
-  </div>
-    
-    
-    
+    </div> -->
 
   </section>
 </template>

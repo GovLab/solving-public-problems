@@ -7,22 +7,29 @@
     "serve": "vite preview"
   },
   "dependencies": {
-    "@directus/sdk": "^9.14.2",
-    "@tailwindcss/forms": "^0.3.4",
-    "vite-plugin-pages": "^0.21.4",
+    "@directus/sdk": "^9.5.2",
+    "@netlify/functions": "^1.4.0",
+    "@vueuse/head": "^1.1.23",
+    "axios": "^0.24.0",
+    "date-fns": "^2.28.0",
+    "npm": "^8.19.1",
+    "swiper": "^9.0.4",
+    "vite-plugin-radar": "^0.5.0",
     "vue": "^3.2.16",
+    "vue-axios": "^3.4.0",
+    "vue-final-modal": "^3.4.11",
     "vue-gtag": "^2.0.1",
-    "vue-material": "^1.0.0-beta-15",
-    "vue-material-design-icons": "^5.0.0",
-    "vue-router": "^4.0.12",
-    "vue-twitter-timeline": "^1.0.2"
+    "vue-meta": "^3.0.0-alpha.10",
+    "vue-router": "^4.0.12"
   },
   "devDependencies": {
+    "@tailwindcss/forms": "^0.5.3",
     "@vitejs/plugin-vue": "^1.9.3",
-    "autoprefixer": "^10.4.0",
-    "postcss": "^8.3.11",
-    "tailwindcss": "^2.2.19",
+    "autoprefixer": "^10.4.13",
+    "postcss": "^8.4.21",
+    "tailwindcss": "^3.2.4",
     "vite": "^2.6.4",
-    "vite-plugin-fonts": "^0.2.2"
+    "vite-plugin-fonts": "^0.2.2",
+    "vite-plugin-pages": "^0.21.4"
   }
 }

@@ -1,13 +1,10 @@
 
 <script>
 import { ref } from "vue";
-import TwitterComponent from "../components/twitter.vue";
 import { Directus } from "@directus/sdk";
 
 export default {
-  components: {
-    "twitter-comp": TwitterComponent,
-  },
+ 
   data() {
     return {
       aboutData: [],

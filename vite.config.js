@@ -31,8 +31,8 @@ export default defineConfig({
     host: '0.0.0.0',
     hmr: {
       host: 'localhost', // you could make this an ENV var
-      port: '3000',
+      port: '3005',
       path: '/'
     }
-  }
+  },
 })
