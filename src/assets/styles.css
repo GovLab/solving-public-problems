@@ -1,3 +1,6 @@
+ @import url('https://fonts.googleapis.com/css2?family=Figtree&display=swap');
+
+
 :root {
   --purple: #523080;
   --theme-yellow: #DEC15E;
@@ -1930,6 +1933,144 @@ p.skills-item-title{
 .about-survey-section p{
   color: #ffffff;
 }
+
+.partner_hero{
+  padding: 0rem 20rem;
+  height: 70vh;
+  font-family: 'Figtree', sans-serif;
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 2rem;
+  letter-spacing: 0em;
+  text-align: center;
+  background-color: var(--book-white);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.partner_hero h1{
+
+font-size: 40px;
+font-weight: 700;
+/* line-height: 40px; */
+letter-spacing: 0em;
+text-align: center;
+
+}
+
+.partner_hero h2{
+  font-family: 'Figtree', sans-serif;
+font-size: 36px;
+font-style: italic;
+font-weight: 400;
+line-height: 36px;
+letter-spacing: 0em;
+text-align: center;
+color: #67A7D3;
+;
+
+}
+
+
+.more_about_course h1{
+  font-family: 'Figtree', sans-serif;
+font-size: 30px;
+font-weight: 600;
+line-height: 3rem;
+letter-spacing: 0em;
+text-align: center;
+}
+
+.more_about_course{
+  padding: 0rem 20rem;
+  font-family: 'Figtree', sans-serif;
+font-size: 18px;
+font-weight: 500;
+line-height: 2rem;
+letter-spacing: 0em;
+text-align: left;
+  background-color: var(--book-white);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.course_curriculum{
+  padding: 0rem 20rem;
+  font-family: 'Figtree', sans-serif;
+font-size: 18px;
+font-weight: 500;
+line-height: 2rem;
+letter-spacing: 0em;
+text-align: left;
+  background-color: var(--white);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.course_curriculum h1{
+  font-family: 'Figtree', sans-serif;
+font-size: 30px;
+font-weight: 600;
+line-height: 3rem;
+letter-spacing: 0em;
+text-align: center;
+}
+
+.instructorContainer{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  width: 350px;
+  gap: 2rem;
+}
+
+.imageContainer img{
+  margin: 1rem;
+  width: 300px;
+  height: 300px;
+  object-fit: cover;
+  overflow: hidden;
+  border: 2px solid black;
+}
+
+.card-name{
+  display: flex;
+  justify-content: flex-start;
+  gap: 0.5rem;
+  margin-left: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.card-title{
+  margin-left: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.card-bio-link{
+  margin-left: 1rem;
+  margin-bottom: 0.5rem;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.card-bio-link a{
+  text-decoration: none;
+  color: black;
+  font-weight: 600;
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+.card-bio-link img{
+  width: 30px;
+  height: 15px;
+  margin-top: 5px;
+}
+
 
 @media screen and (min-width: 320px) and (max-width: 768px){
   .research-hero{
