@@ -1,49 +1,88 @@
 <script>
-import { ref } from "vue";
 import { Directus } from "@directus/sdk";
+import CardComponent from './instructor_card.vue'
 
-export default {
-   data () {
+
+export default{
+  components: {
+    'card-component': CardComponent
+  },
+  data() {
     return {
+    slideIndex:0,
+    images:[],
+    prevIndex: 0,
+    activeIndex: 0,
+    nextIndex: 1,
       aboutData: [],
       currentData: [],
       filterSlug: this.getSlugFromUrl(),
-      directus_thegovlab: new Directus("https://directus.thegovlab.com/thegovlab"),
-      directus_spp: new Directus("https://directus.thegovlab.com/solving-public-problems"),
+      directus: new Directus("https://content.thegovlab.com/"),
+      instructorData: [],
       apiURL: "https://content.thegovlab.com/",
+    };
+  },
+
+  created: function created() {
+    this.formslug = window.location.href.split("/");
+    this.formslug = this.formslug[this.formslug.length - 1];
+    this.instructors = this.directus.items("SPP_CoursePartner_Instructors");
+    this.fetchAbout();
+    this.getCarouselImages(this.currentData?.gallery);
+  },
+
+  computed: {
+    showPrevButton() {
+      return this.activeIndex > 0;
+    },
+    showNextButton() {
+      return this.activeIndex < this.images.length - 1;
     }
   },
-  created: function created() {
-    this.fetchSites();
-    this.fetchAbout();
-  },
+
   methods: {
+    filteredData() {
+      var temp =  this.aboutData.find(item => item.slug.toLowerCase() === this.filterSlug.toLowerCase());
+      this.getCarouselImages(temp?.gallery);
+      return temp;
+
+    },
+
+    getSlugFromUrl() {
+      return this.$route.params.slug;
+    },
+    getCarouselImages(image_data){
+        if(image_data?.length >=2){
+            this.activeIndex = 0
+            this.prevIndex = image_data?.length -1
+            this.nextIndex = 1
+        }
+        else if(image_data?.length == 2){
+            this.activeIndex = 0;
+            this.nextIndex = this.prevIndex = 1;
+        }
+        else{
+            this.activeIndex = this.prevIndex = this.nextIndex = 0;
+        }
+    },
+
     fetchAbout() {
       self = this;
-      this.directus_spp
-        .items("about")
+      this.directus
+        .items("SPP_CoursePartner")
         .readByQuery({
-           fields: ['*.*']
-        }).then(data => {
-
-  self.aboutData = data.data;
-})
-.catch(error => console.error(error));
-    },
-    fetchSites() {
-      self = this;
-      this.directus_thegovlab
-        .items("sites")
-        .readByQuery({
-           fields: ['*.*','thumbnail.*']
-        }).then((data) => {          
-  self.indexData = data.data;
-  let tempData = self.indexData.filter(items => (items.type.includes("course")));
-  self.sitesData = tempData;
+          meta: "total_count",
+          limit: -1,
+          fields: ["*.*","instructors.SPP_CoursePartner_Instructors_id.*","gallery.SPP_CoursePartner_gallery_id.*"],
         })
-
+        .then((data) => {
+          console.log(data)
+          self.aboutData = data.data;
+          this.currentData = this.filteredData();
+        })
         .catch((error) => console.error(error));
     },
+    
         myFunction() {
       var x = document.getElementById("myLinks");
       if (x.style.display === "block") {
@@ -51,17 +90,58 @@ export default {
       } else {
         x.style.display = "block";
       }
+    }, 
+    checkForLast(position,len){
+    if(position < len-1){
+        return ++position;
+    }
+    else{
+        return 0;
+    }
     },
-  }
+    checkForFirst(position,len){
+    if(position > 0){
+        return position--;
+    }
+    else{
+        return len-1;
+    }
+    },
+moveLeft() {
+      this.activeIndex = this.checkForFirst(this.activeIndex , this.currentData?.gallery?.length);
+      this.prevIndex = this.checkForFirst(this.prevIndex , this.currentData?.gallery?.length);
+      this.nextIndex = this.checkForFirst(this.nextIndex , this.currentData?.gallery?.length);
+    },
+    moveRight() {
+      this.activeIndex = this.checkForLast(this.activeIndex , this.currentData?.gallery?.length);
+      this.prevIndex = this.checkForLast(this.prevIndex , this.currentData?.gallery?.length);
+      this.nextIndex = this.checkForLast(this.nextIndex , this.currentData?.gallery?.length);
+    },
+
+// next() {
+//       if (this.activeIndex < this.currentData?.gallery?.length - 1) {
+//         this.activeIndex++;
+//       } else {
+//         this.activeIndex = 1; // Skip the first because it cannot be centered
+//       }
+//     },
+//     prev() {
+//       if (this.activeIndex > 1) {
+//         this.activeIndex--;
+//       } else {
+//         this.activeIndex = this.currentData?.gallery?.length - 2; // Skip the last because it cannot be centered
+//       }
+//     }
+}
 };
 </script>
 
 
 <template>
-  <section>
-    <!-- Load an icon library to show a hamburger menu (bars) on small screens -->
-
-   <div class="topnav">
+    <div>
+        
+    </div>
+<div class="topnav">
       <div class="menu-bars">
         <div class="bar-wrap">
           <a href="javascript:void(0);" class="icon" @click="myFunction()">
@@ -72,10 +152,12 @@ export default {
       <a class="top_logo" href="/"
         ><img src="../assets/the-govlab-logo-white.svg" alt="The GovLab"
       /></a>
-          <a class="top_logo" href="/"><img src="../assets/the_burnes_center_logo_white.png" alt="The Burnes Center for Social Change"></a>
+      <a class="top_logo" href="/"
+        ><img
+          src="../assets/the_burnes_center_logo_white.png"
+          alt="The Burnes Center for Social Change"
+      /></a>
 
-
-      <!-- Navigation links (hidden by default) -->
 
       <div class="lang-select">
         <a
@@ -123,35 +205,71 @@ export default {
       </div>
     </div>
 
-    <div id="intro" class="resource-hero">
-      <h1>Additional Innovation Skills Programs</h1>
-        <p v-if="aboutData[0].other_course_description">{{aboutData[0].other_course_description}}</p>
-    </div>
+    <section id="partner-page">
+      <div id="partner_intro" class="partner_hero" >
+        <h1>
+          SOLVING PUBLIC PROBLEMS
+        </h1>
+        <h2>MOROCCO</h2>
+        <h4 v-html="currentData.about"></h4>
+        <img :src="directus._url + 'assets/' + this.currentData?.logo?.filename_disk" class="logo"/>
 
-    <div  class="site-row">
-    
-        <div v-for="site in sitesData" class="site-column">
-            <a :href="site.url" class="site-item">
-                <div class="thumb"
-                    :style="{ backgroundImage: 'url(' + site.thumbnail.data.thumbnails[3].url+ ')' }"></div>
-    
-                <p class="name" target="_blank">{{site.name}}</p>
-                <div class="site-tag">
-                <p v-if="site.mode=='online'"><i class="fas fa-globe"></i>&nbsp ONLINE</p>
-                <p v-if="site.mode=='in-person'"><i class="fas fa-users"></i>&nbsp IN-PERSON</p>
-                </div>
-                <div class="site-tag">
-                    <p v-if="site.synchronous=='synchronous'"><i class="fas fa-sync-alt"></i>&nbsp SYNCHRONOUS</p>
-                    <p v-if="site.synchronous=='asynchronous'"><i class="fas fa-spinner"></i>&nbsp ASYNCHRONOUS</p>
-                </div>
-                <div class="site-description" v-html="site.description"></div>
-                
-            </a>
-        </div>
-    </div>
-    
-    
-    
+        <!-- <img src="directusUrl + 'assets/' + currentData?.logo?.filename_disk "/> -->
+      </div>
 
+      <div>
+
+      </div>
+
+      <!-- <div class="slider">
+        <div class="slider-inner" :style="{ 'transform': 'translateX(' + (-activeIndex * 100 / 3) + '%)' }"> -->
+            <!-- <div v-for="item in  this.currentData?.gallery?"> -->
+                <!-- <img v-for="(image, index) in this.currentData?.gallery" :src="directus._url + 'assets/' + image.SPP_CoursePartner_gallery_id?.gallery_image" :key="index" class="slide"/> -->
+                <!-- <img v-for="(image, index) in images" :src="image.url" :key="index" :alt="image.alt" class="slide" /> -->
+            <!-- </div> -->
+            <!-- </div>
+            <button @click="prev()" class="slider-button left">&lt;</button>
+            <button @click="next()" class="slider-button right">&gt;</button>
+</div> -->
+<div class="gallery-container">
+<div class="gallery">
+<div  class="image-wrapper">
+    <img :src="directus._url + 'assets/' + this.currentData?.gallery[prevIndex].SPP_CoursePartner_gallery_id?.gallery_image" class="left-img"/>
+    <img :src="directus._url + 'assets/' + this.currentData?.gallery[activeIndex].SPP_CoursePartner_gallery_id?.gallery_image" class="active-img"/>
+    <img :src="directus._url + 'assets/' + this.currentData?.gallery[nextIndex].SPP_CoursePartner_gallery_id?.gallery_image" class="right-img"/>
+</div>
+<button  @click="moveLeft" class="nav-button left">&lt;</button>
+<button  @click="moveRight" class="nav-button right">&gt;</button>
+
+</div>
+
+</div>
+
+      <div id="about_course" class="more_about_course">
+        <h1>MORE ABOUT THE COURSE</h1>
+        <p v-html="currentData.about_course"></p>
+      </div>
+
+      <div class="course_curriculum">
+        <h1>COURSE CURRICULUM</h1>
+        <p v-html="currentData.course_curriculum"></p>
+      </div>
+
+      <div class="instructors_container">
+        <h1>INSTRUCTORS</h1>
+      <div class="instructors">
+        <div v-for="item in currentData.instructors">
+        <card-component 
+        :fname="item.SPP_CoursePartner_Instructors_id.first_name"
+        :lname="item.SPP_CoursePartner_Instructors_id.last_name"
+        :dept="item.SPP_CoursePartner_Instructors_id.department"
+        :title="item.SPP_CoursePartner_Instructors_id.title"
+        :imgUrl = "this.directus._url + 'assets/' + item.SPP_CoursePartner_Instructors_id.headshot"
+         />
+    </div>
+</div>
+      </div>
+
+      
   </section>
 </template>
