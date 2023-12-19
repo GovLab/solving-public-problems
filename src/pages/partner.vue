@@ -16,8 +16,7 @@ export default{
     nextIndex: 1,
       aboutData: [],
       currentData: [],
-      // filterSlug: this.getSlugFromUrl(),
-      filterSlug: this.$route.params.name,
+      filterSlug: this.getSlugFromUrl(),
       directus: new Directus("https://content.thegovlab.com/"),
       instructorData: [],
       apiURL: "https://content.thegovlab.com/",
@@ -29,7 +28,7 @@ export default{
     this.formslug = this.formslug[this.formslug.length - 1];
     this.instructors = this.directus.items("SPP_CoursePartner_Instructors");
     this.fetchAbout();
-    // this.getCarouselImages(this.currentData?.gallery);
+    this.getCarouselImages(this.currentData?.gallery);
   },
 
   computed: {
@@ -43,10 +42,7 @@ export default{
 
   methods: {
     filteredData() {
-      console.log(this.filterSlug)
-      self  = this;
-      var temp =  this.aboutData.find(item => item.slug.toLowerCase() === self.filterSlug.toLowerCase());
-
+      var temp =  this.aboutData.find(item => item.slug.toLowerCase() === this.filterSlug.toLowerCase());
       this.getCarouselImages(temp?.gallery);
       return temp;
 
@@ -82,7 +78,7 @@ export default{
         .then((data) => {
           console.log(data)
           self.aboutData = data.data;
-          // this.currentData = this.filteredData();
+          this.currentData = this.filteredData();
         })
         .catch((error) => console.error(error));
     },
@@ -216,7 +212,7 @@ moveLeft() {
         </h1>
         <h2>MOROCCO</h2>
         <h4 v-html="currentData.about"></h4>
-        <!-- <img :src="directus._url + 'assets/' + this.currentData?.logo?.filename_disk" class="logo"/> -->
+        <img :src="directus._url + 'assets/' + this.currentData?.logo?.filename_disk" class="logo"/>
 
         <!-- <img src="directusUrl + 'assets/' + currentData?.logo?.filename_disk "/> -->
       </div>
@@ -237,11 +233,11 @@ moveLeft() {
 </div> -->
 <div class="gallery-container">
 <div class="gallery">
-<!-- <div  class="image-wrapper">
+<div  class="image-wrapper">
     <img :src="directus._url + 'assets/' + this.currentData?.gallery[prevIndex].SPP_CoursePartner_gallery_id?.gallery_image" class="left-img"/>
     <img :src="directus._url + 'assets/' + this.currentData?.gallery[activeIndex].SPP_CoursePartner_gallery_id?.gallery_image" class="active-img"/>
     <img :src="directus._url + 'assets/' + this.currentData?.gallery[nextIndex].SPP_CoursePartner_gallery_id?.gallery_image" class="right-img"/>
-</div> -->
+</div>
 <button  @click="moveLeft" class="nav-button left">&lt;</button>
 <button  @click="moveRight" class="nav-button right">&gt;</button>
 
