@@ -212,7 +212,7 @@ moveLeft() {
     <section id="partner-page">
       <div id="partner_intro" class="partner_hero" >
         <h1>
-          SOLVING PUBLIC PROBLEMS
+          SOLVING PUBLIC PROBLEMS test
         </h1>
         <h2>MOROCCO</h2>
         <h4 v-html="currentData.about"></h4>
