@@ -2250,4 +2250,48 @@ text-align:left;
   justify-content: center;
   align-items: center;
   }
+
+  .partner_hero {
+    padding: 0px !important;
+  }
+
+  .image-wrapper img{
+    width:350px;
+  } 
+
+  .right {
+    right: 60px;
+}
+
+.left {
+  left: 60px;
+}
+
+.more_about_course {
+  padding: 0rem 1rem;
+}
+
+.more_about_course h1{
+  margin-left: 0rem !important;
+  text-align:none;
+}
+
+.course_curriculum {
+  padding: 0rem 1rem;
+}
+
+.course_curriculum h1{
+  margin-left: 0rem !important;
+  text-align:none;
+}
+
+.instructor_details {
+  margin-left: 0rem !important;
+}
+
+.instructors {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
 }
