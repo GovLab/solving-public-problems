@@ -101,16 +101,23 @@ export default{
     },
     checkForFirst(position,len){
     if(position > 0){
-        return position--;
+        return --position;
     }
-    else{
+    else if(position ==0){
         return len-1;
     }
+    else{
+        return --position;
+    }
+
     },
 moveLeft() {
       this.activeIndex = this.checkForFirst(this.activeIndex , this.currentData?.gallery?.length);
       this.prevIndex = this.checkForFirst(this.prevIndex , this.currentData?.gallery?.length);
       this.nextIndex = this.checkForFirst(this.nextIndex , this.currentData?.gallery?.length);
+      console.log("active Index",this.activeIndex);
+      console.log("active Index",this.activeIndex);
+      console.log("active Index",this.activeIndex);
     },
     moveRight() {
       this.activeIndex = this.checkForLast(this.activeIndex , this.currentData?.gallery?.length);
@@ -238,12 +245,16 @@ moveLeft() {
     <img :src="directus._url + 'assets/' + this.currentData?.gallery[activeIndex].SPP_CoursePartner_gallery_id?.gallery_image" class="active-img"/>
     <img :src="directus._url + 'assets/' + this.currentData?.gallery[nextIndex].SPP_CoursePartner_gallery_id?.gallery_image" class="right-img"/>
 </div>
+
+</div>
+
+</div>
+<div class="btn-container">
 <button  @click="moveLeft" class="nav-button left">&lt;</button>
 <button  @click="moveRight" class="nav-button right">&gt;</button>
-
 </div>
 
-</div>
+
 
       <div id="about_course" class="more_about_course">
         <h1>MORE ABOUT THE COURSE</h1>
@@ -257,6 +268,7 @@ moveLeft() {
 
       <div class="instructors_container">
         <h1>INSTRUCTORS</h1>
+        <div class="instructor_details">
       <div class="instructors">
         <div v-for="item in currentData.instructors">
         <card-component 
@@ -267,6 +279,7 @@ moveLeft() {
         :imgUrl = "this.directus._url + 'assets/' + item.SPP_CoursePartner_Instructors_id.headshot"
          />
     </div>
+  </div>
 </div>
       </div>
 
