@@ -1,4 +1,4 @@
- @import url('https://fonts.googleapis.com/css2?family=Figtree&display=swap');
+ /* @import url('https://fonts.googleapis.com/css2?family=Figtree&display=swap'); */
 
 
 :root {
@@ -1937,7 +1937,7 @@ p.skills-item-title{
 .partner_hero{
   padding: 0rem 20rem;
   height: 100vh;
-  font-family: 'Figtree', sans-serif;
+  font-family: 'proxima-nova', sans-serif;
   font-size: 22px;
   font-weight: 500;
   line-height: 2rem;
@@ -1960,7 +1960,7 @@ text-align: center;
 }
 
 .partner_hero h2{
-  font-family: 'Figtree', sans-serif;
+  font-family: 'proxima-nova', sans-serif;
 font-size: 36px;
 font-style: italic;
 font-weight: 400;
@@ -1971,8 +1971,8 @@ color: #67A7D3;
 }
 
 .partner_hero h4{
-  font-family: 'Figtree', sans-serif;
-  font-size: 24px;
+  font-family: 'proxima-nova', sans-serif;
+  font-size: 21px;
   font-weight: 500;
   line-height: 30px;
   letter-spacing: 0em;
@@ -2006,12 +2006,11 @@ color: #67A7D3;
   transition: transform 0.3s ease-in-out;
   box-sizing: border-box;
   display: flex;
-  margin-top: 10%;
-  margin-bottom: -10% !important;
+  margin-top: 5%;
 }
 
 .image-wrapper img {
-  width: 60%;
+  width: 550px;
   height: auto;
   display: block;
   /* border: 2px solid #fff; 
@@ -2025,35 +2024,54 @@ color: #67A7D3;
 }
 .left-img{
   position:static;
-  height: 30% !important;
-  margin-top: 10%;
+  height: 200px !important;
+  width: 400px !important;
+  object-fit: cover;
+  margin-top: 7%;
   transform: scale(0.8);
-  transition: ease-in-out 3s;
+  
 }
 .right-img{
-  margin-top: 10%;
-  height: 30% !important;
+  margin-top: 7%;
+  height: 200px !important;
+  width: 400px !important;
+  object-fit: cover;
   transform: scale(0.8);
-  transition: ease-in-out 3s;
+
 }
 .active-img{
-  height: 60% !important;
+  height: 350px !important;
+  object-fit: cover;
   transform: scale(1);
-  transition: ease-in-out 3s;
+  
+}
+
+.btn-container{
+  display: flex;
+  justify-content: center;
+  margin-top: 2.5%;
+  margin-bottom: 2.5%;
 }
 
 
 .nav-button {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
+  position: relative;
+  padding-left: 12rem;
+  padding-right: 12rem;
+
   background-color: #fff;
   border: none;
   cursor: pointer;
-  padding: 0.5rem 1rem;
   font-size: 1.5rem;
   color: #333;
   z-index: 2;
+}
+
+@keyframes FadeInOut {
+  0% {opacity:0;}
+  25% {opacity:.50;}
+  50% {opacity:.75;}
+  100% {opacity:1;}
 }
 
 .left {
@@ -2066,7 +2084,7 @@ color: #67A7D3;
 
 
 .more_about_course h1{
-  font-family: 'Figtree', sans-serif;
+  font-family: 'proxima-nova', sans-serif;
 font-size: 30px;
 font-weight: 600;
 line-height: 3rem;
@@ -2077,7 +2095,7 @@ text-align:left;
 
 .more_about_course{
   padding: 0rem 20rem;
-  font-family: 'Figtree', sans-serif;
+  font-family: 'proxima-nova', sans-serif;
 font-size: 18px;
 font-weight: 500;
 line-height: 2rem;
@@ -2092,7 +2110,7 @@ text-align: left;
 
 .course_curriculum{
   padding: 0rem 20rem;
-  font-family: 'Figtree', sans-serif;
+  font-family: 'proxima-nova', sans-serif;
 font-size: 18px;
 font-weight: 500;
 line-height: 2rem;
@@ -2106,7 +2124,7 @@ text-align: left;
 }
 
 .course_curriculum h1{
-  font-family: 'Figtree', sans-serif;
+  font-family: 'proxima-nova', sans-serif;
 font-size: 30px;
 font-weight: 600;
 line-height: 3rem;
@@ -2115,16 +2133,20 @@ margin-left: 8rem;
 text-align:left;
 }
 
+.instructor_details{
+  display:flex ;
+  margin-left: 14rem;
+}
+
 .instructors_container{
   
   background-color:var(--book-white);
 }
 
 .instructors_container h1{
-  margin-left: 8rem;
   padding-top: 4rem;
-  text-align:left;
-  font-family: 'Figtree', sans-serif;
+  text-align: center;
+  font-family: 'proxima-nova', sans-serif;
   font-size: 30px;
   font-weight: 600;
   line-height: 3rem;
@@ -2160,7 +2182,7 @@ text-align:left;
   justify-content:center;
   gap: 0.5rem;
   /* margin-left: 5rem; */
-  font-family: 'Figtree', sans-serif;
+  font-family: 'proxima-nova', sans-serif;
   font-size: 20px;
   font-weight: 600;
   line-height: 25px;
@@ -2171,7 +2193,7 @@ text-align:left;
 
 .card-title{
   /* margin-left: 2rem; */
-  font-family: 'Figtree', sans-serif;
+  font-family: 'proxima-nova', sans-serif;
   font-size: 20px;
   font-weight: 500;
   line-height: 35px;
@@ -2188,7 +2210,7 @@ text-align:left;
   display: flex;
   justify-content:center;
   gap: 0.5rem;
-  font-family: 'Figtree', sans-serif;
+  font-family: 'proxima-nova', sans-serif;
   font-size: 20px;
   font-weight: 500;
   line-height: 35px;
@@ -2228,4 +2250,48 @@ text-align:left;
   justify-content: center;
   align-items: center;
   }
+
+  .partner_hero {
+    padding: 0px !important;
+  }
+
+  .image-wrapper img{
+    width:350px;
+  } 
+
+  .right {
+    right: 60px;
+}
+
+.left {
+  left: 60px;
+}
+
+.more_about_course {
+  padding: 0rem 1rem;
+}
+
+.more_about_course h1{
+  margin-left: 0rem !important;
+  text-align:none;
+}
+
+.course_curriculum {
+  padding: 0rem 1rem;
+}
+
+.course_curriculum h1{
+  margin-left: 0rem !important;
+  text-align:none;
+}
+
+.instructor_details {
+  margin-left: 0rem !important;
+}
+
+.instructors {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
 }
