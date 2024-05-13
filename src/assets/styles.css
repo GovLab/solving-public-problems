@@ -1,3 +1,6 @@
+ @import url('https://fonts.googleapis.com/css2?family=Figtree&display=swap');
+
+
 :root {
   --purple: #523080;
   --theme-yellow: #DEC15E;
@@ -1930,6 +1933,271 @@ p.skills-item-title{
 .about-survey-section p{
   color: #ffffff;
 }
+
+.partner_hero{
+  padding: 0rem 20rem;
+  height: 100vh;
+  font-family: 'Figtree', sans-serif;
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 2rem;
+  letter-spacing: 0em;
+  text-align: center;
+  background-color: var(--book-white);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.partner_hero h1{
+  margin-top: 8rem;
+font-size: 40px;
+font-weight: 700;
+/* line-height: 40px; */
+letter-spacing: 0em;
+text-align: center;
+}
+
+.partner_hero h2{
+  font-family: 'Figtree', sans-serif;
+font-size: 36px;
+font-style: italic;
+font-weight: 400;
+line-height: 36px;
+letter-spacing: 0em;
+text-align: center;
+color: #67A7D3;
+}
+
+.partner_hero h4{
+  font-family: 'Figtree', sans-serif;
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 30px;
+  letter-spacing: 0em;
+  text-align: center;
+}
+
+.logo{
+  width:300px;
+  margin-bottom: 8rem;
+}
+
+
+.gallery-container {
+  position: relative;
+}
+
+.gallery {
+  /* margin-left: -15rem; */
+  display: flex;
+  /* gap: 10rem;
+  flex-wrap:nowrap; */
+  justify-content:center;
+}
+
+/* .image-wrapper {
+  width: calc(33.333% - 20px); 
+  box-sizing: border-box;
+} */
+
+.image-wrapper {
+  transition: transform 0.3s ease-in-out;
+  box-sizing: border-box;
+  display: flex;
+  margin-top: 10%;
+  margin-bottom: -10% !important;
+}
+
+.image-wrapper img {
+  width: 60%;
+  height: auto;
+  display: block;
+  /* border: 2px solid #fff; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+  transition: transform 0.3s ease-in-out; */
+}
+
+.image-wrapper img.active {
+  transform: scale(1);
+  z-index: 1;
+}
+.left-img{
+  position:static;
+  height: 30% !important;
+  margin-top: 10%;
+  transform: scale(0.8);
+  transition: ease-in-out 3s;
+}
+.right-img{
+  margin-top: 10%;
+  height: 30% !important;
+  transform: scale(0.8);
+  transition: ease-in-out 3s;
+}
+.active-img{
+  height: 60% !important;
+  transform: scale(1);
+  transition: ease-in-out 3s;
+}
+
+
+.nav-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: #fff;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  font-size: 1.5rem;
+  color: #333;
+  z-index: 2;
+}
+
+.left {
+  left: 10px;
+}
+
+.right {
+  right: 10px;
+}
+
+
+.more_about_course h1{
+  font-family: 'Figtree', sans-serif;
+font-size: 30px;
+font-weight: 600;
+line-height: 3rem;
+letter-spacing: 0em;
+margin-left: 8rem;
+text-align:left;
+}
+
+.more_about_course{
+  padding: 0rem 20rem;
+  font-family: 'Figtree', sans-serif;
+font-size: 18px;
+font-weight: 500;
+line-height: 2rem;
+letter-spacing: 0em;
+text-align: left;
+  background-color: var(--book-white);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.course_curriculum{
+  padding: 0rem 20rem;
+  font-family: 'Figtree', sans-serif;
+font-size: 18px;
+font-weight: 500;
+line-height: 2rem;
+letter-spacing: 0em;
+text-align: left;
+  background-color: var(--white);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.course_curriculum h1{
+  font-family: 'Figtree', sans-serif;
+font-size: 30px;
+font-weight: 600;
+line-height: 3rem;
+letter-spacing: 0em;
+margin-left: 8rem;
+text-align:left;
+}
+
+.instructors_container{
+  
+  background-color:var(--book-white);
+}
+
+.instructors_container h1{
+  margin-left: 8rem;
+  padding-top: 4rem;
+  text-align:left;
+  font-family: 'Figtree', sans-serif;
+  font-size: 30px;
+  font-weight: 600;
+  line-height: 3rem;
+  letter-spacing: 0em;
+
+}
+
+.instructors{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  width: 300px;
+  gap: 2rem;
+  margin: 3rem;
+  align-content: center;
+}
+
+.card-content{
+  display:grid;
+  align-content: center;
+}
+
+.imageContainer img{
+  margin: 2rem;
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  overflow: hidden;
+  /* border: 2px solid black; */
+}
+
+.card-name{
+  display: flex;
+  justify-content:center;
+  gap: 0.5rem;
+  /* margin-left: 5rem; */
+  font-family: 'Figtree', sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 25px;
+  letter-spacing: 0em;
+  text-align: center;
+  /* margin-bottom: 0.5rem; */
+}
+
+.card-title{
+  /* margin-left: 2rem; */
+  font-family: 'Figtree', sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 35px;
+  letter-spacing: 0em;
+  text-align: center;
+  display: flex;
+  justify-content:center;
+  /* margin-bottom: 0.5rem; */
+}
+
+.card-department{
+  /* margin-left: 2rem; */
+  /* margin-bottom: 0.5rem; */
+  display: flex;
+  justify-content:center;
+  gap: 0.5rem;
+  font-family: 'Figtree', sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 35px;
+  letter-spacing: 0em;
+  text-align: center;
+
+}
+
+
 
 @media screen and (min-width: 320px) and (max-width: 768px){
   .research-hero{

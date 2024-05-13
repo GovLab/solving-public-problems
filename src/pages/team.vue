@@ -125,6 +125,9 @@ export default {
           <a href="https://www.thegovlab.org/about.html">About the GovLab</a>
         </div>
         <div class="menu-sub" @click="dismiss_menu()">
+          <a href="coursePartner">Course Partners</a>
+        </div>
+        <div class="menu-sub" @click="dismiss_menu()">
           <a href="http://thegovlab.org/beth-simone-noveck.html"
             >About Beth Simone Noveck</a
           >

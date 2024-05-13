@@ -1,353 +1,147 @@
 <script>
-import { ref } from "vue";
 import { Directus } from "@directus/sdk";
+import CardComponent from './instructor_card.vue'
 
-export default {
+
+export default{
+  components: {
+    'card-component': CardComponent
+  },
   data() {
     return {
+    slideIndex:0,
+    images:[],
+    prevIndex: 0,
+    activeIndex: 0,
+    nextIndex: 1,
       aboutData: [],
-      blurbData: [],
-      syllabusData: [],
-      peopleData: [],
-      formatData: [],
-      topicData: [],
-      booksData: [],
+      currentData: [],
+      filterSlug: this.getSlugFromUrl(),
       directus: new Directus("https://content.thegovlab.com/"),
-      TeamData: [],
-      resourceData: [],
-      reviewData: [],
-      formData: [],
-      researchData: [],
-      skillsData: [],
-      surveyData: [],
-      showMessage: true,
-      index_active: 0,
-      apiURL: "https://directus.thegovlab.com/",
+      instructorData: [],
+      apiURL: "https://content.thegovlab.com/",
     };
   },
 
   created: function created() {
     this.formslug = window.location.href.split("/");
     this.formslug = this.formslug[this.formslug.length - 1];
+    this.instructors = this.directus.items("SPP_CoursePartner_Instructors");
     this.fetchAbout();
-    this.fetchBlurb();
-    this.fetchPeople();
-    this.fetchTeam();
-    this.fetchFormat();
-    this.fetchTopic();
-    this.fetchBook();
-    this.fetchSurvey();
-    this.fetchResources();
-    // this.fetchForm();
-    this.fetchSkills();
-    this.fetchSyllabus();
-    this.fetchResearch();
-    this.toggleMessage();
-    this.fetchPress();
-    
+    this.getCarouselImages(this.currentData?.gallery);
   },
-  mounted(){
 
-
+  computed: {
+    showPrevButton() {
+      return this.activeIndex > 0;
+    },
+    showNextButton() {
+      return this.activeIndex < this.images.length - 1;
+    }
   },
 
   methods: {
-    toggleMessage(index) {
-      console.log(self.TeamData);
-      this.index_active = index;
-      this.showMessage = !this.showMessage;
-    },
-    fetchPress() {
-      self = this;
+    filteredData() {
+      var temp =  this.aboutData.find(item => item.slug.toLowerCase() === this.filterSlug.toLowerCase());
+      this.getCarouselImages(temp?.gallery);
+      return temp;
 
-      this.directus
-        .items("reviews")
-        .readByQuery({
-          meta: "total_count",
-          limit: -1,
-          fields: ["*.*"],
-        })
-        .then((data) => {
-          self.reviewData = data.data;
-        })
-        .catch((error) => console.error(error));
-    },
-    fetchBlurb() {
-      self = this;
-
-      this.directus
-        .items("blurbs")
-        .readByQuery({
-          meta: "total_count",
-          limit: -1,
-          fields: ["*.*"],
-        })
-        .then((data) => {
-          self.blurbData = data.data;
-        })
-        .catch((error) => console.error(error));
-    },
-    fetchSkills() {
-      self = this;
-
-      this.directus
-        .items("skills")
-        .readByQuery({
-          meta: "total_count",
-          limit: -1,
-          fields: ["*.*"],
-        })
-        .then((data) => {
-          self.skillsData = data.data;
-        })
-        .catch((error) => console.error(error));
     },
 
-    fetchSurvey() {
-      self = this;
-
-      this.directus
-        .items("surveys")
-        .readByQuery({
-          meta: "total_count",
-          limit: -1,
-          fields: ["*.*"],
-        })
-        .then((data) => {
-          self.surveyData = data.data;
-        })
-        .catch((error) => console.error(error));
+    getSlugFromUrl() {
+      return this.$route.params.slug;
     },
+    getCarouselImages(image_data){
+        if(image_data?.length >=2){
+            this.activeIndex = 0
+            this.prevIndex = image_data?.length -1
+            this.nextIndex = 1
+        }
+        else if(image_data?.length == 2){
+            this.activeIndex = 0;
+            this.nextIndex = this.prevIndex = 1;
+        }
+        else{
+            this.activeIndex = this.prevIndex = this.nextIndex = 0;
+        }
+    },
+
     fetchAbout() {
       self = this;
-
       this.directus
-        .items("about")
+        .items("SPP_CoursePartner")
         .readByQuery({
           meta: "total_count",
           limit: -1,
-          fields: ["*.*"],
+          fields: ["*.*","instructors.SPP_CoursePartner_Instructors_id.*","gallery.SPP_CoursePartner_gallery_id.*"],
         })
         .then((data) => {
+          console.log(data)
           self.aboutData = data.data;
+          this.currentData = this.filteredData();
         })
         .catch((error) => console.error(error));
     },
-    fetchPeople() {
-      self = this;
-
-      this.directus
-        .items("people")
-        .readByQuery({
-          meta: "total_count",
-          limit: -1,
-          fields: ["*.*"],
-        })
-        .then((data) => {
-          data.data.sort(function (a, b) {
-            var textA = a.last_name.toUpperCase();
-            var textB = b.last_name.toUpperCase();
-            return textA < textB ? -1 : textA > textB ? 1 : 0;
-          });
-
-          self.peopleData = data.data;
-        })
-        .catch((error) => console.error(error));
-    },
-    fetchTopic() {
-      self = this;
-
-      this.directus
-        .items("course_topics")
-        .readByQuery({
-          meta: "total_count",
-          limit: -1,
-          fields: ["*.*"],
-        })
-        .then((data) => {
-          self.topicData = data.data;
-        })
-
-        .catch((error) => console.error(error));
-    },
-    fetchFormat() {
-      self = this;
-
-      this.directus
-        .items("course_format")
-        .readByQuery({
-          meta: "total_count",
-          limit: -1,
-          fields: ["*.*"],
-        })
-        .then((data) => {
-          self.formatData = data.data;
-        })
-
-        .catch((error) => console.error(error));
-    },
-    fetchBook() {
-      self = this;
-
-      this.directus
-        .items("book")
-        .readByQuery({
-          meta: "total_count",
-          limit: -1,
-          fields: [
-            "*.*",
-            "old_books.old_book_id.*",
-            "old_books.old_book_id.thumbnail.*",
-          ],
-        })
-        .then((data) => {
-          self.booksData = data.data;
-          console.log(self.booksData )
-        })
-
-        .catch((error) => console.error(error));
-    },
-    fetchResources() {
-      self = this;
-
-      this.directus
-        .items("resources")
-        .readByQuery({
-          meta: "total_count",
-          limit: -1,
-          fields: [
-            "*.*",
-            "readings.reading_id.*",
-            "videos.videos_id.*",
-            "worksheet.worksheet_id.*",
-          ],
-        })
-        .then((data) => {
-          self.resourceData = data.data;
-        })
-
-        .catch((error) => console.error(error));
-    },
-    fetchForm() {
-      self = this;
-
-      this.directus
-        .items("worksheet_form", {
-          filter: {
-            slug: self.formslug,
-          },
-          fields: [
-            "*.*",
-            "questions.question_id.*",
-            "additional_resources.worksheet_resource_id.*",
-          ],
-        })
-        .then((data) => {
-          self.formData = data.data;
-        })
-
-        .catch((error) => console.error(error));
-    },
-    fetchSyllabus() {
-      self = this;
-
-      this.directus
-        .items("syllabus")
-        .readByQuery({
-          meta: "total_count",
-          limit: -1,
-          fields: ["*.*", "icons.*"],
-        })
-        .then((data) => {
-          self.syllabusData = data.data;
-        })
-
-        .catch((error) => console.error(error));
-    },
-    fetchResearch() {
-      self = this;
-
-      this.directus
-        .items("research")
-        .readByQuery({
-          meta: "total_count",
-          limit: -1,
-          fields: [
-            "*.*",
-            "publications.publications_id.*",
-            "publications.publications_id.thumbnail.*",
-            "research_results.research_results_id.*",
-            "research_results.research_results_id.image.*",
-          ],
-        })
-        .then((data) => {
-          self.researchData = data.data;
-        })
-
-        .catch((error) => console.error(error));
-    },
-    fetchTeam() {
-      self = this;
-      const client = new Directus("https://directus.thegovlab.com/thegovlab");
-
-      client
-        .items("projects")
-        .readByQuery({
-          meta: "total_count",
-          limit: -1,
-          fields: [
-            "*.*",
-            "project_team.team_id.*",
-            "project_team.team_id.picture.*",
-          ],
-        })
-        .then((data) => {
-          self.TeamData = data.data;
-          console.log(self.TeamData);
-        })
-
-        .catch((error) => console.error(error));
-    },
-  /* Toggle between showing and hiding the navigation menu links when the user clicks on the hamburger menu / bar icon */
-  myFunction() {
-    var x = document.getElementById("myLinks");
-    if (x.style.display === "block") {
-      x.style.display = "none";
-    } else {
-      x.style.display = "block";
+    
+        myFunction() {
+      var x = document.getElementById("myLinks");
+      if (x.style.display === "block") {
+        x.style.display = "none";
+      } else {
+        x.style.display = "block";
+      }
+    }, 
+    checkForLast(position,len){
+    if(position < len-1){
+        return ++position;
     }
-  },
-  /* Toggle between showing and hiding the navigation menu links when the user clicks on the hamburger menu / bar icon */
-  dismiss_menu() {
-    var x = document.getElementById("myLinks");
-    x.style.display = "none";
-  },
-  dismiss_twitter() {
-    var x = document.getElementById("twitter-feed");
-    x.style.display = "none";
-  },
-   confirm() {
-    var x = document.getElementById("thankyou");
+    else{
+        return 0;
+    }
+    },
+    checkForFirst(position,len){
+    if(position > 0){
+        return position--;
+    }
+    else{
+        return len-1;
+    }
+    },
+moveLeft() {
+      this.activeIndex = this.checkForFirst(this.activeIndex , this.currentData?.gallery?.length);
+      this.prevIndex = this.checkForFirst(this.prevIndex , this.currentData?.gallery?.length);
+      this.nextIndex = this.checkForFirst(this.nextIndex , this.currentData?.gallery?.length);
+    },
+    moveRight() {
+      this.activeIndex = this.checkForLast(this.activeIndex , this.currentData?.gallery?.length);
+      this.prevIndex = this.checkForLast(this.prevIndex , this.currentData?.gallery?.length);
+      this.nextIndex = this.checkForLast(this.nextIndex , this.currentData?.gallery?.length);
+    },
 
-    x.style.display = "block";
-
-  },
- submit() {
-    var x = document.getElementById("thankyou");
-    x.style.display = "block";
-  }
-
-
-  },
+// next() {
+//       if (this.activeIndex < this.currentData?.gallery?.length - 1) {
+//         this.activeIndex++;
+//       } else {
+//         this.activeIndex = 1; // Skip the first because it cannot be centered
+//       }
+//     },
+//     prev() {
+//       if (this.activeIndex > 1) {
+//         this.activeIndex--;
+//       } else {
+//         this.activeIndex = this.currentData?.gallery?.length - 2; // Skip the last because it cannot be centered
+//       }
+//     }
+}
 };
 </script>
 
 
 <template>
-  <section>
-    <!-- Load an icon library to show a hamburger menu (bars) on small screens -->
-
-   <div class="topnav">
+    <div>
+        
+    </div>
+<div class="topnav">
       <div class="menu-bars">
         <div class="bar-wrap">
           <a href="javascript:void(0);" class="icon" @click="myFunction()">
@@ -355,12 +149,25 @@ export default {
           </a>
         </div>
       </div>
+      <a class="top_logo" href="/"
+        ><img src="../assets/the-govlab-logo-white.svg" alt="The GovLab"
+      /></a>
+      <a class="top_logo" href="/"
+        ><img
+          src="../assets/the_burnes_center_logo_white.png"
+          alt="The Burnes Center for Social Change"
+      /></a>
 
-      <a class="top_logo" href="/"><img src="../assets/the-govlab-logo-white.svg" alt="The GovLab"/></a>
-      <a class="top_logo" href="/"><img src="../assets/the_burnes_center_logo_white.png" alt="The Burnes Center for Social Change"></a>
 
+      <div class="lang-select">
+        <a
+          target="_blank"
+          href="https://twitter.com/search?q=YourEducationYourVoice&src=typed_query"
+          ><i class="e-social-media-item fa fa-twitter" aria-hidden="true"></i
+          ><b>#YourEducationYourVoice</b></a
+        >
+      </div>
     </div>
-
     <div id="myLinks">
       <div class="menu-items">
         <div class="menu-sub" @click="dismiss_menu()">
@@ -398,66 +205,71 @@ export default {
       </div>
     </div>
 
-    <div class="research-hero">
-      <h1>Research</h1>
-    </div>
+    <section id="partner-page">
+      <div id="partner_intro" class="partner_hero" >
+        <h1>
+          SOLVING PUBLIC PROBLEMS
+        </h1>
+        <h2>MOROCCO</h2>
+        <h4 v-html="currentData.about"></h4>
+        <img :src="directus._url + 'assets/' + this.currentData?.logo?.filename_disk" class="logo"/>
 
-    <div class="research-text-section">
-      <h2>Why Survey</h2>
-      <div v-html="researchData[0].why_survey"></div>
-    </div>
-    <div class="research-survey-section">
-      <div class="about-survey-section" v-html="researchData[0].about_survey"></div>
-      <div class="survey-card-row">
-        <div class="survey-card-col" v-for="survey in surveyData">
-          <div class="survey-card">
-            <p class="survey-title">{{survey.title}}</p>
-            <p class="survey-year">{{survey.year}}</p>
-            <p class="survey-year">{{survey.audience}}</p>
-            <p class="survey-year" v-if="survey.survey_participants">N = {{survey.survey_participants}}</p>
-            <div class="survey-tags" v-if="survey.survey_parts != ''">
-              <p class="survey-tag-1" v-if="survey.survey_parts[0] != null">Skills Use</p>
-              <p class="survey-tag-2" v-if="survey.survey_parts[1] != null">Innovation Environment</p>
-              <p class="survey-tag-3" v-if="survey.survey_parts[2] != null">Skills Training</p>
-            </div>
-            <p v-if="survey.sponsor" class="survey-sponser-title">Sponsered By:</p>
-            <div class="survey-sponser" v-html="survey.sponsor"></div>
-            <a v-if="survey.survey_link" :href="survey.survey_link"  target="_blank" class="survey-button">See Survey</a>
-            <a v-if="survey.survey_results" class="survey-button">See Results</a>
-          </div>
-        </div>
+        <!-- <img src="directusUrl + 'assets/' + currentData?.logo?.filename_disk "/> -->
       </div>
-    </div>
-    <div style="padding-bottom:0" class="research-text-section">
-      <h2>Findings</h2>
-      <div v-html="researchData[0].findings"></div>
-    </div>
-    <div style="padding-bottom:0"  class="research-text-section">
-      <h2>The Skills</h2>
-      <div v-html="researchData[0].the_skills"></div>
-    </div>
-    <div style="padding-bottom:0" class="research-text-section">
-      <div class="skills-item" v-for="skills in skillsData">
-        <p class="skills-item-title">{{skills.title}}</p>
-        <div class="skills-item-description" v-html="skills.description"></div>
+
+      <div>
+
       </div>
-    </div>
 
-    <!-- <div class="research-text-section">
-      <h2>Publications</h2>
-      <div class="publications">
-        <a class="publication-item" v-for="ritem in researchData[0].publications" :href="ritem.publications_id.url" target="_blank">
-          {{ritem}}
+      <!-- <div class="slider">
+        <div class="slider-inner" :style="{ 'transform': 'translateX(' + (-activeIndex * 100 / 3) + '%)' }"> -->
+            <!-- <div v-for="item in  this.currentData?.gallery?"> -->
+                <!-- <img v-for="(image, index) in this.currentData?.gallery" :src="directus._url + 'assets/' + image.SPP_CoursePartner_gallery_id?.gallery_image" :key="index" class="slide"/> -->
+                <!-- <img v-for="(image, index) in images" :src="image.url" :key="index" :alt="image.alt" class="slide" /> -->
+            <!-- </div> -->
+            <!-- </div>
+            <button @click="prev()" class="slider-button left">&lt;</button>
+            <button @click="next()" class="slider-button right">&gt;</button>
+</div> -->
+<div class="gallery-container">
+<div class="gallery">
+<div  class="image-wrapper">
+    <img :src="directus._url + 'assets/' + this.currentData?.gallery[prevIndex].SPP_CoursePartner_gallery_id?.gallery_image" class="left-img"/>
+    <img :src="directus._url + 'assets/' + this.currentData?.gallery[activeIndex].SPP_CoursePartner_gallery_id?.gallery_image" class="active-img"/>
+    <img :src="directus._url + 'assets/' + this.currentData?.gallery[nextIndex].SPP_CoursePartner_gallery_id?.gallery_image" class="right-img"/>
+</div>
+<button  @click="moveLeft" class="nav-button left">&lt;</button>
+<button  @click="moveRight" class="nav-button right">&gt;</button>
 
-          <div class="pub-thumb"
-          :style="{ backgroundImage: 'url(' + directus._url+'assets/'+ritem.publications_id.thumbnail.filename_disk+ ')' }"></div>
-  
-          <div class="pub-title">
-            {{ritem.publications_id.title}}
-          </div>
-        </a>
+</div>
+
+</div>
+
+      <div id="about_course" class="more_about_course">
+        <h1>MORE ABOUT THE COURSE</h1>
+        <p v-html="currentData.about_course"></p>
       </div>
-    </div> -->
 
+      <div class="course_curriculum">
+        <h1>COURSE CURRICULUM</h1>
+        <p v-html="currentData.course_curriculum"></p>
+      </div>
+
+      <div class="instructors_container">
+        <h1>INSTRUCTORS</h1>
+      <div class="instructors">
+        <div v-for="item in currentData.instructors">
+        <card-component 
+        :fname="item.SPP_CoursePartner_Instructors_id.first_name"
+        :lname="item.SPP_CoursePartner_Instructors_id.last_name"
+        :dept="item.SPP_CoursePartner_Instructors_id.department"
+        :title="item.SPP_CoursePartner_Instructors_id.title"
+        :imgUrl = "this.directus._url + 'assets/' + item.SPP_CoursePartner_Instructors_id.headshot"
+         />
+    </div>
+</div>
+      </div>
+
+      
   </section>
 </template>
