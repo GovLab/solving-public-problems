@@ -7,7 +7,7 @@ import Courses from '../pages/courses.vue';
 import Research from '../pages/research.vue';
 import Resources from '../pages/resources.vue';
 import Team from '../pages/team.vue';
-
+import Book from '../pages/book.vue';
 
 const routes = [
   { path:"/", component: Home },
@@ -16,6 +16,7 @@ const routes = [
   { path:"/research", component: Research },
   { path:"/resources", component: Resources },
   { path:"/team", component: Team },
+  { path:"/book", component: Book },
 ]
 
 const router = createRouter({
