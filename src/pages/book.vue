@@ -417,6 +417,7 @@ export default {
     <div class="hero-button book">
       <a href="index.html" class="button">TAKE THE COURSE</a>
       <a :href="booksData[0].book_link" class="button">BUY THE BOOK</a>
+      <a href="https://www.galaxiagutenberg.com/producto/resolver-problemas-publicos/" target="_blank" class="button">EN ESPAÑOL</a>
       <a href="#register" class="button">SIGN UP FOR UPDATES!</a>
     </div>
     <div class="about-book" v-html="booksData[0].about_the_book">
