@@ -413,7 +413,7 @@ export default {
           <p>
             Frequently updated with new items, these resources are organized by
             topic. To suggest a reading, video or exercise, please email us at
-            hello@solvingpublicproblems.org
+            hello@solvingpublicproblems.org.
 
             <br /><br />
             <b>READ</b>- HELPFUL READINGS <br />
