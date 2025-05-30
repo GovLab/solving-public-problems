@@ -12,7 +12,7 @@ export default {
       formatData: [],
       topicData: [],
       booksData: [],
-      directus: new Directus("https://content.thegovlab.com/"),
+      directus: new Directus("https://directus.theburnescenter.org/"),
       TeamData: [],
       resourceData: [],
       reviewData: [],

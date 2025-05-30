@@ -17,9 +17,9 @@ export default{
       aboutData: [],
       currentData: [],
       filterSlug: this.getSlugFromUrl(),
-      directus: new Directus("https://content.thegovlab.com/"),
+      directus: new Directus("https://directus.theburnescenter.org/"),
       instructorData: [],
-      apiURL: "https://content.thegovlab.com/",
+      apiURL: "https://directus.theburnescenter.org/",
     };
   },
 

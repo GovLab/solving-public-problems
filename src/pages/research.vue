@@ -12,7 +12,7 @@ export default {
       formatData: [],
       topicData: [],
       booksData: [],
-      directus: new Directus("https://content.thegovlab.com/"),
+      directus: new Directus("https://directus.theburnescenter.org/"),
       TeamData: [],
       resourceData: [],
       reviewData: [],
@@ -415,13 +415,14 @@ export default {
             <p class="survey-year">{{survey.year}}</p>
             <p class="survey-year">{{survey.audience}}</p>
             <p class="survey-year" v-if="survey.survey_participants">N = {{survey.survey_participants}}</p>
+            
             <div class="survey-tags" v-if="survey.survey_parts != ''">
-              <p class="survey-tag-1" v-if="survey.survey_parts[0] != null">Skills Use</p>
-              <p class="survey-tag-2" v-if="survey.survey_parts[1] != null">Innovation Environment</p>
-              <p class="survey-tag-3" v-if="survey.survey_parts[2] != null">Skills Training</p>
+             <p class="survey-tag-1" v-if="survey.survey_parts && survey.survey_parts.indexOf('skills-use') !== -1">Skills Use</p>
+             <p class="survey-tag-2" v-if="survey.survey_parts && survey.survey_parts.indexOf('innovation-enironment') !== -1">Innovation Environment</p>
+             <p class="survey-tag-3" v-if="survey.survey_parts && survey.survey_parts.indexOf('skills-training') !== -1">Skills Training</p>
             </div>
-            <p v-if="survey.sponsor" class="survey-sponser-title">Sponsered By:</p>
-            <div class="survey-sponser" v-html="survey.sponsor"></div>
+            <p v-if="survey.sponsor && survey.sponsor != 'NULL'" class="survey-sponser-title">Sponsered By:</p>
+            <div v-if="survey.sponsor && survey.sponsor != 'NULL'" class="survey-sponser" v-html="survey.sponsor"></div>
             <a v-if="survey.survey_link" :href="survey.survey_link"  target="_blank" class="survey-button">See Survey</a>
             <a v-if="survey.survey_results" class="survey-button">See Results</a>
           </div>

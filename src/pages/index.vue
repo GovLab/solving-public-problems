@@ -14,7 +14,7 @@ export default {
       formatData: [],
       topicData: [],
       booksData: [],
-      directus: new Directus("https://content.thegovlab.com/"),
+      directus: new Directus("https://directus.theburnescenter.org/"),
       TeamData: [],
       resourceData: [],
       reviewData: [],
@@ -25,7 +25,7 @@ export default {
       submitted: false,
       showMessage: true,
       index_active: 0,
-      apiURL: "https://content.thegovlab.com/",
+      apiURL: "https://directus.theburnescenter.org/",
     };
   },
 
@@ -303,7 +303,7 @@ export default {
     },
     fetchTeam() {
       self = this;
-      const client = new Directus("https://content.thegovlab.com/");
+      const client = new Directus("https://directus.theburnescenter.org/");
 
       client
         .items("projects")

@@ -6,7 +6,7 @@ export default {
    data () {
     return {
       TeamData: [],
-      directus: new Directus("https://directus.thegovlab.com/thegovlab/"),
+      directus: new Directus("https://directus.theburnescenter.org"),
 
     }
   },
@@ -16,22 +16,25 @@ export default {
   methods: {
 
     fetchTeam() {
-      self = this;
+      const self = this;
 
-       this.directus
+      this.directus
         .items("projects")
         .readByQuery({
-          meta: "total_count",
-          limit: -1,
-          slug: 'solving-public-problems',
-          fields: ['*.*','project_team.team_id.*','project_team.team_id.picture.*'],
+          filter: { slug: { _eq: "solving-public-problems" } },
+          fields: ['project_team.team_id.*', 'project_team.team_id.picture.*'],
+          limit: 1,
         })
         .then((data) => {
-            self.TeamData = data.data;
-  console.log(self.TeamData);
+          // Only get the team data from the first (and only) project
+          if (data.data && data.data.length > 0) {
+            self.TeamData = data.data[0].project_team;
+          } else {
+            self.TeamData = [];
+          }
+          console.log(self.TeamData, "self.TeamData");
         })
         .catch((error) => console.error(error));
-
     },
   
   /* Toggle between showing and hiding the navigation menu links when the user clicks on the hamburger menu / bar icon */
@@ -138,7 +141,7 @@ export default {
       </div>
     </div>
 
-    <div id="home-page" style="position:absolute" @click="dismiss_menu()">
+    <div id="home-page"  @click="dismiss_menu()">
     
     <div id="intro" class="resource-hero">
       <h1>Team</h1>
@@ -146,13 +149,30 @@ export default {
 
       <div class="team">
 
-        <div class="team-image" v-for="item in TeamData[56].project_team">
-          <div class="square" :style="{ backgroundImage: 'url(' + item.team_id.picture.data.thumbnails[3].url+ ')' }">
+        <div class="team-image" v-for="item in TeamData">
+        
+          <div
+            class="square"
+            :style="{
+              backgroundImage:
+                item.team_id.picture &&
+                item.team_id.picture.filename_disk 
+                  ? 'url(' + directus._url+'/assets/'+  item.team_id.picture.filename_disk  + ')'
+                  : ''
+            }"
+          >
             <!-- <img :src="item.team_id.picture.data.full_url"> -->
           </div>
-          <h4>{{item.team_id.name}}</h4>
-          <h5>{{item.team_id.title}}</h5>
-          <a :href="'https://www.thegovlab.org/team.html#'+item.team_id.slug" target="_blank"><span id="bio">BIO</span></a>
+          <h4>{{ item.team_id.name }}</h4>
+          <h5>{{ item.team_id.title }}</h5>
+          <a
+            :href="'https://www.thegovlab.org/team.html#' + item.team_id.slug"
+            target="_blank"
+          >
+            <span id="bio">BIO</span>
+          </a>
+         <!--  <div v-if="item.team_id.bio_short" class="team-bio" v-html="item.team_id.bio_short"></div>
+          <div v-if="item.team_id.awards" class="team-awards" v-html="item.team_id.awards"></div> -->
         </div>
   
 
