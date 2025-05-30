@@ -22,7 +22,7 @@ export default {
       submitted: false,
       showMessage: true,
       index_active: 0,
-      apiURL: "https://directus.thegovlab.com/",
+      apiURL: "https://directus.theburnescenter.org/",
     };
   },
 
@@ -312,7 +312,7 @@ fetchTwitter()
     },
     fetchTeam() {
       self = this;
-      const client = new Directus("https://directus.thegovlab.com/thegovlab");
+      const client = new Directus("https://directus.theburnescenter.org/thegovlab");
 
       client
         .items("projects")

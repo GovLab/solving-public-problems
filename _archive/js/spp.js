@@ -47,7 +47,7 @@ new Vue({
       surveyData:[],
       showMessage: true,
       index_active:0,
-      apiURL: 'https://directus.thegovlab.com/',
+      apiURL: 'https://directus.theburnescenter.org/',
     }
   },
 
@@ -81,7 +81,7 @@ new Vue({
     fetchPress() {
       self = this;
       const client = new DirectusSDK({
-        url: "https://directus.thegovlab.com/",
+        url: "https://directus.theburnescenter.org/",
         project: "solving-public-problems",
         storage: window.localStorage
       });
@@ -100,7 +100,7 @@ new Vue({
     fetchBlurb() {
       self = this;
       const client = new DirectusSDK({
-        url: "https://directus.thegovlab.com/",
+        url: "https://directus.theburnescenter.org/",
         project: "solving-public-problems",
         storage: window.localStorage
       });
@@ -119,7 +119,7 @@ new Vue({
     fetchSkills() {
       self = this;
       const client = new DirectusSDK({
-        url: "https://directus.thegovlab.com/",
+        url: "https://directus.theburnescenter.org/",
         project: "solving-public-problems",
         storage: window.localStorage
       });
@@ -139,7 +139,7 @@ new Vue({
     fetchSurvey() {
       self = this;
       const client = new DirectusSDK({
-        url: "https://directus.thegovlab.com/",
+        url: "https://directus.theburnescenter.org/",
         project: "solving-public-problems",
         storage: window.localStorage
       });
@@ -158,7 +158,7 @@ new Vue({
     fetchAbout() {
       self = this;
       const client = new DirectusSDK({
-        url: "https://directus.thegovlab.com/",
+        url: "https://directus.theburnescenter.org/",
         project: "solving-public-problems",
         storage: window.localStorage
       });
@@ -177,7 +177,7 @@ new Vue({
     fetchPeople() {
       self = this;
       const client = new DirectusSDK({
-        url: "https://directus.thegovlab.com/",
+        url: "https://directus.theburnescenter.org/",
         project: "solving-public-problems",
         storage: window.localStorage
       });
@@ -204,7 +204,7 @@ new Vue({
     fetchTopic() {
       self = this;
       const client = new DirectusSDK({
-        url: "https://directus.thegovlab.com/",
+        url: "https://directus.theburnescenter.org/",
         project: "solving-public-problems",
         storage: window.localStorage
       });
@@ -224,7 +224,7 @@ new Vue({
     fetchFormat() {
       self = this;
       const client = new DirectusSDK({
-        url: "https://directus.thegovlab.com/",
+        url: "https://directus.theburnescenter.org/",
         project: "solving-public-problems",
         storage: window.localStorage
       });
@@ -244,7 +244,7 @@ new Vue({
     fetchBook() {
       self = this;
       const client = new DirectusSDK({
-        url: "https://directus.thegovlab.com/",
+        url: "https://directus.theburnescenter.org/",
         project: "solving-public-problems",
         storage: window.localStorage
       });
@@ -264,7 +264,7 @@ new Vue({
     fetchResources() {
       self = this;
       const client = new DirectusSDK({
-        url: "https://directus.thegovlab.com/",
+        url: "https://directus.theburnescenter.org/",
         project: "solving-public-problems",
         storage: window.localStorage
       });
@@ -284,7 +284,7 @@ new Vue({
     fetchForm() {
       self = this;
       const client = new DirectusSDK({
-        url: "https://directus.thegovlab.com/",
+        url: "https://directus.theburnescenter.org/",
         project: "solving-public-problems",
         storage: window.localStorage
       });
@@ -307,7 +307,7 @@ new Vue({
     fetchSyllabus() {
       self = this;
       const client = new DirectusSDK({
-        url: "https://directus.thegovlab.com/",
+        url: "https://directus.theburnescenter.org/",
         project: "solving-public-problems",
         storage: window.localStorage
       });
@@ -327,7 +327,7 @@ new Vue({
     fetchResearch() {
       self = this;
       const client = new DirectusSDK({
-        url: "https://directus.thegovlab.com/",
+        url: "https://directus.theburnescenter.org/",
         project: "solving-public-problems",
         storage: window.localStorage
       });
@@ -347,7 +347,7 @@ new Vue({
     fetchTeam() {
       self = this;
       const client = new DirectusSDK({
-        url: "https://directus.thegovlab.com/",
+        url: "https://directus.theburnescenter.org/",
         project: "thegovlab",
         storage: window.localStorage
       });

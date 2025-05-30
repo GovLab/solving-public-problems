@@ -7,8 +7,8 @@ export default {
     return {
       sitesData: [],
       aboutData: [],
-      directus_thegovlab: new Directus("https://directus.thegovlab.com/thegovlab"),
-      directus_spp: new Directus("https://directus.thegovlab.com/solving-public-problems"),
+      directus_thegovlab: new Directus("https://directus.theburnescenter.org/thegovlab"),
+      directus_spp: new Directus("https://directus.theburnescenter.org/solving-public-problems"),
     }
   },
   created: function created() {

@@ -8,8 +8,8 @@ export default {
   data () {
     return {
       blogData: [],
-      directus: new Directus("https://directus.thegovlab.com/thegovlab/"),
-      apiURL: 'https://directus.thegovlab.com'
+      directus: new Directus("https://directus.theburnescenter.org"),
+      apiURL: 'https://directus.theburnescenter.org'
     }
   },
   created: function created() {
@@ -19,6 +19,7 @@ export default {
 
     fetchPosts() {
       self = this;
+    
     
      this.directus
         .items("blog")
@@ -30,8 +31,18 @@ export default {
         })
         .then((data) => {
           self.fullData = data.data;
-  let tempData = self.fullData.filter(items => (items.categories.includes('cat_38')));
-self.blogData = tempData;
+
+          // Safely filter items where categories exists and is an array
+          let tempData = Array.isArray(self.fullData)
+            ? self.fullData.filter(
+                item =>
+                  Array.isArray(item.categories) &&
+                  item.categories.includes('spp')
+              )
+            : [];
+
+          console.log(tempData, "tempData");
+          self.blogData = tempData;
         })
         .catch((error) => console.error(error));
     
